@@ -9,16 +9,16 @@
 it's aknowledge. If he can't be warned, always keep a backup of his work.
 
 4. Lack of time, knowledge, proper computer or software is understandable. Lazyness is not. 
-If someone is the "lazy ass" it will be exposed to the teacher and he will face the consequences.
+If someone is the "lazy ass" it will be shown to the teacher and he will face the consequences.
 
 5. It's better to work with friends than with just partners, so let's try to be cool with each other.
 
 6. Organization is key, and it's everyone's matter, not only of the manager role.
 
-7. We must be cohesive in all work, especially on code and documentation.
+7. We must be cohesive in all work, specially on code and documentation.
 
-8. No cheating, please (copying code, blaming problems on third parties, etc.) It's better undone than badly done.
+8. No cheating, please (copying code, blaming problems on third parties, etc.) It's better undone that badly done.
 
-9. Communication. Mind the team when taking decisions. Most of problems can be resolved by civilized discussions.
+9. Communication. Mind the team when taking decisions. Most of problems can be resolved by civiliced discussions.
 
 10. Enjoy the project and have fun.
