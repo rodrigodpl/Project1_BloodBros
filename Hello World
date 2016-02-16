@@ -3,7 +3,7 @@
 int main(void){
 
 	printf("Hello my name is Rodrigo");
-	printf("Hello my name is ");
+	printf("Hello my name is Oliver");
 	printf("Hello my name is ");
 	printf("Hello my name is ");
 
