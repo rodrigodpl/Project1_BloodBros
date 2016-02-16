@@ -1,6 +1,5 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Project Name}
+
+# UPC DDV Project 1: BloodBros
 TODO: Write a project description
 ## Installation
 TODO: Describe the installation process
@@ -18,6 +17,4 @@ TODO: Write history
 TODO: Write credits
 ## License
 TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
+
