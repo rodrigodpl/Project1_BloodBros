@@ -1,0 +1,25 @@
+Guia para coger sprites de Blood Bros.
+
+1. Primero necesitamos screenshot. Bajaos el Animget. Cargais el juego y antes de empezar la partida abris el animget 
+y le dais a observe-> start. Jugad un poco y le dais a Observe-> Stop. Luego Shots->Save y os apareceran los shots
+en la carpeta del animget.
+
+  IMPORTANTE: vigilad cuanto tiempo esta activado el animget. Pensad que en unos 7 seg te saca como 400 fotos. Como os despisteis 
+  os hara millones.
+  
+  Moveos, rodad, disparad. Pensad que necesitamos las animaciones enteras de todo.
+  
+  Si teneis problemas en este paso bajaos MAME plus Multi JET Advance edition para jugarlo.
+  
+2. Cuando tengais los shots, photoshop para los sprites grandes. Para pequeños, las letras i la UI:
+
+  - A media partida apretais F4, estareis en una paleta con colores.
+  - apretis enter, estareis en una pantalla donde se ve el fondo del nivel. Con ([) i (]) cambias el nivel de profundidad. El ultimo nivel 
+  es la UI. De ahí sacais UI i fondos.
+  - Apretais enter otra vez. Deberian saliros las letras de la fuente del juego. Con ([) i (]) pasais de letras i simbolos 
+  a sprites grandes (creo, supongo) i luego a sprites pequeños. De ahi sacais los sprites pequeños.
+  
+  IMPORTANTE: en seguida vereis que en lo de f4  pasa algo raro con los colores. El tema es que por algun motivo este juego usa dos 
+  paletas de color que son negativas. Con las flechas del teclado os moveis entre color 0, color 1, color 2... 
+  Solo los dos primeros son colores reales, si tirais mas a la derecha os daran colores raros que no son del juego. 
+  Si no veis claro que es un sprite probad de cambiar al otro color (p.ej el caballo os puede salir verde).
