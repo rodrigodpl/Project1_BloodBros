@@ -1,0 +1,83 @@
+#include "ModuleAudio.h"
+#include "Module.h"
+#include "Application.h"
+#include "SDL_mixer\include\SDL_mixer.h"
+
+ModuleAudio::ModuleAudio(){
+	Mix_OpenAudio(44100, AUDIO_S16SYS, 1, 1024); 
+}
+ModuleAudio::~ModuleAudio(){
+	Mix_CloseAudio();
+}
+
+bool ModuleAudio::Init(){
+	for (int i = 0; i < MAX_FX; i++){
+		audio[i] = NULL;
+	}
+	music = NULL; 
+	audio[0] = Mix_LoadWAV("birds001.wav");
+	music = Mix_LoadMUS("Song_Test.wav"); 
+}
+
+bool ModuleAudio::Start(){
+	Mix_PlayMusic(music, 1); 
+}
+update_status ModuleAudio::Update(){
+
+	Mix_PlayChannel(-1, audio[0], 1);
+}
+
+bool ModuleAudio::CleanUp(){
+	for (int i = 0; i < MAX_FX; i++){
+		if (audio[i] != NULL)
+			Mix_FreeChunk(audio[i]);
+	}
+	if (music != NULL)
+		Mix_FreeMusic(music);
+}
+
+
+void ModuleAudio::changemusic(const char* musictrack){
+	Mix_FadeOutMusic(1000); 
+	Mix_FreeMusic(music);
+	Mix_LoadMUS(musictrack); 
+	Mix_FadeInMusic(music, -1, 1000); 
+}
+
+//Canvis a fade to black i a la primera escena. 
+
+--------------------------------------------------------------------------------------
+
+#ifndef _MODULEAUDIO_H_
+#define _MODULEAUDIO_H_
+
+#define MAX_FX 10
+
+#include "Module.h"
+#include "Globals.h"
+#include "SDL_mixer\include\SDL_mixer.h"
+
+enum samples{
+	NORMAL_SHOT_SOUND,
+	SHOTGUT_SHOT, 
+	PLANE_SHOT
+};
+
+class ModuleAudio : public Module{
+public: 
+	ModuleAudio();
+	~ModuleAudio();
+
+	bool Init();
+	bool Start(); 
+	update_status Update();
+	bool CleanUp();
+	void changemusic(const char*); 
+
+public:
+	Mix_Chunk* audio[MAX_FX];
+	Mix_Music* music; 
+};
+
+
+#endif
