@@ -1,10 +1,15 @@
 
 # UPC DDV Project 1: BloodBros
-TODO: Write a project description
+We are a group of studients from UPC studying videogames developing degree, this is a repository where we will be making a tribute of Blood Bros, an arcade game originaly made by TAD Corporation. 
+
 ## Installation
 TODO: Describe the installation process
 ## Usage
-TODO: Write usage instructions
+For moving: 
+  - 'A' to move left. 
+  - 'B' to mov right. 
+  - 'S' to crouch (while crouching you can't move).
+
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
@@ -16,7 +21,11 @@ TODO: Write usage instructions
 ## History
 TODO: Write history
 ## Credits
-TODO: Write credits
+Programer: Rodrigo de Pedro.
+Manager: Roger Tello.
+QA: Andrey Ivanov. 
+Art: Oliver Cabezas. 
+
 ## License
 TODO: Write license
 
