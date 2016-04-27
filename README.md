@@ -20,19 +20,19 @@ QA: Andrey Ivanov.
 Art: Oliver Cabezas. 
 
 ##Changelist
-# v0.1
+### v0.1
   - ////
 
-# v0.2
+### v0.2
   - We placed the welcome screen, the first background, then return to the welcome screen using fadetoblack. 
 
-# v0.3
+### v0.3
   - We made the player move and we placed the animations when moving, we loaded the music too and the fx of the player when shoting. 
   
-# v0.4
+### v0.4
   - We placed the coliders that were needed. 
 
-# v0.5
+### v0.5
   - We placed different types of enemies. 
 
 
