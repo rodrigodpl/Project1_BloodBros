@@ -8,7 +8,8 @@ Aim and player are engaged, they can not move independently, so when moving the 
   - 'B' to mov right. 
   - 'S' to crouch (while crouching you can't move).
   - 'C' to jump, this will help you to dodge the enemy bullets.
-  - 'SPACE' to shoot. 
+  - 'J' to shoot. 
+  - 'SPACE' to start.
 
 ## Credits
 Programer: Rodrigo de Pedro.
