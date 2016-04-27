@@ -1,9 +1,7 @@
 
 # UPC DDV Project 1: BloodBros
-We are a group of studients from UPC studying videogames developing degree, this is a repository where we will be making a tribute of Blood Bros, an arcade game originaly made by TAD Corporation. 
+We are a group of studients from UPC studying a Design and Development degree and this is a repository where we will be making a tribute to Blood Bros, an arcade game originaly made by TAD Corporation. The main characters are a cowboy and a Native American, which are two brothers with the goal to capture the most dangerous bandit of the West, Big Bad John
 
-## Installation
-TODO: Describe the installation process
 ## Usage
 Aim and player are engaged, they can not move independently, so when moving the player the aim will move too at higher speed. 
   - 'A' to move left. 
@@ -12,16 +10,6 @@ Aim and player are engaged, they can not move independently, so when moving the 
   - 'C' to jump, this will help you to dodge the enemy bullets.
   - 'SPACE' to shoot. 
 
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request.
-
-
-## History
-TODO: Write history
 ## Credits
 Programer: Rodrigo de Pedro.
 
@@ -31,6 +19,20 @@ QA: Andrey Ivanov.
 
 Art: Oliver Cabezas. 
 
-## License
-TODO: Write license
+##Changelist
+# v0.1
+  - ////
+
+# v0.2
+  - We placed the welcome screen, the first background, then return to the welcome screen using fadetoblack. 
+
+# v0.3
+  - We made the player move and we placed the animations when moving, we loaded the music too and the fx of the player when shoting. 
+  
+# v0.4
+  - We placed the coliders that were needed. 
+
+# v0.5
+  - We placed different types of enemies. 
+
 
