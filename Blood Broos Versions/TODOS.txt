@@ -1,0 +1,19 @@
+TODOS:
+
+
+-SPRITES(PRIOTITARI):
+Cada module nomes pot cargar un png a textures per fer servir, per el que necessito tots els sprites del modul a la mateixa imatge.
+La imatge pot ser tan gran com faci falta. editeu amb photoshop o el que tingueu. Si neu a canviar mides les referencies son el player
+i el background.
+Llista dels pngs que necesitem (cada un una imatge):
+Player: fet, pero estaria be trobar les coordenades de cada sprite que hi ha molts.
+Enemies: els indians i el barrel a la mateixa imatge. FAlta el cowboy saltant cap abaix.
+Podeu borrar (no cal realment) els del indian morint que van a un altre lloc.
+Scenario: a una sola imatge llums, ampolles i tots els sprites de la paret 
+Reticle: editar per que sigui mes gran i falten els sprites de quam esta disparant.
+Particles: els sprites del dispar enemeic, ampolles trencant, llums trencant, el fum de quan la paret es derrumba, i els sprites
+de l'indi morintse (estan a cowbow_enemy) i el del barrel morintse(shan de treure).
+
+FX I MUSICA(SECUNDARI): a la wiki hi ha un link per baizarse tots els sons del joc. Estaria be buscar i etiquetar:
+-Player morint, player disparant, enemy morint, ampolla trencada, parret derrumbant-se, llum trencada, posar moneda
+-Musica de guanyar, musica de cada stage (TAD Corp...)
