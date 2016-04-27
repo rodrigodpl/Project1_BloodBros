@@ -24,8 +24,11 @@ Aim and player are engaged, they can not move independently, so when moving the 
 TODO: Write history
 ## Credits
 Programer: Rodrigo de Pedro.
+
 Manager: Roger Tello.
+
 QA: Andrey Ivanov. 
+
 Art: Oliver Cabezas. 
 
 ## License
