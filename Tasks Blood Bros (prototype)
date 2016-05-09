@@ -1,0 +1,79 @@
+
+Milestones:
+
+Now->May 10-11th: organization and preproduction.
+May 15-16th: All current game features coded, tested and working without errors.
+May 21-22th: All levels implemented in a basic level in code. Project in polish.
+May 26-28th: Alpha done. All features implemented. Bug tracking. Project frozen.
+May 31th: Due date.
+
+Estimated time to do the project: 21 days.
+
+Tasks:
+
+ -Not game related:
+	-Game web design (including video and picture).
+	-README file with all needed info.
+	-To make sure that the last build (.zip) is properly uploaded. Test in CITM computers.
+
+ -Game related:
+
+	-Art related:
+		1. Find and take note of every visual element of the level. This includes: scenario elements (including destroying sprites),
+		   enemies (all sprites including deaths), NPCs(being hit sprites too), power ups, particles (enemies shots),
+		   UI and backgrounds. Create a list called sprite_list. (estimated time: 2 days)
+		2. Exctract all sprites in sprite_list from MAME. (estimated time: 2 days)
+		3. Group all sprites in pngs (particles spritesheet, enemies spritesheet...) working with the code section.
+		   (estimated time: 5 days)
+		4. Resize sprites if needed and possible art problem fixes. (estimated time: 2 days)
+		
+		IMPORTANT!: use the proper tile program as the teachers told us to not have to find coordenates manually.
+
+		Total estimated time: 11 days. 
+		Start date: ASAP.
+		Due to: 21-22th May.
+
+	-Audio related:
+		1. Find all FX and music needed and label it. (estimated time: 4 days)
+		2. Organize all sound files and convert to .ogg if necessary. (estimated time: 1 day)
+		3. Check that every sound is like the original game and possible sound problem fixes. (estimated time: 2 days)
+		
+		Total estimated time: 7 days.
+		Start date: 21-22th May.
+		Due to: 27-28th May.
+
+	-QA related:
+
+		1. Check every piece of new code as it's been implemented to find bugs early. (constant progress)
+		2. Check if animations, enemy spawn times, difficulty, etc. is like the original game. (estimated time: 2 days)
+		3. Bug tracking and recording for the alpha (estimated time: 7 days)
+
+		Total estimated time: 9 days.
+		Start date: 21-22th May.
+		Due to: 30th May.
+
+	-Code related:
+		
+		1. Debug current version so it has no bugs and we can start coding with a "clean" base. (estimated time: 3 days)
+		2. Code debug functionalities: god mode, instant win/lose. (estimated time: 1 day)
+		3. Clean, optimize, make readable and organize all code. (estimated time: 2 days)
+		4. Implement features not done yet, including: dynamite throw, working UI, state machines, etc. (estimated time: 10 days)
+
+		Total estimated time: 26 days       
+		Start date: ASAP.
+		Due to: 26-28th May.		
+
+	-Management related:
+
+		1. Work as administrator to join all individual work. (constant progress)
+		2. Take care of outside relations (teacher, other groups). (constant progress)
+
+Responsabilites:
+
+	-Not game related tasks: Roger Tello.
+	-Art tasks: Oliver Cabezas.
+	-Audio tasks: Oliver Cabezas, Andrey Ivanov.
+	-QA tasks: Andrey Ivanov.
+	-Code tasks: Rodrigo De Pedro, Roger Tello.
+	-Management tasks: Roger Tello.
+	
