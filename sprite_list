@@ -1,0 +1,43 @@
+Sprite_list
+
+<OBJECTS>
+bottle crash
+closet (including all variations)
+Tip can
+brril crash
+all smoke sequence
+scenario destroyed when zepelin shoots
+
+<UI> 
+bomb
+reticle shotgun- machine gun
+cowboy victory dance
+1000p
+5000p
+10000p
+1up
+
+<ENEMIES>
+diligence
+zepellin
+barrelman diying
+cowboy rider
+horse
+cowboy blue
+NPc man on toilet( when the wall collapses starts running)
+pigs
+little cowboys
+
+<PARTICLES>
+big explosion
+Medium Explosion
+Machine gun animation
+AI bombs (diligence, cowboys) and animation explosion
+dynamite character
+torches? cowboys + fire
+diligence ammo
+zepelling ammo
+
+Fonts. 
+
+
