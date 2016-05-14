@@ -50,11 +50,7 @@ private:
 
 public:
 
-	Particle explosion;
-	Particle laser;
 	Particle enemy_shot;
-	Particle barrel_guy_dying;
-	Particle indian_dying;
 	Particle destroying_wall;
 	Particle player_shot;
 

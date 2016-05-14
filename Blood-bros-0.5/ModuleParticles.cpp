@@ -18,21 +18,6 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.speed = 0.3f;
-
-	laser.anim.PushBack({36, 94, 31, 30});
-	laser.anim.PushBack({85, 103, 31, 30});
-	laser.anim.speed = 0.2f;
-	laser.speed.x = 5;
-	laser.life = 3000;
-
 	enemy_shot.anim.PushBack({ 14, 67, 23, 22 });
 	enemy_shot.anim.PushBack({ 49, 67, 23, 22 });
 	enemy_shot.anim.speed = 0.2f;
@@ -45,17 +30,6 @@ ModuleParticles::ModuleParticles()
 	player_shot.anim.PushBack({ 102, 168, 71, 39 });
 	player_shot.anim.speed = 0.3f;
 	player_shot.anim.loop = false;
-
-
-	barrel_guy_dying.anim.PushBack({ 232, 103, 16, 12 });
-	barrel_guy_dying.anim.PushBack({ 249, 103, 16, 12 });
-	barrel_guy_dying.anim.speed = 0.2f;
-	barrel_guy_dying.anim.loop = false;
-
-	indian_dying.anim.PushBack({ 232, 103, 16, 12 });
-	indian_dying.anim.PushBack({ 249, 103, 16, 12 });
-	indian_dying.anim.speed = 0.2f;
-	indian_dying.anim.loop = false;
 
 	destroying_wall.anim.PushBack({ 232, 103, 16, 12 });
 	destroying_wall.anim.PushBack({ 232, 103, 16, 12 });
@@ -75,8 +49,8 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("Particles_SpriteSheet.png");
 
 	// Load particles fx particle
-	explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
-	laser.fx = App->audio->LoadFx("rtype/laser.wav");
+	/*explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
+	laser.fx = App->audio->LoadFx("rtype/laser.wav");*/
 
 	return true;
 }
@@ -159,12 +133,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c2->type == COLLIDER_PLAYER_SHOT && !(App->player->shooting)){
+			if ((c2->type == COLLIDER_PLAYER_SHOT && (App->player->shooting)) || c2->type == COLLIDER_SCENARIO){
+				delete active[i];
+				active[i] = nullptr;
 				break;
 			}
-			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
-			delete active[i];
-			active[i] = nullptr;
 			break;
 		}
 	}
