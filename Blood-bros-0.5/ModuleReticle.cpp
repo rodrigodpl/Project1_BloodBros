@@ -96,9 +96,8 @@ update_status ModuleReticle::Update()
 
 	// TODO 3: Shoot lasers when the player hits SPACE
 
-	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_REPEAT && App->player->destroyed == false)
+	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_REPEAT && App->player->alive)
 	{
-		shooting = true;
 		App->audio->PlayFx(player_shot_fx);
 		if ((SDL_GetTicks() - timer) > 400){
 			App->particles->AddParticle(App->particles->player_shot, position.x + 5, position.y + 20);
@@ -106,7 +105,6 @@ update_status ModuleReticle::Update()
 		}
 	}
 	else{
-		shooting = false;
 		current_animation = &idle;
 	}
 

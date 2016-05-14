@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "SDL/include/SDL.h"
 
@@ -68,4 +69,125 @@ bool ModuleInput::CleanUp()
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
+}
+
+
+uint ModuleInput::player_input(){
+
+	switch (App->player->state){
+
+	case ST_IDLE:
+
+		if (keyboard[SDL_SCANCODE_J] == KEY_REPEAT)
+			return(IN_SHOT);
+		if (keyboard[SDL_SCANCODE_A] == KEY_REPEAT && keyboard[SDL_SCANCODE_D] == KEY_IDLE)
+			return(IN_LEFT_DOWN);
+		if (keyboard[SDL_SCANCODE_D] == KEY_REPEAT && keyboard[SDL_SCANCODE_A] == KEY_IDLE)
+			return(IN_RIGHT_DOWN);
+		if (keyboard[SDL_SCANCODE_S] == KEY_REPEAT)
+			return(IN_CROUCH_DOWN);
+
+		break;
+
+	case ST_IDLE_SHOOTING:
+
+		if (keyboard[SDL_SCANCODE_J] == KEY_IDLE && App->player->current_animation->Finished())
+			return(IN_SHOT_FINISH);
+		if (keyboard[SDL_SCANCODE_J] == KEY_REPEAT && App->player->current_animation->Finished())
+			return(IN_SHOT);
+		if (keyboard[SDL_SCANCODE_S] == KEY_REPEAT)
+			return(IN_CROUCH_DOWN);
+
+		break;
+
+	case ST_CROUCHED_IDLE:
+
+		if (keyboard[SDL_SCANCODE_S] == KEY_IDLE)
+			return(IN_CROUCH_UP);
+		if (keyboard[SDL_SCANCODE_J] == KEY_REPEAT)
+			return(IN_SHOT);
+		if (keyboard[SDL_SCANCODE_K] == KEY_DOWN && keyboard[SDL_SCANCODE_A] == KEY_REPEAT &&
+			keyboard[SDL_SCANCODE_D] == KEY_IDLE)
+			return(IN_JUMP_LEFT);
+		if (keyboard[SDL_SCANCODE_K] == KEY_DOWN && keyboard[SDL_SCANCODE_D] == KEY_REPEAT &&
+			keyboard[SDL_SCANCODE_A] == KEY_IDLE)
+			return(IN_JUMP_RIGHT);
+
+		break;
+
+	case ST_CROUCHED_SHOOTING:
+
+		if (keyboard[SDL_SCANCODE_J] == KEY_IDLE && App->player->current_animation->Finished())
+			return(IN_SHOT_FINISH);
+		if (keyboard[SDL_SCANCODE_J] == KEY_REPEAT && App->player->current_animation->Finished())
+			return(IN_SHOT);
+		if (keyboard[SDL_SCANCODE_S] == KEY_IDLE)
+			return(IN_CROUCH_UP);
+
+		break;
+
+	case ST_WALK_LEFT:
+
+		if (keyboard[SDL_SCANCODE_J] == KEY_REPEAT)
+			return(IN_SHOT);
+		if (keyboard[SDL_SCANCODE_K] == KEY_DOWN)
+			return(IN_JUMP_LEFT);
+		if (keyboard[SDL_SCANCODE_A] == KEY_IDLE)
+			return(IN_IDLE);
+		if (App->player->current_animation->Finished()){
+			App->player->current_animation->Reset();
+			App->player->current_animation->current_frame = 4.0f; break;
+		}
+
+		break;
+
+	case ST_WALK_RIGHT:
+
+		if (keyboard[SDL_SCANCODE_J] == KEY_REPEAT)
+			return(IN_SHOT);
+		if (keyboard[SDL_SCANCODE_K] == KEY_DOWN)
+			return(IN_JUMP_RIGHT);
+		if (keyboard[SDL_SCANCODE_D] == KEY_IDLE)
+			return(IN_IDLE);
+		if (App->player->current_animation->Finished()){
+			App->player->current_animation->Reset();
+			App->player->current_animation->current_frame = 4.0f; break;
+		}
+
+		break;
+
+	case ST_JUMP_LEFT:
+
+		if (App->player->current_animation->Finished())
+			return(IN_IDLE);
+
+		break;
+
+	case ST_JUMP_RIGHT:
+
+		if (App->player->current_animation->Finished())
+			return(IN_IDLE);
+
+		break;
+
+	case ST_ROLL_LEFT:
+
+		if (App->player->current_animation->Finished() && keyboard[SDL_SCANCODE_S] == KEY_REPEAT)
+			return(IN_CROUCH_DOWN);
+		if (App->player->current_animation->Finished())
+			return(IN_IDLE);
+
+		break;
+
+	case ST_ROLL_RIGHT:
+
+		if (App->player->current_animation->Finished())
+			return(IN_IDLE);
+
+		break;
+
+	}
+
+	return(IN_NULL);
+
 }

@@ -5,6 +5,7 @@
 #include "ModuleScenario.h"
 #include "Scenario_elem.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_Barrel_Guy.h"
@@ -164,7 +165,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && App->reticle->shooting)
+		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && App->player->shooting)
 		{
 			if (enemies[i]->is_protecting == false){
 				enemies[i]->Die();

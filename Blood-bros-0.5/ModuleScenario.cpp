@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleScenario.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 #include "ModuleTextures.h"
 #include "Scenario_elem.h"
 #include "Scenario_Wall_001.h"
@@ -110,7 +111,7 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 	{
-		if (elements[i] != nullptr && elements[i]->GetCollider() == c1 && (App->reticle->shooting || c2->type == COLLIDER_ENEMY_SHOT))
+		if (elements[i] != nullptr && elements[i]->GetCollider() == c1 && (App->player->shooting || c2->type == COLLIDER_ENEMY_SHOT))
 		{
 			elements[i]->health -= 1;
 			if (elements[i]->health <= 0){

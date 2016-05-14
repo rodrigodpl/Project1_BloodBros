@@ -6,6 +6,7 @@
 
 class Animation
 {
+	friend class ModuleInput;
 public:
 	friend class ModulePlayer;
 	bool loop = true;
@@ -52,6 +53,7 @@ public:
 	void Reset()
 	{
 		current_frame = 0.0f;
+		loops = 0;
 	}
 };
 

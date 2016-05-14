@@ -23,7 +23,6 @@ public:
 	Animation* current_animation = nullptr;
 	Animation idle;
 	uint player_shot_fx;
-	bool shooting = false;
 	iPoint position;
 	Collider* ret_col;
 	Uint32 timer = 0;;
