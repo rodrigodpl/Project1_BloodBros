@@ -19,10 +19,8 @@ private:
 public:
 
 	Enemy_Barrel_Guy(int x, int y);
-	bool has_shot = false;
 
 	void Update();
-	void Die();
 };
 
 #endif 

@@ -32,6 +32,11 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 	shooting.speed = 0.1f;
 	shooting.loop = false;
 
+	dying.PushBack({ 0, 0, 0, 0});
+	dying.PushBack({ 0, 0, 0, 0});
+	dying.speed = 0.1f;
+	dying.loop = false;
+
 	collider = App->collision->AddCollider({ position.x, position.y - 138, 76, 138 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	orig_pos.x = x;
@@ -53,29 +58,25 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 void Enemy_Barrel_Guy::Update()
 {
 
-	position = orig_pos + Barrel_Guy_path.GetCurrentSpeed(&animation);
-	if (animation == &protect && !(is_protecting)){
-		is_protecting = true;
-	}
-	else if(animation != &protect && is_protecting){
-		is_protecting = false;
-		protect.Reset();
-	}
+	if (animation != &dying)
+		position = orig_pos + Barrel_Guy_path.GetCurrentSpeed(&animation);
 
-	if (animation == &shooting && !(has_shot)){
-		App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y - 120, COLLIDER_ENEMY_SHOT, 400);
-		has_shot = true;
+
+	if (last_anim != animation){
+
+		if (animation == &protect)
+			state = EN_ST_PROTECTING;
+		else if (animation == &walking)
+			state = EN_ST_WALKING;
+		else if (animation == &dying)
+			state = EN_ST_DYING;
+		else{
+			state = EN_ST_SHOOTING;
+			App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y - 120, COLLIDER_ENEMY_SHOT, 400);
+		}
+
+		last_anim = animation;
+
 	}
-	else if (animation != &shooting){
-		has_shot = false;
-		shooting.Reset();
-	}
-}
-
-void Enemy_Barrel_Guy::Die(){
-
-	App->particles->AddParticle(App->particles->barrel_guy_dying, position.x, position.y);
-	App->scene_space->defeated_enemies++;
-
 
 }

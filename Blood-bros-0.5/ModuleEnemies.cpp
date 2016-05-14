@@ -2,6 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
+#include "ModuleSceneSpace.h"
 #include "ModuleScenario.h"
 #include "Scenario_elem.h"
 #include "ModuleParticles.h"
@@ -81,9 +82,10 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if (enemies[i]->position.x < (0 - SPAWN_MARGIN) || enemies[i]->position.x > (SCREEN_WIDTH + SPAWN_MARGIN)
+			if ((enemies[i]->position.x < (0 - SPAWN_MARGIN) || enemies[i]->position.x >(SCREEN_WIDTH + SPAWN_MARGIN)
 				|| enemies[i]->position.y < (0 - SPAWN_MARGIN) || enemies[i]->position.y >(SCREEN_HEIGHT + SPAWN_MARGIN))
-			{
+				|| (enemies[i]->state == EN_ST_DYING && enemies[i]->animation->Finished())){
+
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -167,10 +169,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && App->player->shooting)
 		{
-			if (enemies[i]->is_protecting == false){
-				enemies[i]->Die();
-				delete enemies[i];
-				enemies[i] = nullptr;
+			if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING){
+				enemies[i]->state = EN_ST_DYING;
+				App->scene_space->defeated_enemies++;
+				// moduleUI->score++;
 			}
 			break;
 		}

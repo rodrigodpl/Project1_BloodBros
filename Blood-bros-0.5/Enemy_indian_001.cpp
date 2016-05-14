@@ -22,10 +22,10 @@ Enemy_Indian_001::Enemy_Indian_001(int x, int y) : Enemy(x, y)
 	shooting.speed = 0.05f;
 	shooting.loop = false;
 
-	falling.PushBack({ 559, 189, 52, 154 });
-	falling.PushBack({ 654, 253, 74, 81 });
-	falling.speed = 0.05f;
-	falling.loop = false;
+	dying.PushBack({ 559, 189, 52, 154 });
+	dying.PushBack({ 654, 253, 74, 81 });
+	dying.speed = 0.05f;
+	dying.loop = false;
 
 	collider = App->collision->AddCollider({ position.x, position.y - 116, 55, 116 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -42,22 +42,23 @@ Enemy_Indian_001::Enemy_Indian_001(int x, int y) : Enemy(x, y)
 void Enemy_Indian_001::Update()
 {
 
-	position = orig_pos + Indian_001_path.GetCurrentSpeed(&animation);
+	if (animation != &dying)
+		position = orig_pos + Indian_001_path.GetCurrentSpeed(&animation);
 
-	if (animation == &shooting && !(has_shot)){
-		App->particles->AddParticle(App->particles->enemy_shot, position.x + 40, position.y - 100, COLLIDER_ENEMY_SHOT, 700);
-		has_shot = true;
-	}
-	else if (animation != &shooting){
-		has_shot = false;
-		shooting.Reset();
+
+	if (last_anim != animation){
+
+		if (animation == &walking)
+			state = EN_ST_WALKING;
+		else if (animation == &dying)
+			state = EN_ST_DYING;
+		else{
+			state = EN_ST_SHOOTING;
+			App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y - 120, COLLIDER_ENEMY_SHOT, 400);
+		}
+
+		last_anim = animation;
+
 	}
 }
 
-void Enemy_Indian_001::Die(){
-
-	App->particles->AddParticle(App->particles->indian_dying, position.x, position.y);
-	App->scene_space->defeated_enemies++;
-
-
-}

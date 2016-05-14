@@ -19,10 +19,8 @@ private:
 public:
 
 	Enemy_Indian_002(int x, int y);
-	bool has_shot = false;
 
 	void Update();
-	void Die();
 };
 
 #endif 
