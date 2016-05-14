@@ -122,7 +122,7 @@ bool ModulePlayer::Start()
 	position.x = 350;
 	position.y = 610;
 
-	col = App->collision->AddCollider({ position.x, position.y, 70, 184 }, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({ position.x, position.y, 70, 90 }, COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -256,6 +256,7 @@ update_status ModulePlayer::Update()
 					state = ST_IDLE_SHOOTING;
 					current_animation->Reset();
 					current_animation = &idle_shooting;
+					speed = 0;
 					shooting = true; break;
 				case IN_JUMP_LEFT:
 					state = ST_JUMP_LEFT;
@@ -281,6 +282,7 @@ update_status ModulePlayer::Update()
 					state = ST_IDLE_SHOOTING;
 					current_animation->Reset();
 					current_animation = &idle_shooting;
+					speed = 0;
 					shooting = true; break;
 				case IN_JUMP_RIGHT:
 					state = ST_JUMP_RIGHT;
@@ -368,7 +370,7 @@ update_status ModulePlayer::Update()
 	if (position.x + speed < SCREEN_WIDTH - 150 && position.x + speed > 20)
 		position.x += speed;
 
-	col->SetPos(position.x, position.y - 184);
+	col->SetPos(position.x, position.y - 100);
 
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
@@ -386,7 +388,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		Mix_FadeOutMusic(1000);
 
-
+		speed = 0;
 		current_animation = &killed;
 
 		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 3);

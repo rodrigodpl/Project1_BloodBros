@@ -22,10 +22,11 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;
+	Animation shooting;
 	uint player_shot_fx;
 	iPoint position;
 	Collider* ret_col;
-	Uint32 timer = 0;;
+
 };
 
 #endif

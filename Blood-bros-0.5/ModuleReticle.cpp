@@ -24,6 +24,10 @@ ModuleReticle::ModuleReticle()
 	idle.PushBack({ 95, 8, 67, 71 });
 	idle.speed = 0.1f;
 
+	shooting.PushBack({ 0, 0, 0, 0 });
+	shooting.PushBack({ 0, 0, 0, 0 });
+	shooting.speed = 0.1f;
+
 
 }
 
@@ -38,8 +42,6 @@ bool ModuleReticle::Start()
 	graphics = App->textures->Load("crossdot.png");
 
 	player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");
-
-	timer = SDL_GetTicks();
 
 	ret_col = App->collision->AddCollider({ position.x, position.y, 67, 60 }, COLLIDER_PLAYER_SHOT);
 
@@ -66,25 +68,14 @@ update_status ModuleReticle::Update()
 	int xspeed = 0;
 	int yspeed = 0;
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
 		xspeed = 8;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		xspeed = -8;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
 		yspeed = -8;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		yspeed = 8;
-	}
 
 	if (position.x + xspeed > 0 && position.x + xspeed < SCREEN_WIDTH - 70){
 		position.x += xspeed;
@@ -96,21 +87,18 @@ update_status ModuleReticle::Update()
 
 	// TODO 3: Shoot lasers when the player hits SPACE
 
-	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_REPEAT && App->player->alive)
-	{
+	if (App->player->shooting && App->player->alive && current_animation != &shooting){
+
 		App->audio->PlayFx(player_shot_fx);
-		if ((SDL_GetTicks() - timer) > 400){
-			App->particles->AddParticle(App->particles->player_shot, position.x + 5, position.y + 20);
-			timer = SDL_GetTicks();
-		}
+		current_animation = &shooting;
 	}
-	else{
+	else if (current_animation == &shooting && current_animation->Finished()){
+		current_animation->Reset();
 		current_animation = &idle;
 	}
 
+
 	ret_col->SetPos(position.x, position.y);
-
-
 
 	// Draw everything --------------------------------------
 
