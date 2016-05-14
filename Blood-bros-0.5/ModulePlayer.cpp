@@ -119,6 +119,10 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("cowboy.png");
 	current_animation = &idle;
 
+	shooting = false;
+	alive = true;
+	immune = false;
+
 	position.x = 350;
 	position.y = 610;
 
@@ -158,11 +162,11 @@ update_status ModulePlayer::Update()
 					current_animation = &crouched_idle; break;
 				case IN_LEFT_DOWN:
 					state = ST_WALK_LEFT;
-					speed = -2;
+					speed = -3;
 					current_animation = &left; break;
 				case IN_RIGHT_DOWN:
 					state = ST_WALK_RIGHT;
-					speed = 2;
+					speed = 3;
 					current_animation = &right; break;
 				case IN_SHOT:
 					state = ST_IDLE_SHOOTING;
