@@ -16,8 +16,6 @@ private:
 public:
 
 	Scenario_Light(int x, int y);
-	void Destroy();
-
 
 
 };

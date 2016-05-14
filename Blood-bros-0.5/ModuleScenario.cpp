@@ -32,6 +32,8 @@ bool ModuleScenario::Start()
 	// Create a prototype for each enemy available so we can copy them around
 	scene_sprites = App->textures->Load("stage3_1_scenario.png");
 
+	bottle_index = 0;
+
 
 	return true;
 }
@@ -47,6 +49,11 @@ update_status ModuleScenario::Update()
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 	if (elements[i] != nullptr && elements[i]->GetCollider()->type != COLLIDER_WALL) elements[i]->Draw(scene_sprites);
 
+	for (uint i = 0; i < MAX_ELEMENTS; ++i)
+		if (elements[i] != nullptr && elements[i]->health <= 0 && elements[i]->dying.Finished()){
+			delete elements[i];
+			elements[i] = nullptr;
+		}
 
 	return UPDATE_CONTINUE;
 }
@@ -115,9 +122,7 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 		{
 			elements[i]->health -= 1;
 			if (elements[i]->health <= 0){
-				elements[i]->Destroy();
-				delete elements[i];
-				elements[i] = nullptr;
+				elements[i]->animation = &(elements[i]->dying);
 			}
 			break;
 		}

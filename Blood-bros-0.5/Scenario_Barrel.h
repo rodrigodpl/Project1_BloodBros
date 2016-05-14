@@ -16,9 +16,6 @@ private:
 public:
 
 	Scenario_Barrel(int x, int y);
-	void Destroy();
-
-
 
 };
 

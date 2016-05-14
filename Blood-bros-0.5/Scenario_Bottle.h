@@ -26,11 +26,6 @@ private:
 public:
 
 	Scenario_Bottle(int x, int y);
-	void Destroy();
-
-
-
-
 
 };
 

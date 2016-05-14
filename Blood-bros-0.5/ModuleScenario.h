@@ -44,7 +44,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	bool AddElement(SCENARIO_ELEMENTS type, int x, int y);
-	uint bottle_index = 0;
+	uint bottle_index;
 
 
 private:

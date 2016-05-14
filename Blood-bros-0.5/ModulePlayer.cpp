@@ -17,6 +17,7 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 359, 20, 70, 184 });
 
 	idle_shooting.PushBack({ 0, 0, 0, 0 });
+	idle_shooting.speed = 0.05f;
 	//
 
 	// Move left
@@ -54,6 +55,7 @@ ModulePlayer::ModulePlayer()
 	crouched_idle.PushBack({ 1228, 20, 83, 136 });
 
 	crouched_shooting.PushBack({ 0, 0, 0, 0 });
+	crouched_shooting.speed = 0.05f;
 	//
 
 

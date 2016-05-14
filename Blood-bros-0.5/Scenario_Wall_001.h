@@ -8,9 +8,9 @@ class Scenario_Wall_001 : public Scenario_elem
 {
 private:
 	
+	Animation health_500;
+	Animation health_300;
 	Animation health_100;
-	Animation health_60;
-	Animation health_30;
 
 
 

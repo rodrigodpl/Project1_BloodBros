@@ -17,21 +17,37 @@ Scenario_Bottle::Scenario_Bottle(int x, int y) : Scenario_elem(x, y)
 	orig_pos.x = x;
 	orig_pos.y = y;
 
-	health = 10;
+	health = 1;
 
 	
 	switch (bottles[App->scenario->bottle_index]){
 	case BLUE_WIDE:
 		idle.PushBack({ 57, 122, 44, 46 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.speed = 0.2f;
+		dying.loop = false;
 		break;
 	case BLUE_NARROW:
 		idle.PushBack({ 113, 122, 35, 48 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.speed = 0.2f;
+		dying.loop = false;
 		break;
 	case ORANGE:
 		idle.PushBack({ 160, 122, 35, 48 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.PushBack({ 0, 0, 0, 0 });
+		dying.speed = 0.2f;
+		dying.loop = false;
 		break;
 
 	}
+
 
 	App->scenario->bottle_index++;
 
@@ -40,9 +56,3 @@ Scenario_Bottle::Scenario_Bottle(int x, int y) : Scenario_elem(x, y)
 }
 
 
-void Scenario_Bottle::Destroy(){
-
-	App->particles->AddParticle(App->particles->laser, position.x, position.y);
-
-
-}

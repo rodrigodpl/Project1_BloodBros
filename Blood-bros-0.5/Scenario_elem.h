@@ -9,6 +9,7 @@ struct Collider;
 
 class Scenario_elem
 {
+	friend class ModuleScenario;
 
 protected:
 	Animation* animation;
@@ -25,9 +26,9 @@ public:
 
 	virtual void Update() {};
 	virtual void Draw(SDL_Texture* sprites);
-	virtual void Destroy() {};
 
 	int health;
+	Animation dying;
 };
 
 #endif

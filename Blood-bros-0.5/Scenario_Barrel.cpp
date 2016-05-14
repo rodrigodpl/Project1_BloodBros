@@ -12,6 +12,12 @@ Scenario_Barrel::Scenario_Barrel(int x, int y) : Scenario_elem(x, y)
 
 	idle.PushBack({ 36, 329, 65, 74 });
 
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.speed = 0.2f;
+	dying.loop = false;
+
 
 	collider = App->collision->AddCollider({ 0, 0, 65, 74 }, COLLIDER_TYPE::COLLIDER_SCENARIO, (Module*)App->scenario);
 
@@ -25,9 +31,4 @@ Scenario_Barrel::Scenario_Barrel(int x, int y) : Scenario_elem(x, y)
 }
 
 
-void Scenario_Barrel::Destroy(){
 
-	App->particles->AddParticle(App->particles->laser, position.x, position.y);
-
-
-}
