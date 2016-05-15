@@ -25,7 +25,7 @@ public:
 
 public:
 
-	bool activated_functions[MAX_DEBUG_FUNC - 1];
+	bool activated_functions[MAX_DEBUG_FUNC];
 
 };
 

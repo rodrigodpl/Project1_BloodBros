@@ -20,6 +20,7 @@ public:
 	SDL_Texture* background = nullptr;
 	uint fx = 0;
 	Uint32 timer;
+	bool needs_fade;
 
 };
 

@@ -27,6 +27,8 @@ bool ModuleSceneWelcome::Start()
 
 	timer = SDL_GetTicks();
 
+	needs_fade = false;
+
 	return true;
 }
 
@@ -46,14 +48,15 @@ update_status ModuleSceneWelcome::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_stage_pres);
-	}
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		needs_fade = true;
 
-	if (SDL_GetTicks() - timer > 6000){
+	if (needs_fade && !(App->fade->IsFading()))
+		App->fade->FadeToBlack(this, (Module*)App->scene_stage_pres);
+
+	if (SDL_GetTicks() - timer > 7000 && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_score);
-	}
+
 
 
 	return UPDATE_CONTINUE;

@@ -10,7 +10,7 @@
 bool ModuleDebug::Start(){
 
 
-	for (uint i = 0; i < MAX_DEBUG_FUNC - 1; i++)
+	for (uint i = 0; i < MAX_DEBUG_FUNC; i++)
 		activated_functions[i] = false;
 
 	return(true);
