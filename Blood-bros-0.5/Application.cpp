@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
+#include "ModuleDebug.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
@@ -24,6 +25,7 @@ Application::Application()
 	modules[i++] = window = new ModuleWindow();
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
+	modules[i++] = debug = new ModuleDebug();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = scene_space = new ModuleSceneSpace();
@@ -61,6 +63,7 @@ bool Application::Init()
 	enemies->Disable();
 	reticle->Disable();
 	scenario->Disable();
+	debug->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

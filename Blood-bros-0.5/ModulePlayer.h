@@ -59,9 +59,9 @@ public:
 	Collider* col;
 	uint state = ST_IDLE;
 	int speed = 0;
-	bool shooting = false;
-	bool alive = true;
-	bool immune = false;
+	bool shooting;
+	bool alive;
+	bool immune;
 
 };
 

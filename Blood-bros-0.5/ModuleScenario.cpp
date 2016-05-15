@@ -2,6 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleScenario.h"
+#include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleTextures.h"
@@ -47,7 +48,7 @@ update_status ModuleScenario::Update()
 	if (elements[i] != nullptr) elements[i]->Update();
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
-	if (elements[i] != nullptr && elements[i]->GetCollider()->type != COLLIDER_WALL) elements[i]->Draw(scene_sprites);
+	if (elements[i] != nullptr && (elements[i]->GetCollider()->type != COLLIDER_WALL || !(App->enemies->IsEnabled()))) elements[i]->Draw(scene_sprites);
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 		if (elements[i] != nullptr && elements[i]->health <= 0 && elements[i]->dying.Finished()){

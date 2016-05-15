@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleDebug.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
@@ -31,6 +32,7 @@ bool ModuleSceneSpace::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
+	App->debug->Enable();
 	App->reticle->Enable();
 	App->scenario->Enable();
 
@@ -72,12 +74,19 @@ bool ModuleSceneSpace::CleanUp()
 
  	App->textures->Unload(background);
 
-	App->enemies->Disable();
+	if (!(App->debug->activated_functions[NO_ENEMIES_F3]))
+		App->enemies->Disable();
+
+	if (!(App->debug->activated_functions[NO_PLAYER_F4])){
+		App->player->Disable();
+		App->reticle->Disable();
+	}
+
 	App->collision->Disable();
 	App->particles->Disable();
-	App->player->Disable();
-	App->reticle->Disable();
 	App->scenario->Disable();
+	App->debug->Disable();
+
 
 	return true;
 }

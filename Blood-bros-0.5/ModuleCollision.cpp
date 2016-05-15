@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleDebug.h"
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 
@@ -104,18 +105,14 @@ update_status ModuleCollision::Update()
 		}
 	}
 
-	DebugDraw();
+	if (App->debug->activated_functions[DRAW_COLLIDERS_F1])
+			DebugDraw();
 
 	return UPDATE_CONTINUE;
 }
 
 void ModuleCollision::DebugDraw()
 {
-	if(App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
-		debug = !debug;
-
-	if(debug == false)
-		return;
 
 	Uint8 alpha = 80;
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
