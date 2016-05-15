@@ -10,7 +10,9 @@ class Enemy_Barrel_Guy : public Enemy
 private:
 
 	Animation walking;
+	Animation to_protect;
 	Animation protect;
+	Animation from_protect;
 	Animation shooting;
 	p2Point<int> orig_pos;
 	Path Barrel_Guy_path;

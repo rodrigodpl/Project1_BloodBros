@@ -15,14 +15,19 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 	walking.PushBack({ 456, 552, 55, 144 });
 	walking.speed = 0.1f;
 
-	protect.PushBack({ 456, 723, 55, 133 });
-	protect.PushBack({ 101, 875, 57, 98 });
-	protect.PushBack({ 215, 904, 55, 70 });	
+	to_protect.PushBack({ 456, 723, 55, 133 });
+	to_protect.PushBack({ 101, 875, 57, 98 });
+	to_protect.PushBack({ 215, 904, 55, 70 });
+	to_protect.speed = 0.1f;
+	to_protect.loop = false;
+
 	protect.PushBack({ 215, 904, 55, 70 });
-	protect.PushBack({ 101, 875, 57, 98 });
-	protect.PushBack({ 456, 723, 55, 133 });
-	protect.speed = 0.1f;
-	protect.loop = false;
+
+	from_protect.PushBack({ 215, 904, 55, 70 });
+	from_protect.PushBack({ 101, 875, 57, 98 });
+	from_protect.PushBack({ 456, 723, 55, 133 });
+	from_protect.speed = 0.1f;
+	from_protect.loop = false;
 
 	shooting.PushBack({ 90, 712, 77, 142 });
 	shooting.PushBack({ 206, 715, 76, 139 });
@@ -44,13 +49,19 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 
 	Barrel_Guy_path.PushBack({ -2, 0 }, 100, &walking);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &shooting);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);
 	Barrel_Guy_path.PushBack({ -2, 0 }, 100, &walking);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &shooting);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);
 	Barrel_Guy_path.PushBack({ 2, 0 }, 100, &walking);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &shooting);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);
 	Barrel_Guy_path.PushBack({ 2, 0 }, 500, &walking);
 
 }
@@ -66,17 +77,20 @@ void Enemy_Barrel_Guy::Update()
 
 		if (animation == &protect)
 			state = EN_ST_PROTECTING;
-		else if (animation == &walking)
-			state = EN_ST_WALKING;
+		else if (animation == &shooting)
+			state = EN_ST_SHOOTING;
 		else if (animation == &dying)
 			state = EN_ST_DYING;
-		else{
-			state = EN_ST_SHOOTING;
-			App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y - 120, COLLIDER_ENEMY_SHOT, 400);
-		}
+		else
+			state = EN_ST_WALKING;
 
 		last_anim = animation;
+		animation->Reset();
 
 	}
 
+	if (state == EN_ST_SHOOTING && ((animation->current_frame) > (animation->last_frame / 2))){
+		App->particles->AddParticle(App->particles->enemy_shot, position.x + 40, position.y - 100, COLLIDER_ENEMY_SHOT);
+		state = EN_ST_WALKING;
+	}
 }

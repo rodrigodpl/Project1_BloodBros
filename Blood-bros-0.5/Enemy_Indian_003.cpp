@@ -57,13 +57,18 @@ void Enemy_Indian_003::Update()
 			state = EN_ST_WALKING;
 		else if (animation == &dying)
 			state = EN_ST_DYING;
-		else{
+		else
 			state = EN_ST_SHOOTING;
-			App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y - 120, COLLIDER_ENEMY_SHOT, 400);
-		}
+
 
 		last_anim = animation;
+		animation->Reset();
 
+	}
+
+	if (state == EN_ST_SHOOTING && ((animation->current_frame) > (animation->last_frame / 2))){
+		App->particles->AddParticle(App->particles->enemy_shot, position.x + 40, position.y - 60, COLLIDER_ENEMY_SHOT);
+		state = EN_ST_WALKING;
 	}
 }
 

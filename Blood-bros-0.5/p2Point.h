@@ -110,7 +110,7 @@ public:
 		p2Point<float> direction;
 
 		direction.y = 0.5;
-		direction.x = ((dst.x - x) / (dst.y - y)) * 0.5;
+		direction.x = (((dst.x + 50) - x) / ((dst.y - 80) - y)) * 0.5;
 
 		while((abs(direction.x) + abs(direction.y)) > 4){
 			direction.x *= 0.9;
