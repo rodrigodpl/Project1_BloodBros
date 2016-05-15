@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "ModuleEnemies.h"
+#include "ModuleAudio.h"
 #include "ModuleSceneSpace.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleReticle.h"
 #include "ModulePlayer.h"
 #include "ModuleDebug.h"
@@ -51,6 +53,25 @@ update_status ModuleDebug::Update(){
 			App->reticle->Enable();
 		}
 	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN){
+
+		Mix_FadeOutMusic(1000);
+
+		App->player->speed = 0;
+		App->player->current_animation = &(App->player->killed);
+
+		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 3);
+
+		App->player->alive = false;
+
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN){
+		Mix_FadeOutMusic(1000);
+		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 3);
+	}
+
 
 
 

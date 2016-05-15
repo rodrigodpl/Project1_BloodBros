@@ -104,6 +104,7 @@ ModulePlayer::ModulePlayer()
 	killed.PushBack({ 0, 0, 0, 0 });
 	killed.PushBack({ 417, 885, 153, 92 });
 	killed.PushBack({ 0, 0, 0, 0 });
+	killed.loop = false;
 	killed.speed = 0.2f;
 
 

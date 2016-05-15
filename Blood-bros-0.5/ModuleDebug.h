@@ -11,6 +11,8 @@ enum debug_functions{
 	GOD_MODE_F2,
 	NO_ENEMIES_F3,
 	NO_PLAYER_F4,
+	INSTA_LOSE_F5,
+	INSTA_WIN_F6,
 
 	MAX_DEBUG_FUNC
 
