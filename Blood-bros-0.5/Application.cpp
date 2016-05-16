@@ -2,6 +2,7 @@
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
 #include "ModuleDebug.h"
+#include "ModuleUI.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
@@ -40,6 +41,7 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = reticle = new ModuleReticle();
+	modules[i++] = UI = new ModuleUI();
 
 }	
 
@@ -53,7 +55,6 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Deactivate modules here ----
 	scene_space->Disable();
 	scene_tad->Disable();
 	scene_welcome->Disable();
@@ -64,7 +65,7 @@ bool Application::Init()
 	reticle->Disable();
 	scenario->Disable();
 	debug->Disable();
-	// ----------------------------
+
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

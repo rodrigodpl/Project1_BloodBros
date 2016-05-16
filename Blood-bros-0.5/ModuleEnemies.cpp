@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleSceneSpace.h"
 #include "ModuleScenario.h"
+#include "ModuleUI.h"
 #include "Scenario_elem.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
@@ -168,7 +169,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING){
 				enemies[i]->state = EN_ST_DYING;
 				App->scene_space->defeated_enemies++;
-				// moduleUI->score++;
+				App->UI->player_score += 100;
 			}
 			break;
 		}
