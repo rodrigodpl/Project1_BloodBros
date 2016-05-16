@@ -11,7 +11,6 @@
 #include "SDL_mixer/include/SDL_mixer.h"
 #include "ModulePlayer.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
 {
@@ -21,7 +20,7 @@ ModulePlayer::ModulePlayer()
 	idle_shooting.speed = 0.05f;
 	//
 
-	// Move left
+
 	left.PushBack({ 248, 20, 88, 181 });
 	left.PushBack({ 146, 20, 88, 181 });
 	left.PushBack({ 612, 602, 103, 181 });
@@ -40,7 +39,7 @@ ModulePlayer::ModulePlayer()
 	left.loop = false;
 	left.speed = 0.3f;
 
-	// Move right
+
 	right.PushBack({ 455, 20, 67, 184 });
 	right.PushBack({ 542, 20, 85, 184 });
 	right.PushBack({ 24, 602, 103, 181 });
@@ -110,10 +109,7 @@ ModulePlayer::ModulePlayer()
 
 }
 
-ModulePlayer::~ModulePlayer()
-{}
 
-// Load assets
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
@@ -133,7 +129,7 @@ bool ModulePlayer::Start()
 	return true;
 }
 
-// Unload assets
+
 bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
@@ -144,7 +140,6 @@ bool ModulePlayer::CleanUp()
 	return true;
 }
 
-// Update: draw background
 update_status ModulePlayer::Update()
 {
 

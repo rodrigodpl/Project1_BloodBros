@@ -8,15 +8,9 @@
 #include "SDL\include\SDL.h"
 #include "ModuleSceneWelcome.h"
 
+#define TIME_TO_SWAP 7000
 
 
-ModuleSceneWelcome::ModuleSceneWelcome()
-{}
-
-ModuleSceneWelcome::~ModuleSceneWelcome()
-{}
-
-// Load assets
 bool ModuleSceneWelcome::Start()
 {
 	LOG("Loading space intro");
@@ -54,9 +48,8 @@ update_status ModuleSceneWelcome::Update()
 	if (needs_fade && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_stage_pres);
 
-	if (SDL_GetTicks() - timer > 7000 && !(App->fade->IsFading()))
+	if (SDL_GetTicks() - timer > TIME_TO_SWAP && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_score);
-
 
 
 	return UPDATE_CONTINUE;

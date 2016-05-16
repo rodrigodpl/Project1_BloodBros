@@ -10,7 +10,6 @@ class ModuleRender : public Module
 {
 public:
 	ModuleRender();
-	~ModuleRender();
 
 	bool Init();
 	update_status PostUpdate();

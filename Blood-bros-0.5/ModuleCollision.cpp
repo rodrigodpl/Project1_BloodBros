@@ -52,9 +52,6 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_SCENARIO] = true;
 }
 
-// Destructor
-ModuleCollision::~ModuleCollision()
-{}
 
 update_status ModuleCollision::PreUpdate()
 {

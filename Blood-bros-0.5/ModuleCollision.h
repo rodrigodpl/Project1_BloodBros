@@ -45,7 +45,6 @@ class ModuleCollision : public Module
 public:
 
 	ModuleCollision();
-	~ModuleCollision();
 
 	update_status PreUpdate();
 	update_status Update();

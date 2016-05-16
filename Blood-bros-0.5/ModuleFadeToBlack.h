@@ -8,7 +8,6 @@ class ModuleFadeToBlack : public Module
 {
 public:
 	ModuleFadeToBlack();
-	~ModuleFadeToBlack();
 
 	bool Start();
 	update_status Update();

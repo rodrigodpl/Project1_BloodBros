@@ -8,15 +8,9 @@
 #include "SDL\include\SDL.h"
 #include "ModuleSceneTad.h"
 
+#define TIME_TO_SWAP 7000
 
 
-ModuleSceneTad::ModuleSceneTad()
-{}
-
-ModuleSceneTad::~ModuleSceneTad()
-{}
-
-// Load assets
 bool ModuleSceneTad::Start()
 {
 	LOG("Loading space intro");
@@ -54,7 +48,7 @@ update_status ModuleSceneTad::Update()
 	if (needs_fade && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_stage_pres);
 
-	if (SDL_GetTicks() - timer > 7000 && !(App->fade->IsFading()))
+	if (SDL_GetTicks() - timer > TIME_TO_SWAP && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_welcome);
 
 

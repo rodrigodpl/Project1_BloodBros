@@ -8,15 +8,9 @@
 #include "SDL\include\SDL.h"
 #include "ModuleSceneStage_Pres.h"
 
+#define TIME_TO_SWAP 8000
 
 
-ModuleSceneStage_Pres::ModuleSceneStage_Pres()
-{}
-
-ModuleSceneStage_Pres::~ModuleSceneStage_Pres()
-{}
-
-// Load assets
 bool ModuleSceneStage_Pres::Start()
 {
 	LOG("Loading space intro");
@@ -48,10 +42,8 @@ update_status ModuleSceneStage_Pres::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (SDL_GetTicks() - timer > 8000){
+	if (SDL_GetTicks() - timer > TIME_TO_SWAP)
 		App->fade->FadeToBlack(this, (Module*)App->scene_space);
-	}
-
 
 	return UPDATE_CONTINUE;
 }

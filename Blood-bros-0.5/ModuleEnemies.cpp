@@ -23,14 +23,9 @@ ModuleEnemies::ModuleEnemies()
 		enemies[i] = nullptr;
 }
 
-// Destructor
-ModuleEnemies::~ModuleEnemies()
-{
-}
 
 bool ModuleEnemies::Start()
 {
-	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("enemy_spritesheet.png");
 
 	return true;
@@ -38,7 +33,6 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::PreUpdate()
 {
-	// check camera position to decide what to spawn
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
@@ -63,7 +57,9 @@ update_status ModuleEnemies::Update()
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i){
 		if (App->scenario->elements[i] != nullptr){
+
 			const Collider* scen_col = App->scenario->elements[i]->GetCollider();
+
 			if (scen_col->type == COLLIDER_WALL)
 				App->scenario->elements[i]->Draw(App->scenario->scene_sprites);
 		}
@@ -77,7 +73,7 @@ update_status ModuleEnemies::Update()
 
 update_status ModuleEnemies::PostUpdate()
 {
-	// check camera position to decide what to spawn
+
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if(enemies[i] != nullptr)
@@ -96,7 +92,7 @@ update_status ModuleEnemies::PostUpdate()
 	return UPDATE_CONTINUE;
 }
 
-// Called before quitting
+
 bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");

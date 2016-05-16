@@ -8,8 +8,6 @@
 struct SDL_Texture;
 struct Collider;
 
-#define JUMP_TIME 3000
-#define PUNCH_TIME 1000
 
 enum player_states
 {
@@ -33,7 +31,6 @@ class ModulePlayer : public Module
 {
 public:
 	ModulePlayer();
-	~ModulePlayer();
 
 	bool Start();
 	update_status Update();

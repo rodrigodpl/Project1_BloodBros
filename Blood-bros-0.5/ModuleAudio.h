@@ -15,19 +15,15 @@ class ModuleAudio : public Module
 public:
 
 	ModuleAudio();
-	~ModuleAudio();
 
 	bool Init();
 	bool CleanUp();
 
-	// Play a music file
 	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
 
-	// Load a WAV in memory
 	uint LoadFx(const char* path);
 	bool UnLoadFx(uint id);
 
-	// Play a previously loaded WAV
 	bool PlayFx(unsigned int fx, int repeat = 0);
 
 private:

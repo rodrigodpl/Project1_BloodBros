@@ -8,8 +8,6 @@ struct SDL_Texture;
 class ModuleSceneScore : public Module
 {
 public:
-	ModuleSceneScore();
-	~ModuleSceneScore();
 
 	bool Start();
 	update_status Update();

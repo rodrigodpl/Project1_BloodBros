@@ -6,11 +6,12 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 
+#define BOTTLE_NUM 6
+uint bottles[BOTTLE_NUM] = { BLUE_NARROW, BLUE_WIDE, BLUE_NARROW, BLUE_NARROW, ORANGE, BLUE_NARROW };
 
 Scenario_Bottle::Scenario_Bottle(int x, int y) : Scenario_elem(x, y)
 {
 
-	uint bottles[BOTTLE_NUM] = { BLUE_NARROW, BLUE_WIDE, BLUE_NARROW, BLUE_NARROW, ORANGE, BLUE_NARROW };
 
 	collider = App->collision->AddCollider({ 0, 0, 40, 45 }, COLLIDER_TYPE::COLLIDER_SCENARIO, (Module*)App->scenario);
 

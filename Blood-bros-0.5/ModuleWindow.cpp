@@ -3,16 +3,7 @@
 #include "ModuleWindow.h"
 #include "SDL/include/SDL.h"
 
-ModuleWindow::ModuleWindow() : Module()
-{
-}
 
-// Destructor
-ModuleWindow::~ModuleWindow()
-{
-}
-
-// Called before render is available
 bool ModuleWindow::Init()
 {
 	LOG("Init SDL window & surface");
@@ -60,7 +51,7 @@ bool ModuleWindow::Init()
 	return ret;
 }
 
-// Called before quitting
+
 bool ModuleWindow::CleanUp()
 {
 	LOG("Destroying SDL window and quitting all SDL systems");

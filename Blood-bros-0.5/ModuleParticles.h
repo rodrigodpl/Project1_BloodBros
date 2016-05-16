@@ -34,7 +34,6 @@ class ModuleParticles : public Module
 {
 public:
 	ModuleParticles();
-	~ModuleParticles();
 
 	bool Start();
 	update_status Update();

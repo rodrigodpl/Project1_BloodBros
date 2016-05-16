@@ -39,18 +39,13 @@ ModuleParticles::ModuleParticles()
 	
 }
 
-ModuleParticles::~ModuleParticles()
-{}
 
-// Load assets
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Particles_SpriteSheet.png");
 
-	// Load particles fx particle
-	/*explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
-	laser.fx = App->audio->LoadFx("rtype/laser.wav");*/
+	//Load fx
 
 	return true;
 }
@@ -75,7 +70,7 @@ bool ModuleParticles::CleanUp()
 	return true;
 }
 
-// Update: draw background
+
 update_status ModuleParticles::Update()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

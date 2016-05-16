@@ -8,8 +8,6 @@ struct SDL_Texture;
 class ModuleSceneWelcome : public Module
 {
 public:
-	ModuleSceneWelcome();
-	~ModuleSceneWelcome();
 
 	bool Start();
 	update_status Update();

@@ -23,32 +23,28 @@ ModuleScenario::ModuleScenario()
 		elements[i] = nullptr;
 }
 
-// Destructor
-ModuleScenario::~ModuleScenario()
-{
-}
+
 
 bool ModuleScenario::Start()
 {
-	// Create a prototype for each enemy available so we can copy them around
+
 	scene_sprites = App->textures->Load("stage3_1_scenario.png");
 
 	bottle_index = 0;
-
 
 	return true;
 }
 
 
 
-// Called before render is available
 update_status ModuleScenario::Update()
 {
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 	if (elements[i] != nullptr) elements[i]->Update();
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
-	if (elements[i] != nullptr && (elements[i]->GetCollider()->type != COLLIDER_WALL || !(App->enemies->IsEnabled()))) elements[i]->Draw(scene_sprites);
+	if (elements[i] != nullptr && (elements[i]->GetCollider()->type != COLLIDER_WALL || !(App->enemies->IsEnabled()))) 
+		elements[i]->Draw(scene_sprites);
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 		if (elements[i] != nullptr && elements[i]->health <= 0 && elements[i]->dying.Finished()){
@@ -91,21 +87,18 @@ bool ModuleScenario::AddElement(SCENARIO_ELEMENTS type, int x, int y)
 			switch (type)
 			{
 			case SCENARIO_ELEMENTS::DESTROYABLE_WALL:
-				elements[i] = new Scenario_Wall_001(x,y);
-				break;
+				elements[i] = new Scenario_Wall_001(x,y); break;
 
 			case SCENARIO_ELEMENTS::DESTROYABLE_BOTTLE:
-				elements[i] = new Scenario_Bottle(x, y);
-				break;
+				elements[i] = new Scenario_Bottle(x, y); break;
 
 			case SCENARIO_ELEMENTS::DESTROYABLE_LIGHT:
-				elements[i] = new Scenario_Light(x, y);
-				break;
+				elements[i] = new Scenario_Light(x, y); break;
 
 			case SCENARIO_ELEMENTS::DESTROYABLE_BARREL:
-				elements[i] = new Scenario_Barrel(x, y);
-				break;
-			}break;
+				elements[i] = new Scenario_Barrel(x, y); break;
+			}
+			break;
 		}
 		
 	}
@@ -119,13 +112,13 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 	{
-		if (elements[i] != nullptr && elements[i]->GetCollider() == c1 && (App->player->shooting || c2->type == COLLIDER_ENEMY_SHOT))
+		if (elements[i] != nullptr && elements[i]->GetCollider() == c1 && (App->player->shooting || c2->type == COLLIDER_ENEMY_SHOT) 
+			&& elements[i]->animation != &(elements[i]->dying))
 		{
 			elements[i]->health -= 1;
-			if (elements[i]->health <= 0){
-				elements[i]->animation = &(elements[i]->dying);
-			}
-			break;
+
+			if (elements[i]->health <= 0)
+				elements[i]->animation = &(elements[i]->dying);break;
 		}
 	}
 }

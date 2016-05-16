@@ -11,17 +11,11 @@
 #include "ModuleReticle.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleScenario.h"
+#include "Scenario_Bottle.h"
 #include "ModuleSceneSpace.h"
 #include "SDL/include/SDL.h"
 
 
-ModuleSceneSpace::ModuleSceneSpace()
-{}
-
-ModuleSceneSpace::~ModuleSceneSpace()
-{}
-
-// Load assets
 bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
@@ -38,31 +32,31 @@ bool ModuleSceneSpace::Start()
 
 	App->audio->PlayMusic("Music/Main_Song.wav", 1.0f);
 	
-	// Colliders ---
 
-
-	// Enemies ---
 	loop_enemies();      // first loop = first wave;
 	defeated_enemies = 0;
 	is_backgr_destroyed = false;
-	// TODO 1: Add a new wave of red birds
+
 	App->scenario->AddElement(DESTROYABLE_WALL, 0, 44);
+
 	App->scenario->AddElement(DESTROYABLE_BOTTLE, 255, 383);
 	App->scenario->AddElement(DESTROYABLE_BOTTLE, 290, 383);
 	App->scenario->AddElement(DESTROYABLE_BOTTLE, 365, 383);
 	App->scenario->AddElement(DESTROYABLE_BOTTLE, 390, 383);
 	App->scenario->AddElement(DESTROYABLE_BOTTLE, 455, 383);
 	App->scenario->AddElement(DESTROYABLE_BOTTLE, 480, 383);
+
 	App->scenario->AddElement(DESTROYABLE_LIGHT, 500, 0);
 	App->scenario->AddElement(DESTROYABLE_LIGHT, 300, 0);
 	App->scenario->AddElement(DESTROYABLE_LIGHT, 100, 0);
+
 	App->scenario->AddElement(DESTROYABLE_BARREL, 20, 350);
 	App->scenario->AddElement(DESTROYABLE_BARREL, 85, 350);
 	App->scenario->AddElement(DESTROYABLE_BARREL, 170, 350);
+
 	App->scenario->AddElement(DESTROYABLE_BARREL, SCREEN_WIDTH - 85 - 20, 355);
 	App->scenario->AddElement(DESTROYABLE_BARREL, SCREEN_WIDTH - 85 - 85, 355);
 	App->scenario->AddElement(DESTROYABLE_BARREL, SCREEN_WIDTH - 85 - 170, 355);
-
 
 	return true;
 }
@@ -97,7 +91,7 @@ update_status ModuleSceneSpace::Update()
 	if (defeated_enemies >= ENEMY_NUM_STG1 && is_backgr_destroyed){
 		Mix_FadeOutMusic(1000);
 		App->fade->FadeToBlack(this, (Module*)App->scene_score);
-	}
+	}  // Win condition
 
 	current_level_time = SDL_GetTicks() - init_level_time;
 
@@ -125,13 +119,11 @@ update_status ModuleSceneSpace::Update()
 		released_enemies[4] = true;
 	}
 
-	if (current_level_time > 22000){
+	if (current_level_time > 22000)
 		loop_enemies();
 
-	}
 
 
-	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 	
 	return UPDATE_CONTINUE;
@@ -139,11 +131,8 @@ update_status ModuleSceneSpace::Update()
 
 void ModuleSceneSpace::loop_enemies(){
 
-	uint i;
-	for (i = 0; i < WAVE_NUM_OF_ENEMIES; i++){
+	for (uint i = 0; i < WAVE_NUM_OF_ENEMIES; i++)
 		released_enemies[i] = false;
-	}
-
 
 	init_level_time = SDL_GetTicks();
 

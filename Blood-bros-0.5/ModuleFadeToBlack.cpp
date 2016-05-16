@@ -11,10 +11,7 @@ ModuleFadeToBlack::ModuleFadeToBlack()
 	screen = {0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE};
 }
 
-ModuleFadeToBlack::~ModuleFadeToBlack()
-{}
 
-// Load assets
 bool ModuleFadeToBlack::Start()
 {
 	LOG("Preparing Fade Screen");

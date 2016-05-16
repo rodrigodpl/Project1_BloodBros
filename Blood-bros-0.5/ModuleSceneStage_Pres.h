@@ -8,8 +8,6 @@ struct SDL_Texture;
 class ModuleSceneStage_Pres : public Module
 {
 public:
-	ModuleSceneStage_Pres();
-	~ModuleSceneStage_Pres();
 
 	bool Start();
 	update_status Update();

@@ -7,13 +7,14 @@
 class Animation
 {
 	friend class ModuleInput;
+	friend class ModulePlayer;
 	friend class Enemy_Barrel_Guy;
 	friend class Enemy_Indian_001;
 	friend class Enemy_Indian_002;
 	friend class Enemy_Indian_003;
 
 public:
-	friend class ModulePlayer;
+	
 	bool loop = true;
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];

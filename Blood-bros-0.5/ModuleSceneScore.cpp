@@ -8,15 +8,9 @@
 #include "SDL\include\SDL.h"
 #include "ModuleSceneScore.h"
 
+#define TIME_TO_SWAP 7000
 
 
-ModuleSceneScore::ModuleSceneScore()
-{}
-
-ModuleSceneScore::~ModuleSceneScore()
-{}
-
-// Load assets
 bool ModuleSceneScore::Start()
 {
 	LOG("Loading space intro");
@@ -39,7 +33,6 @@ bool ModuleSceneScore::CleanUp()
 
 	App->textures->Unload(background);
 
-
 	return true;
 }
 
@@ -54,7 +47,7 @@ update_status ModuleSceneScore::Update()
 	if (needs_fade && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_stage_pres);
 
-	if (SDL_GetTicks() - timer > 7000 && !(App->fade->IsFading()))
+	if (SDL_GetTicks() - timer > TIME_TO_SWAP && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_tad);
 	
 

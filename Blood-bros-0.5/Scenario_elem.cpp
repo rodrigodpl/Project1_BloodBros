@@ -17,12 +17,12 @@ const Collider* Scenario_elem::GetCollider() const
 	return collider;
 }
 
-void Scenario_elem::Draw(SDL_Texture* sprites)
+void Scenario_elem::Draw(SDL_Texture* scenario_sprites)
 {
 
 	collider->SetPos(position.x, position.y);
 
-	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+	App->render->Blit(scenario_sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }
 
 

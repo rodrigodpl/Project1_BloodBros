@@ -36,7 +36,7 @@ public:
 	const Collider* GetCollider() const;
 
 	virtual void Update() {};
-	virtual void Draw(SDL_Texture* sprites);
+	virtual void Draw(SDL_Texture* enemy_sprites);
 };
 
 #endif // __ENEMY_H__

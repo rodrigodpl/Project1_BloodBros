@@ -8,6 +8,9 @@
 #include "Globals.h"
 #include <math.h>
 
+#define HALF_PLAYER_WIDTH 50
+#define HALF_PLAYER_HEIGHT 80
+
 template<class TYPE>
 class p2Point
 {
@@ -105,12 +108,13 @@ public:
 		return(*this);
 	}
 
+
 	p2Point<float> GetDirection(float base_speed, p2Point dst){
 
 		p2Point<float> direction;
 
 		direction.y = 0.5;
-		direction.x = (((dst.x + 50) - x) / ((dst.y - 80) - y)) * 0.5;
+		direction.x = (((dst.x + HALF_PLAYER_WIDTH) - x) / ((dst.y - HALF_PLAYER_HEIGHT) - y)) * 0.5;
 
 		while((abs(direction.x) + abs(direction.y)) > 4){
 			direction.x *= 0.9;

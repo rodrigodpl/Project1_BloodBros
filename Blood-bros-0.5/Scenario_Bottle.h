@@ -4,7 +4,6 @@
 #include "Scenario_elem.h"
 #include "p2Point.h"
 
-#define BOTTLE_NUM 6
 
 enum bottles{
 

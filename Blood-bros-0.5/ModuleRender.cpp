@@ -12,11 +12,7 @@ ModuleRender::ModuleRender() : Module()
 	camera.h = SCREEN_HEIGHT;
 }
 
-// Destructor
-ModuleRender::~ModuleRender()
-{}
 
-// Called before render is available
 bool ModuleRender::Init()
 {
 	LOG("Creating Renderer context");
@@ -39,7 +35,7 @@ bool ModuleRender::Init()
 	return ret;
 }
 
-// Called every draw update
+
 update_status ModuleRender::PreUpdate()
 {
 	SDL_RenderClear(renderer);

@@ -6,11 +6,6 @@
 
 #define MAX_ELEMENTS 50
 
-// TODO 2: Add a new enemy: Brown Cookies!
-
-// TODO 3: Have the Brown Cookies describe a path in the screen
-
-// TODO 4: Create a new enemy type: the Mech
 
 enum SCENARIO_ELEMENTS
 {
@@ -36,7 +31,6 @@ public:
 	friend class ModuleEnemies;
 
 	ModuleScenario();
-	~ModuleScenario();
 
 	bool Start();
 	update_status Update();
@@ -45,10 +39,6 @@ public:
 
 	bool AddElement(SCENARIO_ELEMENTS type, int x, int y);
 	uint bottle_index;
-
-
-private:
-
 
 private:
 

@@ -31,10 +31,7 @@ ModuleReticle::ModuleReticle()
 
 }
 
-ModuleReticle::~ModuleReticle()
-{}
 
-// Load assets
 bool ModuleReticle::Start()
 {
 	LOG("Loading reticle");
@@ -77,18 +74,16 @@ update_status ModuleReticle::Update()
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		yspeed = 8;
 
-	if (position.x + xspeed > 0 && position.x + xspeed < SCREEN_WIDTH - 70){
+
+	if (position.x + xspeed > 0 && position.x + xspeed < SCREEN_WIDTH - 70)
 		position.x += xspeed;
-	}
 
-	if (position.y + yspeed > 0 && position.y + yspeed < SCREEN_HEIGHT - 250){
+	if (position.y + yspeed > 0 && position.y + yspeed < SCREEN_HEIGHT - 250)
 		position.y += yspeed;
-	}
 
-	// TODO 3: Shoot lasers when the player hits SPACE
+
 
 	if (App->player->shooting && App->player->alive && current_animation != &shooting){
-
 		App->audio->PlayFx(player_shot_fx);
 		current_animation = &shooting;
 	}
@@ -100,7 +95,6 @@ update_status ModuleReticle::Update()
 
 	ret_col->SetPos(position.x, position.y);
 
-	// Draw everything --------------------------------------
 
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 

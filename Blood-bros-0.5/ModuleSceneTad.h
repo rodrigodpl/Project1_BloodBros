@@ -8,8 +8,6 @@ struct SDL_Texture;
 class ModuleSceneTad : public Module
 {
 public:
-	ModuleSceneTad();
-	~ModuleSceneTad();
 
 	bool Start();
 	update_status Update();

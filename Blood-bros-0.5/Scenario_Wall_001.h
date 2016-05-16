@@ -22,8 +22,6 @@ public:
 	Scenario_Wall_001(int x, int y);
 
 	void Update();
-	void Destroy();
-
 
 };
 

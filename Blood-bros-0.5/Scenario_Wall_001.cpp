@@ -29,7 +29,6 @@ Scenario_Wall_001::Scenario_Wall_001(int x, int y) : Scenario_elem(x, y)
 void Scenario_Wall_001::Update()
 {
 
-
 	Animation* current_state = &health_500;
 
 	if (health <= 500){

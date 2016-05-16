@@ -11,7 +11,6 @@ class ModuleReticle : public Module
 {
 public:
 	ModuleReticle();
-	~ModuleReticle();
 
 	bool Start();
 	update_status Update();
