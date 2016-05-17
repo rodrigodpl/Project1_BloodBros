@@ -1,1 +1,6 @@
+Current bugs:
 
+1. Correct colliders.
+2. Program Green Cowboy enemy sprites when dying.
+3. Program Greenw Cowboy enemy sprites when he jumps down.
+4. Fix a bug, when an enemy walks behind a barrel, he dies.
