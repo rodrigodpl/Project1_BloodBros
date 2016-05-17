@@ -24,5 +24,5 @@
 
 ### Other
 
-1. Correct colliders.
+Correct colliders.
 
