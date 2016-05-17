@@ -17,7 +17,7 @@ public:
 public:
 
 	ModuleFonts* text_manager;
-	uint player_score = 0;
+	uint player_score;
 	char score_text[10];
 	
 

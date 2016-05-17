@@ -111,11 +111,19 @@ update_status ModuleSceneSpace::Update()
 	}
 
 	if (current_level_time > 15000 && released_enemies[3] == false){
-		App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
 		released_enemies[3] = true;
 	}
 	if (current_level_time > 18000 && released_enemies[4] == false){
-		App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
 		released_enemies[4] = true;
 	}
 
