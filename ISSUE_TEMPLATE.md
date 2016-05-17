@@ -18,6 +18,8 @@
 
 1. Shoot at Green Cowboy enemy.
 2. Just observe while playing.
+3. Move player in the right direction.
+4. Shoot at an enemy behind a barrel.
 
 
 ### Other
