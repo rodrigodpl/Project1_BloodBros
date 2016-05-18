@@ -116,13 +116,13 @@ public:
 		direction.y = 0.5;
 		direction.x = (((dst.x + HALF_PLAYER_WIDTH) - x) / ((dst.y - HALF_PLAYER_HEIGHT) - y)) * 0.5;
 
-		while((abs(direction.x) + abs(direction.y)) > 4){
+		while((abs(direction.x) + abs(direction.y)) > 5){
 			direction.x *= 0.9;
 			direction.y *= 0.9;
 
 		}
 
-		while ((abs(direction.x) + abs(direction.y)) < 3){
+		while ((abs(direction.x) + abs(direction.y)) < 4){
 			direction.x *= 1.1;
 			direction.y *= 1.1;
 

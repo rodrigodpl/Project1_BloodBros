@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "ModuleReticle.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "SDL_mixer/include/SDL_mixer.h"
@@ -16,9 +17,29 @@ ModulePlayer::ModulePlayer()
 {
 	idle.PushBack({ 359, 20, 70, 184 });
 
-	idle_shooting.PushBack({ 0, 0, 0, 0 });
-	idle_shooting.speed = 0.05f;
-	//
+
+	idle_shooting_0.PushBack({ 24, 221, 111, 180 });
+	idle_shooting_0.PushBack({ 12, 419, 123, 177 });
+	idle_shooting_0.speed = 0.15f;
+	idle_shooting_30.PushBack({ 159, 220, 93, 180 });
+	idle_shooting_30.PushBack({ 141, 418, 111, 177 });
+	idle_shooting_30.speed = 0.15f;
+	idle_shooting_60.PushBack({ 279, 208, 87, 192 });
+	idle_shooting_60.PushBack({ 258, 409, 108, 186 });
+	idle_shooting_60.speed = 0.15f;
+	idle_shooting_90.PushBack({ 390, 208, 69, 195 });
+	idle_shooting_90.PushBack({ 376, 406, 83, 192 });
+	idle_shooting_90.speed = 0.15f;
+	idle_shooting_120.PushBack({ 486, 208, 84, 195 });
+	idle_shooting_120.PushBack({ 486, 406, 66, 192 });
+	idle_shooting_120.speed = 0.15f;
+	idle_shooting_150.PushBack({ 573, 220, 102, 183 });
+	idle_shooting_150.PushBack({ 573, 418, 90, 180 });
+	idle_shooting_150.speed = 0.15f;
+	idle_shooting_180.PushBack({ 684, 220, 135, 183 });
+	idle_shooting_180.PushBack({ 684, 418, 123, 180 });
+	idle_shooting_180.speed = 0.15f;
+
 
 
 	left.PushBack({ 248, 20, 88, 181 });
@@ -54,9 +75,27 @@ ModulePlayer::ModulePlayer()
 
 	crouched_idle.PushBack({ 1228, 20, 83, 136 });
 
-	crouched_shooting.PushBack({ 0, 0, 0, 0 });
-	crouched_shooting.speed = 0.05f;
-	//
+	crouched_shooting_0.PushBack({ 884, 168, 120, 135 });
+	crouched_shooting_0.PushBack({ 891, 316, 114, 135 });
+	crouched_shooting_0.speed = 0.15f;
+	crouched_shooting_30.PushBack({ 1025, 168, 99, 135 });
+	crouched_shooting_30.PushBack({ 1031, 316, 93, 135 });
+	crouched_shooting_30.speed = 0.15f;
+	crouched_shooting_60.PushBack({ 1136, 156, 84, 147 });
+	crouched_shooting_60.PushBack({ 1136, 304, 84, 147 });
+	crouched_shooting_60.speed = 0.15f;
+	crouched_shooting_90.PushBack({ 1229, 156, 81, 147 });
+	crouched_shooting_90.PushBack({ 1229, 304, 81, 147 });
+	crouched_shooting_90.speed = 0.15f;
+	crouched_shooting_120.PushBack({ 1331, 157, 87, 146 });
+	crouched_shooting_120.PushBack({ 1331, 304, 84, 147 });
+	crouched_shooting_120.speed = 0.15f;
+	crouched_shooting_150.PushBack({ 1421, 168, 108, 135 });
+	crouched_shooting_150.PushBack({ 1421, 316, 108, 135 });
+	crouched_shooting_150.speed = 0.15f;
+	crouched_shooting_180.PushBack({ 1538, 168, 141, 135 });
+	crouched_shooting_180.PushBack({ 1547, 316, 129, 135 });
+	crouched_shooting_180.speed = 0.15f;
 
 
 	crouched_roll_left.PushBack({ 1328, 1126, 130, 82 });
@@ -168,7 +207,7 @@ update_status ModulePlayer::Update()
 				case IN_SHOT:
 					state = ST_IDLE_SHOOTING;
 					shooting = true;
-					current_animation = &idle_shooting; break;
+					GetShootingAngle(state); break;
 
 				}
 
@@ -185,7 +224,7 @@ update_status ModulePlayer::Update()
 					current_animation->Reset();
 					current_animation = &idle; break;
 				case IN_SHOT:
-					current_animation->Reset();
+					GetShootingAngle(state);
 					shooting = true; break;
 				case IN_CROUCH_DOWN:
 					state = ST_CROUCHED_SHOOTING;
@@ -206,7 +245,7 @@ update_status ModulePlayer::Update()
 				case IN_SHOT:
 					state = ST_CROUCHED_SHOOTING;
 					shooting = true;
-					current_animation = &crouched_shooting; break;
+					GetShootingAngle(state); break;
 				case IN_CROUCH_UP:
 					state = ST_IDLE;
 					current_animation = &idle; break;
@@ -236,7 +275,7 @@ update_status ModulePlayer::Update()
 					current_animation->Reset();
 					current_animation = &crouched_idle; break;
 				case IN_SHOT:
-					current_animation->Reset();
+					GetShootingAngle(state);
 					shooting = true; break;
 				case IN_CROUCH_UP:
 					state = ST_IDLE;
@@ -396,4 +435,44 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		alive = false;
 	}
+}
+
+
+void ModulePlayer::GetShootingAngle(uint state){
+
+
+	current_animation->Reset();
+
+	int distance_to_reticle = App->reticle->position.x - position.x;
+	uint result = A_0;
+
+	if (distance_to_reticle > -((SCREEN_WIDTH / 6) * 3))
+		result = A_30;
+	if (distance_to_reticle > -((SCREEN_WIDTH / 6) * 2))
+		result = A_60;
+	if (distance_to_reticle > -((SCREEN_WIDTH / 6) * 1))
+		result = A_90;
+	if (distance_to_reticle > (SCREEN_WIDTH / 6) * 1)
+		result = A_120;
+	if (distance_to_reticle > (SCREEN_WIDTH / 6) * 2)
+		result = A_150;
+	if (distance_to_reticle > (SCREEN_WIDTH / 6) * 3)
+		result = A_180;
+
+	switch (result){
+
+		case A_0: idle_shooting = idle_shooting_0; crouched_shooting = crouched_shooting_0; break;
+		case A_30: idle_shooting = idle_shooting_30; crouched_shooting = crouched_shooting_30; break;
+		case A_60: idle_shooting = idle_shooting_60; crouched_shooting = crouched_shooting_60; break;
+		case A_90: idle_shooting = idle_shooting_90; crouched_shooting = crouched_shooting_90; break;
+		case A_120: idle_shooting = idle_shooting_120; crouched_shooting = crouched_shooting_120; break;
+		case A_150: idle_shooting = idle_shooting_150; crouched_shooting = crouched_shooting_150; break;
+		case A_180: idle_shooting = idle_shooting_180; crouched_shooting = crouched_shooting_180; break;
+	}
+
+	if (state == ST_CROUCHED_SHOOTING)
+		current_animation = &crouched_shooting;
+	else if (state == ST_IDLE_SHOOTING)
+		current_animation = &idle_shooting;
+
 }

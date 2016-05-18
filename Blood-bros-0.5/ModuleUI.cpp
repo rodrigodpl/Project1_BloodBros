@@ -7,6 +7,8 @@
 
 bool ModuleUI::Start(){
 
+	player_score = 0;
+
 	text_manager = new ModuleFonts();
 
 	//white font:
