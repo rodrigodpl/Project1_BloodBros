@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Containers">
+      <UniqueIdentifier>{78a7f487-1d77-4fdc-9f51-f067eccd6239}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Enemies">
+      <UniqueIdentifier>{80c7d80e-c1d5-40e4-99f0-3e65a0ee8834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Scenario">
+      <UniqueIdentifier>{4b97b6e1-9163-4aee-8649-99337f2834e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\scenes">
+      <UniqueIdentifier>{ecdaa62b-6e88-41c7-96f3-064032f030ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeaks.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCollision.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_indian_001.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Indian_002.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Barrel_Guy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleReticle.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenario_elem.h">
+      <Filter>Modules\Scenario</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenario_Wall_001.h">
+      <Filter>Modules\Scenario</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleScenario.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenario_Bottle.h">
+      <Filter>Modules\Scenario</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenario_Light.h">
+      <Filter>Modules\Scenario</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneSpace.h">
+      <Filter>Modules\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneScore.h">
+      <Filter>Modules\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneTad.h">
+      <Filter>Modules\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneWelcome.h">
+      <Filter>Modules\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneStage_Pres.h">
+      <Filter>Modules\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenario_Barrel.h">
+      <Filter>Modules\Scenario</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Indian_003.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleDebug.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleUI.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollision.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_indian_001.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Indian_002.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Barrel_Guy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleReticle.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenario_elem.cpp">
+      <Filter>Modules\Scenario</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenario_Wall_001.cpp">
+      <Filter>Modules\Scenario</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleScenario.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenario_Bottle.cpp">
+      <Filter>Modules\Scenario</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenario_Light.cpp">
+      <Filter>Modules\Scenario</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneSpace.cpp">
+      <Filter>Modules\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneScore.cpp">
+      <Filter>Modules\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneTad.cpp">
+      <Filter>Modules\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneWelcome.cpp">
+      <Filter>Modules\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneStage_Pres.cpp">
+      <Filter>Modules\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenario_Barrel.cpp">
+      <Filter>Modules\Scenario</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Indian_003.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleDebug.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleUI.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
