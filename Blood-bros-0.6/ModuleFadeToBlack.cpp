@@ -8,7 +8,7 @@
 
 ModuleFadeToBlack::ModuleFadeToBlack()
 {
-	screen = { 0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE };
+	screen = {0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE};
 }
 
 
@@ -22,33 +22,33 @@ bool ModuleFadeToBlack::Start()
 // Update: draw background
 update_status ModuleFadeToBlack::Update()
 {
-	if (current_step == fade_step::none)
+	if(current_step == fade_step::none)
 		return UPDATE_CONTINUE;
 
 	Uint32 now = SDL_GetTicks() - start_time;
 	float normalized = MIN(1.0f, (float)now / (float)total_time);
 
-	switch (current_step)
+	switch(current_step)
 	{
-	case fade_step::fade_to_black:
-	{
-									 if (now >= total_time)
-									 {
-										 to_disable->Disable();
-										 to_enable->Enable();
-										 total_time += total_time;
-										 start_time = SDL_GetTicks();
-										 current_step = fade_step::fade_from_black;
-									 }
-	} break;
+		case fade_step::fade_to_black:
+		{
+			if(now >= total_time)
+			{
+				to_disable->Disable();
+				to_enable->Enable();
+				total_time += total_time;
+				start_time = SDL_GetTicks();
+				current_step = fade_step::fade_from_black;
+			}
+		} break;
 
-	case fade_step::fade_from_black:
-	{
-									   normalized = 1.0f - normalized;
+		case fade_step::fade_from_black:
+		{
+			normalized = 1.0f - normalized;
 
-									   if (now >= total_time)
-										   current_step = fade_step::none;
-	} break;
+			if(now >= total_time)
+				current_step = fade_step::none;
+		} break;
 	}
 
 	// Finally render the black square with alpha on the screen
@@ -63,7 +63,7 @@ bool ModuleFadeToBlack::FadeToBlack(Module* module_off, Module* module_on, float
 {
 	bool ret = false;
 
-	if (current_step == fade_step::none)
+	if(current_step == fade_step::none)
 	{
 		current_step = fade_step::fade_to_black;
 		start_time = SDL_GetTicks();

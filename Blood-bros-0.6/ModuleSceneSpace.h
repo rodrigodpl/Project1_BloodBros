@@ -18,7 +18,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	
 	SDL_Texture* background = nullptr;
 	Uint32 init_level_time;
 	Uint32 current_level_time;
@@ -29,4 +29,4 @@ public:
 
 };
 
-#endif // __MODULESCENESPACE_H___
+#endif // __MODULESCENESPACE_H__

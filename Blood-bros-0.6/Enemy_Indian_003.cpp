@@ -71,3 +71,4 @@ void Enemy_Indian_003::Update()
 		state = EN_ST_WALKING;
 	}
 }
+

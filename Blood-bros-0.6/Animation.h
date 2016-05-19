@@ -14,7 +14,7 @@ class Animation
 	friend class Enemy_Indian_003;
 
 public:
-
+	
 	bool loop = true;
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
@@ -42,7 +42,7 @@ public:
 	SDL_Rect& GetCurrentFrame()
 	{
 		current_frame += speed;
-		if (current_frame >= last_frame)
+		if(current_frame >= last_frame)
 		{
 			current_frame = (loop) ? 0.0f : last_frame - 1;
 			loops++;

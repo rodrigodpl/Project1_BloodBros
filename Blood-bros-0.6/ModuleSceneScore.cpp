@@ -49,7 +49,7 @@ update_status ModuleSceneScore::Update()
 
 	if (SDL_GetTicks() - timer > TIME_TO_SWAP && !(App->fade->IsFading()))
 		App->fade->FadeToBlack(this, (Module*)App->scene_tad);
-
+	
 
 	return UPDATE_CONTINUE;
 }

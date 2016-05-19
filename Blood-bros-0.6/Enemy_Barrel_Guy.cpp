@@ -8,7 +8,7 @@
 
 Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 {
-
+	
 	walking.PushBack({ 92, 554, 76, 138 });
 	walking.PushBack({ 218, 552, 56, 141 });
 	walking.PushBack({ 330, 555, 61, 141 });
@@ -37,8 +37,8 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 	shooting.speed = 0.1f;
 	shooting.loop = false;
 
-	dying.PushBack({ 0, 0, 0, 0 });
-	dying.PushBack({ 0, 0, 0, 0 });
+	dying.PushBack({ 0, 0, 0, 0});
+	dying.PushBack({ 0, 0, 0, 0});
 	dying.speed = 0.1f;
 	dying.loop = false;
 

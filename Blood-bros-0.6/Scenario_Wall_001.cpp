@@ -28,30 +28,42 @@ Scenario_Wall_001::Scenario_Wall_001(int x, int y) : Scenario_elem(x, y)
 
 void Scenario_Wall_001::Update()
 {
+	if(animation == &dying){
 
-	Animation* current_state = &health_500;
+		Animation destroyed_frame;
+		destroyed_frame.PushBack({ 770, 688, 674, 310 - var_height });
+		dying = destroyed_frame;
+		var_height += 2;
 
-	if (health <= 500){
+	}
+	else{
 
-		if (health < 300){
+		Animation* current_state = &health_500;
 
-			if (health < 100){
+		if (health <= 500){
 
-				if (health <= 0){
-					current_state = &dying;
-					App->scene_space->is_backgr_destroyed = true;
-					App->particles->AddParticle(App->particles->destroying_wall, position.x, position.y);
+			if (health < 300){
+
+				if (health < 100){
+
+					if (health <= 0){
+						current_state = &dying;
+						App->scene_space->is_backgr_destroyed = true;
+						App->particles->AddParticle(App->particles->destroying_wall, position.x, position.y);
+					}
+					else
+						current_state = &health_100;
 				}
-				else
-					current_state = &health_100;
-			}
-			else{
-				current_state = &health_300;
+				else{
+					current_state = &health_300;
+				}
 			}
 		}
+
+		if (animation != current_state)
+			animation = current_state;
+
 	}
-
-	if (animation != current_state)
-		animation = current_state;
-
+	
 }
+

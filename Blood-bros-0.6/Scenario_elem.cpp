@@ -22,5 +22,8 @@ void Scenario_elem::Draw(SDL_Texture* scenario_sprites)
 
 	collider->SetPos(position.x, position.y);
 
-	App->render->Blit(scenario_sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+		
+	App->render->Blit(scenario_sprites, position.x, position.y + var_height, &(animation->GetCurrentFrame()));
 }
+
+

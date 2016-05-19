@@ -34,7 +34,7 @@ enum player_inputs
 class ModuleInput : public Module
 {
 public:
-
+	
 	ModuleInput();
 
 	bool Init();

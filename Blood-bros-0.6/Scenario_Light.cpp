@@ -29,5 +29,6 @@ Scenario_Light::Scenario_Light(int x, int y) : Scenario_elem(x, y)
 	health = 100;
 
 	animation = &idle;
-
+	
 }
+

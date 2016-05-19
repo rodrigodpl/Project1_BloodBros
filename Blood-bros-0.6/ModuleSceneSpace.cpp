@@ -19,7 +19,7 @@
 bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
-
+	
 	background = App->textures->Load("background.png");
 
 	App->player->Enable();
@@ -31,7 +31,7 @@ bool ModuleSceneSpace::Start()
 	App->scenario->Enable();
 
 	App->audio->PlayMusic("Music/Main_Song.wav", 1.0f);
-
+	
 
 	loop_enemies();      // first loop = first wave;
 	defeated_enemies = 0;
@@ -66,7 +66,7 @@ bool ModuleSceneSpace::CleanUp()
 {
 	LOG("Unloading space scene");
 
-	App->textures->Unload(background);
+ 	App->textures->Unload(background);
 
 	if (!(App->debug->activated_functions[NO_ENEMIES_F3]))
 		App->enemies->Disable();
@@ -110,26 +110,21 @@ update_status ModuleSceneSpace::Update()
 		released_enemies[2] = true;
 	}
 
-	if (current_level_time > 12000 && released_enemies[3] == false){
-		App->enemies->AddEnemy(BARREL_GUY, SCREEN_WIDTH + 20, 420);
+	if (current_level_time > 15000 && released_enemies[3] == false){
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
 		released_enemies[3] = true;
 	}
-
-	if (current_level_time > 15000 && released_enemies[4] == false){
+	if (current_level_time > 18000 && released_enemies[4] == false){
 		if (!is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 222);
 		else if (is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 362);
 
 		released_enemies[4] = true;
-	}
-	if (current_level_time > 18000 && released_enemies[5] == false){
-		if (!is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 222);
-		else if (is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 362);
-
-		released_enemies[5] = true;
 	}
 
 	if (current_level_time > 22000)
@@ -138,7 +133,7 @@ update_status ModuleSceneSpace::Update()
 
 
 	App->render->Blit(background, 0, 0, NULL);
-
+	
 	return UPDATE_CONTINUE;
 }
 
@@ -150,3 +145,4 @@ void ModuleSceneSpace::loop_enemies(){
 	init_level_time = SDL_GetTicks();
 
 }
+

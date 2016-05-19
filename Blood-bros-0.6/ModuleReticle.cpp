@@ -20,8 +20,8 @@ ModuleReticle::ModuleReticle()
 	position.y = 80;
 
 	// idle animation (just the ship)
-	idle.PushBack({ 0, 0, 64, 60 });
-	idle.PushBack({ 87, 0, 66, 59 });
+	idle.PushBack({ 7, 8, 67, 71 });
+	idle.PushBack({ 95, 8, 67, 71 });
 	idle.speed = 0.1f;
 
 	shooting.PushBack({ 0, 0, 0, 0 });
@@ -85,12 +85,12 @@ update_status ModuleReticle::Update()
 
 	if (App->player->shooting && App->player->alive && current_animation != &shooting){
 		App->audio->PlayFx(player_shot_fx);
-		//current_animation = &shooting;
+		current_animation = &shooting;
 	}
-/*	else if (current_animation == &shooting && current_animation->Finished()){
+	else if (current_animation == &shooting && current_animation->Finished()){
 		current_animation->Reset();
 		current_animation = &idle;
-	}*/
+	}
 
 
 	ret_col->SetPos(position.x, position.y);

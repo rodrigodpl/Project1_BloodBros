@@ -20,13 +20,13 @@ public:
 	virtual update_status Update()		{ return update_status::UPDATE_CONTINUE; }
 	virtual update_status PostUpdate() 	{ return update_status::UPDATE_CONTINUE; }
 	virtual bool CleanUp()				{ return true; }
-
+	
 	// Module activation ---
 	bool IsEnabled() const				{ return enabled; }
 
 	void Enable()
 	{
-		if (enabled == false)
+		if(enabled == false)
 		{
 			enabled = true;
 			Start();
@@ -35,7 +35,7 @@ public:
 
 	void Disable()
 	{
-		if (enabled == true)
+		if(enabled == true)
 		{
 			enabled = false;
 			CleanUp();

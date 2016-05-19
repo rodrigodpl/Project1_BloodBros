@@ -20,7 +20,7 @@
 
 ModuleEnemies::ModuleEnemies()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
 
@@ -34,11 +34,11 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::PreUpdate()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
+		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -53,8 +53,8 @@ update_status ModuleEnemies::PreUpdate()
 // Called before render is available
 update_status ModuleEnemies::Update()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	if (enemies[i] != nullptr) enemies[i]->Update();
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
+		if(enemies[i] != nullptr) enemies[i]->Update();
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i){
 		if (App->scenario->elements[i] != nullptr){
@@ -66,8 +66,8 @@ update_status ModuleEnemies::Update()
 		}
 	}
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
+		if(enemies[i] != nullptr) enemies[i]->Draw(sprites);
 
 	return UPDATE_CONTINUE;
 }
@@ -75,9 +75,9 @@ update_status ModuleEnemies::Update()
 update_status ModuleEnemies::PostUpdate()
 {
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if(enemies[i] != nullptr)
 		{
 			if ((enemies[i]->position.x < (0 - SPAWN_MARGIN) || enemies[i]->position.x >(SCREEN_WIDTH + SPAWN_MARGIN)
 				|| enemies[i]->position.y < (0 - SPAWN_MARGIN) || enemies[i]->position.y >(SCREEN_HEIGHT + SPAWN_MARGIN))
@@ -100,9 +100,9 @@ bool ModuleEnemies::CleanUp()
 
 	App->textures->Unload(sprites);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if(enemies[i] != nullptr)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -116,9 +116,9 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 {
 	bool ret = false;
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (queue[i].type == ENEMY_TYPES::NO_TYPE)
+		if(queue[i].type == ENEMY_TYPES::NO_TYPE)
 		{
 			queue[i].type = type;
 			queue[i].x = x;
@@ -135,36 +135,36 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
+	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
-	if (i != MAX_ENEMIES)
+	if(i != MAX_ENEMIES)
 	{
-		switch (info.type)
+		switch(info.type)
 		{
-		case ENEMY_TYPES::BARREL_GUY:
-			enemies[i] = new Enemy_Barrel_Guy(info.x, info.y);
+			case ENEMY_TYPES::BARREL_GUY:
+			enemies[i] = new Enemy_Barrel_Guy(info.x,info.y);
 			break;
 
-		case ENEMY_TYPES::INDIAN_001:
-			enemies[i] = new Enemy_Indian_001(info.x, info.y);
-			break;
+			case ENEMY_TYPES::INDIAN_001:
+				enemies[i] = new Enemy_Indian_001(info.x, info.y);
+				break;
 
-		case ENEMY_TYPES::INDIAN_002:
-			enemies[i] = new Enemy_Indian_002(info.x, info.y);
-			break;
+			case ENEMY_TYPES::INDIAN_002:
+				enemies[i] = new Enemy_Indian_002(info.x, info.y);
+				break;
 
-		case ENEMY_TYPES::INDIAN_003:
-			enemies[i] = new Enemy_Indian_003(info.x, info.y);
-			break;
+			case ENEMY_TYPES::INDIAN_003:
+				enemies[i] = new Enemy_Indian_003(info.x, info.y);
+				break;
 		}
 	}
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && App->player->shooting)
+		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && App->player->shooting)
 		{
 			if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING){
 				enemies[i]->state = EN_ST_DYING;

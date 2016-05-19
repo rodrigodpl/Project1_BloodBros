@@ -43,36 +43,23 @@ ModulePlayer::ModulePlayer()
 
 
 	left.PushBack({ 248, 20, 88, 181 });
-	left.PushBack({ 146, 20, 88, 181 });
-	left.PushBack({ 612, 602, 103, 181 });
 	left.PushBack({ 612, 602, 103, 181 });
 	left.PushBack({ 514, 602, 97, 179 });
-	left.PushBack({ 514, 602, 97, 179 });
-	left.PushBack({ 385, 600, 121, 181 });
 	left.PushBack({ 385, 600, 121, 181 });
 	left.PushBack({ 612, 602, 103, 181 });
-	left.PushBack({ 612, 602, 103, 181 });
-	left.PushBack({ 514, 602, 97, 179 });
-	left.PushBack({ 514, 602, 97, 179 });
-	left.PushBack({ 385, 600, 121, 181 });
-	left.PushBack({ 385, 600, 121, 181 });
 	left.PushBack({ 50, 20, 89, 182 });
 	left.loop = false;
-	left.speed = 0.3f;
+	left.speed = 0.15f;
 
 
 	right.PushBack({ 455, 20, 67, 184 });
 	right.PushBack({ 542, 20, 85, 184 });
 	right.PushBack({ 24, 602, 103, 181 });
-	right.PushBack({ 24, 602, 103, 181 });
-	right.PushBack({ 128, 603, 97, 178 });
 	right.PushBack({ 128, 603, 97, 178 });
 	right.PushBack({ 232, 600, 122, 181 });
-	right.PushBack({ 232, 600, 122, 181 });
-	right.PushBack({ 629, 20, 94, 184 });
 	right.PushBack({ 629, 20, 94, 184 });
 	right.loop = false;
-	right.speed = 0.3f;
+	right.speed = 0.15f;
 
 	crouched_idle.PushBack({ 1228, 20, 83, 136 });
 
@@ -425,7 +412,7 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == col && alive && App->fade->IsFading() == false && immune == false && App->debug->activated_functions[GOD_MODE_F2] == false)
+	if(c1 == col && alive && App->fade->IsFading() == false && immune == false && App->debug->activated_functions[GOD_MODE_F2] == false)
 	{
 		Mix_FadeOutMusic(1000);
 
@@ -462,13 +449,13 @@ void ModulePlayer::GetShootingAngle(uint state){
 
 	switch (result){
 
-	case A_0: idle_shooting = idle_shooting_0; crouched_shooting = crouched_shooting_0; break;
-	case A_30: idle_shooting = idle_shooting_30; crouched_shooting = crouched_shooting_30; break;
-	case A_60: idle_shooting = idle_shooting_60; crouched_shooting = crouched_shooting_60; break;
-	case A_90: idle_shooting = idle_shooting_90; crouched_shooting = crouched_shooting_90; break;
-	case A_120: idle_shooting = idle_shooting_120; crouched_shooting = crouched_shooting_120; break;
-	case A_150: idle_shooting = idle_shooting_150; crouched_shooting = crouched_shooting_150; break;
-	case A_180: idle_shooting = idle_shooting_180; crouched_shooting = crouched_shooting_180; break;
+		case A_0: idle_shooting = idle_shooting_0; crouched_shooting = crouched_shooting_0; break;
+		case A_30: idle_shooting = idle_shooting_30; crouched_shooting = crouched_shooting_30; break;
+		case A_60: idle_shooting = idle_shooting_60; crouched_shooting = crouched_shooting_60; break;
+		case A_90: idle_shooting = idle_shooting_90; crouched_shooting = crouched_shooting_90; break;
+		case A_120: idle_shooting = idle_shooting_120; crouched_shooting = crouched_shooting_120; break;
+		case A_150: idle_shooting = idle_shooting_150; crouched_shooting = crouched_shooting_150; break;
+		case A_180: idle_shooting = idle_shooting_180; crouched_shooting = crouched_shooting_180; break;
 	}
 
 	if (state == ST_CROUCHED_SHOOTING)

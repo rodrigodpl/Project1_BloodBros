@@ -27,8 +27,8 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 
 	id = 0;
 	for (; id < MAX_FONTS; ++id)
-	if (fonts[id].graphic == nullptr)
-		break;
+		if (fonts[id].graphic == nullptr)
+			break;
 
 	if (id == MAX_FONTS)
 	{
@@ -38,7 +38,7 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 
 
 	fonts[id].graphic = tex;
-	strcpy_s(fonts[id].table, characters);
+	strcpy_s(fonts[id].table, characters); 
 
 	fonts[id].rows = rows;
 	fonts[id].len = strlen(fonts[id].table);
@@ -72,7 +72,7 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 
 	const Font* font = &fonts[font_id];
 	SDL_Rect rect;
-	uint len = strlen(text);
+	uint len = strlen(text); 
 
 	for (uint i = 0; i < len; ++i)
 	{

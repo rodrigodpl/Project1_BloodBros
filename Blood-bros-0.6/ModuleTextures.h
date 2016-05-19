@@ -13,7 +13,6 @@ class ModuleTextures : public Module
 {
 public:
 	ModuleTextures();
-	~ModuleTextures();
 
 	bool Init();
 	bool CleanUp();

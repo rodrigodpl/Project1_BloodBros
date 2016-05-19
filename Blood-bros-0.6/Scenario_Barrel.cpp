@@ -29,3 +29,6 @@ Scenario_Barrel::Scenario_Barrel(int x, int y) : Scenario_elem(x, y)
 	animation = &idle;
 
 }
+
+
+

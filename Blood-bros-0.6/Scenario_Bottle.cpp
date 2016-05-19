@@ -20,7 +20,7 @@ Scenario_Bottle::Scenario_Bottle(int x, int y) : Scenario_elem(x, y)
 
 	health = 1;
 
-
+	
 	switch (bottles[App->scenario->bottle_index]){
 	case BLUE_WIDE:
 		idle.PushBack({ 57, 122, 44, 46 });
@@ -53,5 +53,7 @@ Scenario_Bottle::Scenario_Bottle(int x, int y) : Scenario_elem(x, y)
 	App->scenario->bottle_index++;
 
 	animation = &idle;
-
+	
 }
+
+
