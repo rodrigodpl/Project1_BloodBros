@@ -1,0 +1,19 @@
+backgrounds folder:
+
+-resize the wolf image so it fits teh screen.
+-change the stage 3 image so it's likethe original (bigger squares).
+
+enemies.png : dying barrel guy
+
+scenario.png : ok.
+
+reticle.png: ok.
+ 
+
+player.png: ok
+
+¡IMPORTANT!
+
+particles.png: in a unique image:
+
+bullets.png, smoke from scenario.png, explosives.png.
