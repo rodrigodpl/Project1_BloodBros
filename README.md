@@ -12,7 +12,7 @@ Aim and player are engaged, they can not move independently, so when moving the 
   - 'SPACE' to start.
 
 ## Credits
-Programer: Rodrigo de Pedro.
+Programmer: Rodrigo de Pedro.
 
 Manager: Roger Tello.
 
