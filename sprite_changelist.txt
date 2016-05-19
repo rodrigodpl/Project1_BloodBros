@@ -12,8 +12,8 @@ reticle.png: ok.
 
 player.png: ok
 
-¡IMPORTANT!
+Â¡IMPORTANT!
 
 particles.png: in a unique image:
 
-bullets.png, smoke from scenario.png, explosives.png.
+bullets.png, smoke from scenario, explosives.png.
