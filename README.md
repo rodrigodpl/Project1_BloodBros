@@ -24,18 +24,18 @@ Art: Oliver Cabezas.
 
 ##Changelist
 ### v0.1
-  - ////
+  - Background of the level and some sprites put.
 
 ### v0.2
-  - We placed the welcome screen, the first background, then return to the welcome screen using fadetoblack. 
+  - Welcome screen, score screen and the background of the level well adjusted. You can return to welcome screen using fade to black. 
 
 ### v0.3
-  - We made the player move and we placed the animations when moving, we loaded the music too and the fx of the player when shoting. 
+  - Player is able to move and animated while moving. Furthermore, music has been loaded and FX of the player when shooting. 
   
 ### v0.4
-  - We placed the coliders that were needed. 
+  - Coliders have been put and well adjusted.
 
 ### v0.5
-  - We placed different types of enemies. 
+  - Different type of enemies have been added.
 
 
