@@ -12,7 +12,6 @@ private:
 	Animation idle;
 	p2Point<int> orig_pos;
 
-
 public:
 
 	Scenario_Barrel(int x, int y);

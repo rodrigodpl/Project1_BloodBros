@@ -39,7 +39,7 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 
 	dying.PushBack({ 0, 0, 0, 0});
 	dying.PushBack({ 0, 0, 0, 0});
-	dying.speed = 0.1f;
+	dying.speed = 0.15f;
 	dying.loop = false;
 
 	collider = App->collision->AddCollider({ position.x, position.y - 138, 76, 138 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -69,8 +69,10 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 void Enemy_Barrel_Guy::Update()
 {
 
-	if (animation != &dying)
+	if (state != EN_ST_DYING)
 		position = orig_pos + Barrel_Guy_path.GetCurrentSpeed(&animation);
+	else if (state == EN_ST_DYING && animation != &dying)
+		animation = &dying;
 
 
 	if (last_anim != animation){

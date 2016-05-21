@@ -110,21 +110,26 @@ update_status ModuleSceneSpace::Update()
 		released_enemies[2] = true;
 	}
 
-	if (current_level_time > 15000 && released_enemies[3] == false){
-		if (!is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 222);
-		else if (is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 362);
-
+	if (current_level_time > 12000 && released_enemies[3] == false){
+		App->enemies->AddEnemy(PIG_001, SCREEN_WIDTH + 20, 380);
 		released_enemies[3] = true;
 	}
-	if (current_level_time > 18000 && released_enemies[4] == false){
+
+	if (current_level_time > 15000 && released_enemies[4] == false){
 		if (!is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 222);
 		else if (is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 362);
 
 		released_enemies[4] = true;
+	}
+	if (current_level_time > 18000 && released_enemies[5] == false){
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
+		released_enemies[5] = true;
 	}
 
 	if (current_level_time > 22000)

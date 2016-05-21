@@ -5,6 +5,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleReticle.h"
 #include "ModulePlayer.h"
+#include "ModuleUI.h"
 #include "ModuleDebug.h"
 #include "ModuleInput.h"
 
@@ -72,7 +73,8 @@ update_status ModuleDebug::Update(){
 		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 3);
 	}
 
-
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
+		App->UI->dynamite_num = 100000;
 
 
 		return(UPDATE_CONTINUE);

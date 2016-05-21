@@ -6,7 +6,9 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleReticle.h"
+#include "ModuleScenario.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
@@ -23,20 +25,25 @@ ModuleParticles::ModuleParticles()
 	enemy_shot.anim.speed = 0.2f;
 	enemy_shot.life = 10000;
 
-	player_shot.anim.PushBack({ 45, 121, 71, 39 });
-	player_shot.anim.PushBack({ 146, 121, 71, 39 });
-	player_shot.anim.PushBack({ 252, 121, 71, 39 });
-	player_shot.anim.PushBack({ 14, 168, 71, 39 });
-	player_shot.anim.PushBack({ 102, 168, 71, 39 });
-	player_shot.anim.speed = 0.3f;
-	player_shot.anim.loop = false;
+	dynamite.anim.PushBack({ 14, 67, 23, 22 });
+	dynamite.anim.PushBack({ 49, 67, 23, 22 });
+	dynamite.anim.PushBack({ 14, 67, 23, 22 });
+	dynamite.anim.PushBack({ 49, 67, 23, 22 });
+	dynamite.anim.PushBack({ 14, 67, 23, 22 });
+	dynamite.anim.PushBack({ 49, 67, 23, 22 });
+	dynamite.anim.PushBack({ 14, 67, 23, 22 });
+	dynamite.anim.PushBack({ 49, 67, 23, 22 });
+	dynamite.anim.speed = 0.2f;
+
+	dynamite_explosion.anim.PushBack({ 14, 67, 23, 22 });
+	dynamite_explosion.anim.PushBack({ 49, 67, 23, 22 });
+	dynamite_explosion.anim.speed = 0.2f;
+
 
 	destroying_wall.anim.PushBack({ 232, 103, 16, 12 });
 	destroying_wall.anim.PushBack({ 232, 103, 16, 12 });
 	destroying_wall.anim.speed = 0.2f;
 	destroying_wall.anim.loop = false;
-
-	
 }
 
 
@@ -110,11 +117,19 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
 			p->position.y = y;
+
 			if(collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-			if (collider_type == COLLIDER_ENEMY_SHOT){
+
+
+			if (collider_type == COLLIDER_ENEMY_SHOT)
 				p->speed = p->position.GetDirection(BASE_ENEMY_SHOT_SPEED, App->player->position);
+			else if (collider_type == COLLIDER_DYNAMITE){
+				p->speed = App->player->position.GetSpeed(App->reticle->position);
+
 			}
+
+
 			active[i] = p;
 			break;
 		}
@@ -169,15 +184,29 @@ bool Particle::Update()
 			ret = false;
 	}
 	else
-		if(anim.Finished())
+		if (anim.Finished()){
 			ret = false;
+			if (collider != nullptr && collider->type == COLLIDER_DYNAMITE){
+				App->particles->AddParticle(App->particles->dynamite_explosion, position.x, position.y);
+				App->enemies->check_explosion(position);
+				App->scenario->check_explosion(position);
+			}
+			
+		}
+
+
 
 	position.x += speed.x;
 	position.y += speed.y;
 
-	if(collider != nullptr)
+
+	if (collider != nullptr){
 		collider->SetPos(position.x, position.y);
+		if (collider->type == COLLIDER_DYNAMITE)
+			speed.y -= CONST_GRAVITY;
+	}
 
 	return ret;
 }
+
 

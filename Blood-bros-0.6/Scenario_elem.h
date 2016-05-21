@@ -28,7 +28,8 @@ public:
 	virtual void Draw(SDL_Texture* scenario_sprites);
 
 	int health;
-	int var_height = 0;
+	int anim_displacement_y = 0;
+	int anim_displacement_x = 0;
 	Animation dying;
 };
 

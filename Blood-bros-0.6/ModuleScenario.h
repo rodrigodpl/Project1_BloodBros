@@ -1,8 +1,8 @@
 #ifndef __MODULESCENARIO_H__
 #define __MODULESCENARIO_H__
 
+#include "p2Point.h"
 #include "Module.h"
-
 
 #define MAX_ELEMENTS 50
 
@@ -30,12 +30,11 @@ public:
 
 	friend class ModuleEnemies;
 
-	ModuleScenario();
-
 	bool Start();
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	void check_explosion(fPoint location);
 
 	bool AddElement(SCENARIO_ELEMENTS type, int x, int y);
 	uint bottle_index;

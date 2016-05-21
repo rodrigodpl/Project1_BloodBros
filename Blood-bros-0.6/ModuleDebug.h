@@ -13,6 +13,7 @@ enum debug_functions{
 	NO_PLAYER_F4,
 	INSTA_LOSE_F5,
 	INSTA_WIN_F6,
+	RAMBO_MODE_F7,
 
 	MAX_DEBUG_FUNC
 

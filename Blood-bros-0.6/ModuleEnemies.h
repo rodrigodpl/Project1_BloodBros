@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "SDL\include\SDL.h"
+#include "p2Point.h"
 
 
 #define MAX_ENEMIES 100
@@ -14,7 +15,8 @@ enum ENEMY_TYPES
 	INDIAN_001,
 	INDIAN_002,
 	INDIAN_003,
-	BARREL_GUY
+	BARREL_GUY,
+	PIG_001,
 };
 
 class Enemy;
@@ -37,6 +39,7 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	void check_explosion(fPoint location);
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 

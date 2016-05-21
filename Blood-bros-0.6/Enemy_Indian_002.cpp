@@ -30,6 +30,12 @@ Enemy_Indian_002::Enemy_Indian_002(int x, int y) : Enemy(x, y)
 	shooting.speed = 0.05f;
 	shooting.loop = false;
 
+	dying.PushBack({ 45, 208, 93, 134 });
+	dying.PushBack({ 164, 204, 85, 106 });
+	dying.PushBack({ 273, 250, 102, 83 });
+	dying.PushBack({ 164, 204, 85, 106 });
+	dying.speed = 0.15f;
+	dying.loop = false;
 
 
 	collider = App->collision->AddCollider({ position.x, position.y - 116, 55, 116 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -47,8 +53,10 @@ Enemy_Indian_002::Enemy_Indian_002(int x, int y) : Enemy(x, y)
 void Enemy_Indian_002::Update()
 {
 
-	if (animation != &dying)
+	if (state != EN_ST_DYING)
 		position = orig_pos + Indian_002_path.GetCurrentSpeed(&animation);
+	else if (state == EN_ST_DYING && animation != &dying)
+		animation = &dying;
 
 
 	if (last_anim != animation){

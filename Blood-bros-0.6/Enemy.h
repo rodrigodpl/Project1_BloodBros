@@ -25,9 +25,10 @@ protected:
 
 public:
 	iPoint position;
-	uint state;
+	uint state = EN_ST_WALKING;
 	Animation* last_anim = nullptr;
 	Animation dying;
+	bool is_killable = true;
 
 public:
 	Enemy(int x, int y);

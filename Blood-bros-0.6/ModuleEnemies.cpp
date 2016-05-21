@@ -14,7 +14,9 @@
 #include "Enemy_indian_001.h"
 #include "Enemy_Indian_003.h"
 #include "Enemy_Indian_002.h"
+#include "NPC_pig_001.h"
 #include "ModuleReticle.h"
+#include "p2Point.h"
 
 #define SPAWN_MARGIN 50
 
@@ -27,7 +29,7 @@ ModuleEnemies::ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	sprites = App->textures->Load("enemy_spritesheet.png");
+	sprites = App->textures->Load("complete_enemy_spritesheet.png");
 
 	return true;
 }
@@ -81,7 +83,7 @@ update_status ModuleEnemies::PostUpdate()
 		{
 			if ((enemies[i]->position.x < (0 - SPAWN_MARGIN) || enemies[i]->position.x >(SCREEN_WIDTH + SPAWN_MARGIN)
 				|| enemies[i]->position.y < (0 - SPAWN_MARGIN) || enemies[i]->position.y >(SCREEN_HEIGHT + SPAWN_MARGIN))
-				|| (enemies[i]->state == EN_ST_DYING && enemies[i]->animation->Finished())){
+				|| (enemies[i]->state == EN_ST_DYING && enemies[i]->animation->Finished() && enemies[i]->is_killable)){
 
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 				delete enemies[i];
@@ -142,20 +144,15 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		switch(info.type)
 		{
 			case ENEMY_TYPES::BARREL_GUY:
-			enemies[i] = new Enemy_Barrel_Guy(info.x,info.y);
-			break;
-
+				enemies[i] = new Enemy_Barrel_Guy(info.x,info.y); break;
 			case ENEMY_TYPES::INDIAN_001:
-				enemies[i] = new Enemy_Indian_001(info.x, info.y);
-				break;
-
+				enemies[i] = new Enemy_Indian_001(info.x, info.y); break;
 			case ENEMY_TYPES::INDIAN_002:
-				enemies[i] = new Enemy_Indian_002(info.x, info.y);
-				break;
-
+				enemies[i] = new Enemy_Indian_002(info.x, info.y); break;
 			case ENEMY_TYPES::INDIAN_003:
-				enemies[i] = new Enemy_Indian_003(info.x, info.y);
-				break;
+				enemies[i] = new Enemy_Indian_003(info.x, info.y); break;
+			case ENEMY_TYPES::PIG_001:
+				enemies[i] = new NPC_Pig_001(info.x, info.y); break;
 		}
 	}
 }
@@ -168,10 +165,32 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING){
 				enemies[i]->state = EN_ST_DYING;
-				App->scene_space->defeated_enemies++;
-				App->UI->player_score += 100;
+				if (enemies[i]->is_killable == true){
+					App->scene_space->defeated_enemies++;
+					App->UI->player_score += 100;
+				}
 			}
 			break;
 		}
+	}
+}
+
+void ModuleEnemies::check_explosion(fPoint location){
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			if ((enemies[i]->position.x > (location.x - 100) && enemies[i]->position.x < (location.x + 60)) &&
+				(enemies[i]->position.y - 30 > (location.y - 100) && enemies[i]->position.y - 30 < (location.y + 60)))
+			{
+				if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING ){
+					enemies[i]->state = EN_ST_DYING;
+					App->scene_space->defeated_enemies++;
+					App->UI->player_score += 100;
+				}
+			}
+		}
+
 	}
 }

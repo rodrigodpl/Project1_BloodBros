@@ -6,10 +6,14 @@
 #define __P2POINT_H__
 
 #include "Globals.h"
+#include "Animation.h"
 #include <math.h>
 
 #define HALF_PLAYER_WIDTH 50
 #define HALF_PLAYER_HEIGHT 80
+#define DYNAMITE_FRAMES 40
+#define CONST_GRAVITY -1
+
 
 template<class TYPE>
 class p2Point
@@ -152,6 +156,14 @@ public:
 	TYPE DistanceManhattan(const p2Point& v) const
 	{
 		return abs(v.x - x) + abs(v.y - y);
+	}
+
+	p2Point<float> GetSpeed(p2Point<float> dst){
+
+		p2Point<float> speed{ ((dst.x - x) / DYNAMITE_FRAMES), (-(800 + ((y - 170) - dst.y))/ 40) };
+
+		return(speed);
+
 	}
 };
 

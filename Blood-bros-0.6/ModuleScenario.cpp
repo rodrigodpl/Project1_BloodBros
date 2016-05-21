@@ -2,6 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleScenario.h"
+#include "p2Point.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
@@ -16,17 +17,10 @@
 #define SPAWN_MARGIN 50
 
 
-
-ModuleScenario::ModuleScenario()
+bool ModuleScenario::Start()
 {
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 		elements[i] = nullptr;
-}
-
-
-
-bool ModuleScenario::Start()
-{
 
 	scene_sprites = App->textures->Load("stage3_1_scenario.png");
 
@@ -119,6 +113,27 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 
 			if (elements[i]->health <= 0)
 				elements[i]->animation = &(elements[i]->dying);break;
+		}
+	}
+}
+
+
+void ModuleScenario::check_explosion(fPoint location){
+
+	for (uint i = 0; i < MAX_ELEMENTS; ++i)
+	{
+		if (elements[i] != nullptr)
+		{
+			if ((elements[i]->position.x >(location.x - 100) && elements[i]->position.x < (location.x + 60)) &&
+				(elements[i]->position.y - 30 >(location.y - 100) && elements[i]->position.y - 30 < (location.y + 60)))
+			{
+				if (elements[i]->animation != &(elements[i]->dying)){
+					elements[i]->health -= 1;
+
+					if (elements[i]->health <= 0)
+						elements[i]->animation = &(elements[i]->dying); 
+				}
+			}
 		}
 	}
 }

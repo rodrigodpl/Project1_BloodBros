@@ -15,6 +15,7 @@ Scenario_Wall_001::Scenario_Wall_001(int x, int y) : Scenario_elem(x, y)
 
 	health_100.PushBack({ 770, 688, 674, 310 });
 
+	anim_displacement_y = 2;
 
 	collider = App->collision->AddCollider({ 0, 44, 674, 310 }, COLLIDER_TYPE::COLLIDER_WALL, (Module*)App->scenario);
 
@@ -30,10 +31,16 @@ void Scenario_Wall_001::Update()
 {
 	if(animation == &dying){
 
-		Animation destroyed_frame;
-		destroyed_frame.PushBack({ 770, 688, 674, 310 - var_height });
-		dying = destroyed_frame;
-		var_height += 2;
+		if (collapse_counter < (310 / 2)){
+
+			Animation destroyed_frame;
+			destroyed_frame.PushBack({ 770, 688, 674, 310 - (anim_displacement_y * collapse_counter) });
+			dying = destroyed_frame;
+			collapse_counter++;
+		}
+		else{
+			App->scene_space->is_backgr_destroyed = true;
+		}
 
 	}
 	else{

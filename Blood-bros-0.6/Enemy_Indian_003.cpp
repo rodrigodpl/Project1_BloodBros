@@ -47,8 +47,10 @@ Enemy_Indian_003::Enemy_Indian_003(int x, int y) : Enemy(x, y)
 void Enemy_Indian_003::Update()
 {
 
-	if (animation != &dying)
+	if (state != EN_ST_DYING)
 		position = orig_pos + Indian_003_path.GetCurrentSpeed(&animation);
+	else if (state == EN_ST_DYING && animation != &dying)
+		animation = &dying;
 
 
 	if (last_anim != animation){

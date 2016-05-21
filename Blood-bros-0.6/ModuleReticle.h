@@ -23,7 +23,7 @@ public:
 	Animation idle;
 	Animation shooting;
 	uint player_shot_fx;
-	iPoint position;
+	fPoint position;
 	Collider* ret_col;
 
 };

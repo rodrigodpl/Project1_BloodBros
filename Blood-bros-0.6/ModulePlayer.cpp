@@ -297,6 +297,11 @@ update_status ModulePlayer::Update()
 					current_animation->Reset();
 					speed = 0;
 					current_animation = &idle; break;
+				case IN_CROUCH_DOWN:
+					state = ST_CROUCHED_IDLE;
+					current_animation->Reset();
+					speed = 0;
+					current_animation = &crouched_idle; break;
 
 				}
 
@@ -323,6 +328,11 @@ update_status ModulePlayer::Update()
 					current_animation->Reset();
 					speed = 0;
 					current_animation = &idle; break;
+				case IN_CROUCH_DOWN:
+					state = ST_CROUCHED_IDLE;
+					current_animation->Reset();
+					speed = 0;
+					current_animation = &crouched_idle; break;
 
 				}
 
@@ -334,9 +344,7 @@ update_status ModulePlayer::Update()
 				current_animation->Reset();
 				immune = false;
 				speed = 0;
-				current_animation = &idle;
-
-				break;
+				current_animation = &idle; break;
 
 			case ST_JUMP_RIGHT:
 
@@ -344,9 +352,7 @@ update_status ModulePlayer::Update()
 				current_animation->Reset();
 				immune = false;
 				speed = 0;
-				current_animation = &idle;
-
-				break;
+				current_animation = &idle; break;
 
 			case ST_ROLL_LEFT:
 

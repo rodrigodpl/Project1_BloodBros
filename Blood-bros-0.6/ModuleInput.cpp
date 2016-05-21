@@ -3,6 +3,9 @@
 #include "ModuleInput.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleDebug.h"
+#include "ModuleUI.h"
+#include "ModuleParticles.h"
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput() : Module()
@@ -71,6 +74,14 @@ bool ModuleInput::CleanUp()
 
 uint ModuleInput::player_input(){
 
+
+	if (keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN && App->debug->activated_functions[NO_PLAYER_F4] == false){
+		if (App->UI->dynamite_num > 0){
+			App->UI->dynamite_num--;
+			App->particles->AddParticle(App->particles->dynamite, App->player->position.x + 35, App->player->position.y - 150, COLLIDER_DYNAMITE);
+		}
+	}
+
 	switch (App->player->state){
 
 	case ST_IDLE:
@@ -131,6 +142,8 @@ uint ModuleInput::player_input(){
 			return(IN_JUMP_LEFT);
 		if (keyboard[SDL_SCANCODE_A] == KEY_IDLE)
 			return(IN_IDLE);
+		if (keyboard[SDL_SCANCODE_S] == KEY_REPEAT)
+			return(IN_CROUCH_DOWN);
 		if (App->player->current_animation->Finished()){
 			App->player->current_animation->Reset();
 			App->player->current_animation->current_frame = 3.0f; break;
@@ -146,6 +159,8 @@ uint ModuleInput::player_input(){
 			return(IN_JUMP_RIGHT);
 		if (keyboard[SDL_SCANCODE_D] == KEY_IDLE)
 			return(IN_IDLE);
+		if (keyboard[SDL_SCANCODE_S] == KEY_REPEAT)
+			return(IN_CROUCH_DOWN);
 		if (App->player->current_animation->Finished()){
 			App->player->current_animation->Reset();
 			App->player->current_animation->current_frame = 3.0f; break;

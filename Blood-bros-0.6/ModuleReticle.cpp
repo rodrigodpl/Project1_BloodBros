@@ -20,13 +20,17 @@ ModuleReticle::ModuleReticle()
 	position.y = 80;
 
 	// idle animation (just the ship)
-	idle.PushBack({ 7, 8, 67, 71 });
-	idle.PushBack({ 95, 8, 67, 71 });
+	idle.PushBack({ 0, 0, 65, 60 });
+	idle.PushBack({ 88, 0, 65, 60 });
 	idle.speed = 0.1f;
 
-	shooting.PushBack({ 0, 0, 0, 0 });
-	shooting.PushBack({ 0, 0, 0, 0 });
-	shooting.speed = 0.1f;
+	shooting.PushBack({ 218, 0, 65, 60 });
+	shooting.PushBack({ 306, 0, 65, 60 });
+	shooting.PushBack({ 376, 0, 65, 60 });
+	shooting.PushBack({ 468, 0, 65, 60 });
+	shooting.PushBack({ 536, 0, 65, 60 });
+	shooting.PushBack({ 640, 0, 65, 60 });
+	shooting.speed = 0.3f;
 
 
 }
@@ -40,7 +44,7 @@ bool ModuleReticle::Start()
 
 	player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");
 
-	ret_col = App->collision->AddCollider({ position.x, position.y, 67, 60 }, COLLIDER_PLAYER_SHOT);
+	ret_col = App->collision->AddCollider({ position.x, position.y, 65, 60 }, COLLIDER_PLAYER_SHOT);
 
 	return true;
 }
@@ -74,13 +78,11 @@ update_status ModuleReticle::Update()
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		yspeed = 8;
 
-
 	if (position.x + xspeed > 0 && position.x + xspeed < SCREEN_WIDTH - 70)
 		position.x += xspeed;
 
 	if (position.y + yspeed > 0 && position.y + yspeed < SCREEN_HEIGHT - 250)
 		position.y += yspeed;
-
 
 
 	if (App->player->shooting && App->player->alive && current_animation != &shooting){

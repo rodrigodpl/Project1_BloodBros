@@ -13,6 +13,7 @@ private:
 	Animation health_100;
 
 	p2Point<int> orig_pos;
+	uint collapse_counter = 0;
 	
 public:
 
