@@ -9,6 +9,10 @@ bool ModuleUI::Start(){
 
 	player_score = 0;
 
+	p1_lives = 1;
+
+	dynamite_num = 10;
+
 	text_manager = new ModuleFonts();
 
 	//white font:

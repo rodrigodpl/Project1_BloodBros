@@ -7,10 +7,12 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModuleReticle.h"
+#include "ModuleUI.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "SDL_mixer/include/SDL_mixer.h"
 #include "ModulePlayer.h"
+#include "SDL\include\SDL.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -133,6 +135,24 @@ ModulePlayer::ModulePlayer()
 	killed.loop = false;
 	killed.speed = 0.2f;
 
+	respawning.PushBack({ 417, 885, 153, 92 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 417, 885, 153, 92 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 282, 881, 123, 96 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 282, 881, 123, 96 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 162, 834, 101, 144 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 162, 834, 101, 144 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 32, 884, 83, 157 });
+	respawning.PushBack({ 0, 0, 0, 0 });
+	respawning.PushBack({ 32, 884, 83, 157 });
+	respawning.loop = false;
+	respawning.speed = 0.15f;
+
 
 }
 
@@ -147,6 +167,8 @@ bool ModulePlayer::Start()
 	shooting = false;
 	alive = true;
 	immune = false;
+
+	invincibility_timer = 0;
 
 	position.x = 350;
 	position.y = 610;
@@ -395,17 +417,38 @@ update_status ModulePlayer::Update()
 				}
 
 				break;
-
-
 			}
 		}
-	}
-
-	if (position.x + speed < SCREEN_WIDTH - 150 && position.x + speed > 20)
+		
+		if (position.x + speed < SCREEN_WIDTH - 150 && position.x + speed > 20)
 		position.x += speed;
 
-	col->SetPos(position.x, position.y - 100);
+		col->SetPos(position.x, position.y - 100);
 
+	}
+	else{
+
+		if (current_animation == &killed){
+			if (current_animation->Finished() && App->UI->p1_lives == 0)
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 1);
+			else if (current_animation->Finished() && App->UI->p1_lives > 0){
+				App->UI->p1_lives--;
+				current_animation->Reset();
+				current_animation = &respawning;
+			}
+		}
+		else{
+			if (current_animation->Finished()){
+				alive = true;
+				invincibility_timer = SDL_GetTicks();
+				current_animation->Reset();
+				current_animation = &idle;
+				state = ST_IDLE;
+			}
+		}
+
+	}
+	
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
@@ -418,14 +461,13 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if(c1 == col && alive && App->fade->IsFading() == false && immune == false && App->debug->activated_functions[GOD_MODE_F2] == false)
+	if(c1 == col && alive && App->fade->IsFading() == false && immune == false && App->debug->activated_functions[GOD_MODE_F2] == false
+		 && (SDL_GetTicks() - 1000) > invincibility_timer)
 	{
 		Mix_FadeOutMusic(1000);
 
 		speed = 0;
 		current_animation = &killed;
-
-		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 3);
 
 		alive = false;
 	}

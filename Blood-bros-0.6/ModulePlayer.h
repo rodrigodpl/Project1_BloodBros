@@ -54,6 +54,7 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
+
 	Animation idle;
 	Animation idle_shooting;
 	Animation idle_shooting_0;
@@ -79,7 +80,10 @@ public:
 	Animation crouched_roll_left;
 	Animation crouched_roll_right;
 	Animation killed;
+	Animation respawning;
+
 	fPoint position;
+	Uint32 invincibility_timer;
 	Collider* col;
 	uint state = ST_IDLE;
 	int speed = 0;

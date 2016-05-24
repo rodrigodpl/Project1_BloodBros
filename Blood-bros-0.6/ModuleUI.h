@@ -19,7 +19,8 @@ public:
 	ModuleFonts* text_manager;
 	uint player_score;
 	char score_text[10];
-	uint dynamite_num = 10;
+	uint dynamite_num;
+	uint p1_lives;
 	
 
 };
