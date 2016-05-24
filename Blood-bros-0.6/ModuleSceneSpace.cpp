@@ -10,6 +10,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleReticle.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePowerUps.h"
 #include "ModuleScenario.h"
 #include "Scenario_Bottle.h"
 #include "ModuleSceneSpace.h"
@@ -29,6 +30,7 @@ bool ModuleSceneSpace::Start()
 	App->debug->Enable();
 	App->reticle->Enable();
 	App->scenario->Enable();
+	App->power_ups->Enable();
 
 	App->audio->PlayMusic("Music/Main_Song.wav", 1.0f);
 	
@@ -80,6 +82,7 @@ bool ModuleSceneSpace::CleanUp()
 	App->particles->Disable();
 	App->scenario->Disable();
 	App->debug->Disable();
+	App->power_ups->Disable();
 
 
 	return true;

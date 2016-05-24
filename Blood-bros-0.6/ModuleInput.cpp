@@ -76,9 +76,12 @@ uint ModuleInput::player_input(){
 
 
 	if (keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN && App->debug->activated_functions[NO_PLAYER_F4] == false){
-		if (App->UI->dynamite_num > 0){
-			App->UI->dynamite_num--;
+		if (App->UI->dynamite_num > 0 || App->debug->activated_functions[RAMBO_MODE_F7]){
+
 			App->particles->AddParticle(App->particles->dynamite, App->player->position.x + 35, App->player->position.y - 150, COLLIDER_DYNAMITE);
+
+			if (!(App->debug->activated_functions[RAMBO_MODE_F7]))
+				App->UI->dynamite_num--;
 		}
 	}
 

@@ -14,6 +14,7 @@
 #include "ModuleSceneWelcome.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModulePowerUps.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleReticle.h"
@@ -37,6 +38,7 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = scenario = new ModuleScenario();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = power_ups = new ModulePowerUps();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
@@ -65,6 +67,7 @@ bool Application::Init()
 	reticle->Disable();
 	scenario->Disable();
 	debug->Disable();
+	power_ups->Disable();
 
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

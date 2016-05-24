@@ -73,8 +73,12 @@ update_status ModuleDebug::Update(){
 		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 3);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
-		App->UI->dynamite_num = 100000;
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN){
+		activated_functions[RAMBO_MODE_F7] = !(activated_functions[RAMBO_MODE_F7]);
+
+		if (activated_functions[RAMBO_MODE_F7])
+			App->reticle->ChangeMode(MACHINEGUN);
+	}
 
 
 		return(UPDATE_CONTINUE);

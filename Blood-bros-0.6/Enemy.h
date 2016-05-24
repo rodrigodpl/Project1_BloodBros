@@ -29,6 +29,7 @@ public:
 	Animation* last_anim = nullptr;
 	Animation dying;
 	bool is_killable = true;
+	uint drops_power_up = 0;
 
 public:
 	Enemy(int x, int y);

@@ -3,6 +3,7 @@
 #include "Path.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneSpace.h"
+#include "ModulePowerUps.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
 
@@ -17,10 +18,22 @@ NPC_Pig_001::NPC_Pig_001(int x, int y) : Enemy(x, y)
 	orig_pos.x = x;
 	orig_pos.y = y;
 
+	dying.PushBack({ 96, 429, 108, 75 });
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.PushBack({ 96, 429, 108, 75 });
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.PushBack({ 218, 429, 108, 75 });
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.PushBack({ 218, 429, 108, 75 });
+	dying.PushBack({ 0, 0, 0, 0 });
+	dying.speed = 0.2f;
+
 
 	Pig_001_path.PushBack({ -7, 0 }, 400, &walking_right);
 
 	is_killable = false;
+
+	drops_power_up = PU_LIST::MACHINEGUN_PU;
 
 }
 

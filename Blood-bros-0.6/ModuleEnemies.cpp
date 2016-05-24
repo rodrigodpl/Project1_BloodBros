@@ -9,6 +9,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleTextures.h"
+#include "ModulePowerUps.h"
 #include "Enemy.h"
 #include "Enemy_Barrel_Guy.h"
 #include "Enemy_indian_001.h"
@@ -165,6 +166,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING){
 				enemies[i]->state = EN_ST_DYING;
+
+				if (enemies[i]->drops_power_up != PU_LIST::NO_POWER_UP)
+					App->power_ups->AddPU(enemies[i]->drops_power_up, enemies[i]->position.x, enemies[i]->position.y);
+
 				if (enemies[i]->is_killable == true){
 					App->scene_space->defeated_enemies++;
 					App->UI->player_score += 100;
