@@ -27,6 +27,7 @@ NPC_Pig_001::NPC_Pig_001(int x, int y) : Enemy(x, y)
 	dying.PushBack({ 218, 429, 108, 75 });
 	dying.PushBack({ 0, 0, 0, 0 });
 	dying.speed = 0.2f;
+	dying.loop = false;
 
 
 	Pig_001_path.PushBack({ -7, 0 }, 400, &walking_right);
@@ -46,11 +47,18 @@ void NPC_Pig_001::Update()
 		position.x -= 7;
 
 		
-	if (state == EN_ST_DYING && animation != &dying)
+	if (state == EN_ST_DYING && animation != &dying){
+		
+		if (drops_power_up != PU_LIST::NO_POWER_UP)
+			App->power_ups->AddPU(drops_power_up, position.x, position.y);
+
+		animation->Reset();
 		animation = &dying;
+		}
 	else if (animation == &dying && animation->Finished()){
 		Pig_001_path.Reset();
-		animation = &walking_right; animation->Reset();
+		animation->Reset();
+		animation = &walking_right; 
 		state = EN_ST_WALKING;
 	}
 

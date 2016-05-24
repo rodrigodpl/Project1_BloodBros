@@ -15,7 +15,6 @@ enum PU_LIST
 	NO_POWER_UP,
 
 	POINTS_1000,
-	POINTS_2000,
 	POINTS_5000,
 	POINTS_7000,
 	POINTS_10000,
@@ -55,7 +54,6 @@ public:
 	Power_up* active_power_ups[MAX_POWER_UPS];
 
 	Animation points_1000_anim;
-	Animation points_2000_anim;
 	Animation points_5000_anim;
 	Animation points_7000_anim;
 	Animation points_10000_anim;

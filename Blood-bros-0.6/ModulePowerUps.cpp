@@ -19,19 +19,44 @@ ModulePowerUps::ModulePowerUps()
 
 bool ModulePowerUps::Start()
 {
-	power_up_sprites = App->textures->Load("complete_enemy_spritesheet.png");
+	power_up_sprites = App->textures->Load("power_ups_spritesheet.png");
 
-	points_1000_anim.PushBack({ 0, 0, 0, 0 });
-	points_2000_anim.PushBack({ 0, 0, 0, 0 });
-	points_5000_anim.PushBack({ 0, 0, 0, 0 });
-	points_7000_anim.PushBack({ 0, 0, 0, 0 });
-	points_10000_anim.PushBack({ 0, 0, 0, 0 });
-	points_20000_anim.PushBack({ 0, 0, 0, 0 });
-	machinegun_anim.PushBack({ 0, 0, 0, 0 });
-	shotgun_anim.PushBack({ 0, 0, 0, 0 });
-	dynamite_anim.PushBack({ 0, 0, 0, 0 });
-	extralive_anim.PushBack({ 0, 0, 0, 0 });
+	points_1000_anim.PushBack({ 0, 123, 80, 48 });
+	points_1000_anim.PushBack({ 154, 123, 80, 48 });
+	points_1000_anim.speed = 0.2f;
 
+	points_5000_anim.PushBack({ 294, 115, 104, 56 });
+	points_5000_anim.PushBack({ 430, 115, 104, 56 });
+	points_5000_anim.speed = 0.2f;
+
+	points_7000_anim.PushBack({ 566, 115, 104, 56 });
+	points_7000_anim.PushBack({ 702, 115, 104, 56 });
+	points_7000_anim.speed = 0.2f;
+
+	points_10000_anim.PushBack({ 834, 107, 156, 64});
+	points_10000_anim.PushBack({ 1038, 107, 156, 64});
+	points_10000_anim.speed = 0.2f;
+
+	points_20000_anim.PushBack({ 1244, 107, 160, 64 });
+	points_20000_anim.PushBack({ 1452, 107, 160, 64 });
+	points_20000_anim.speed = 0.2f;
+
+	machinegun_anim.PushBack({ 282, 0, 192, 64 });
+	machinegun_anim.PushBack({ 486, 0, 192, 64 });
+	machinegun_anim.speed = 0.2f;
+
+	shotgun_anim.PushBack({ 6, 0, 128, 64 });
+	shotgun_anim.PushBack({ 146, 0, 128, 64 });
+	shotgun_anim.speed = 0.2f;
+
+	dynamite_anim.PushBack({ 699, 0, 64, 64 });
+	dynamite_anim.PushBack({ 767, 0, 64, 64 });
+	dynamite_anim.speed = 0.2f;
+
+	extralive_anim.PushBack({ 835, 0, 64, 64 });
+	extralive_anim.PushBack({ 903, 0, 64, 64 });
+	extralive_anim.speed = 0.2f;
+									
 	return true;
 }
 
@@ -64,13 +89,13 @@ update_status ModulePowerUps::Update(){
 			}
 			else{
 
-				if (active_power_ups[i]->position.y < SCREEN_HEIGHT - 200){
+				if (active_power_ups[i]->position.y < SCREEN_HEIGHT - 100){
 					active_power_ups[i]->y_speed -= CONST_GRAVITY;
 					active_power_ups[i]->position.y += active_power_ups[i]->y_speed;
 					active_power_ups[i]->PU_collider->SetPos(active_power_ups[i]->position.x, active_power_ups[i]->position.y);
 				}
-				else if (active_power_ups[i]->position.y < SCREEN_HEIGHT - 200)
-					active_power_ups[i]->position.y = SCREEN_HEIGHT - 200;
+				else if (active_power_ups[i]->position.y < SCREEN_HEIGHT - 100)
+					active_power_ups[i]->position.y = SCREEN_HEIGHT - 100;
 
 
 				SDL_Rect r = active_power_ups[i]->anim->GetCurrentFrame();
@@ -96,12 +121,11 @@ bool ModulePowerUps::AddPU(uint type, int x, int y){
 			active_power_ups[i]->position.y = y;
 			active_power_ups[i]->born = SDL_GetTicks();
 			active_power_ups[i]->PU_collider = App->collision->AddCollider({ active_power_ups[i]->position.x, 
-				active_power_ups[i]->position.y, 50, 80 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->power_ups);
+				active_power_ups[i]->position.y, 110, 56 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->power_ups);
 
 			switch (type){
 
 			case POINTS_1000: active_power_ups[i]->anim = &points_1000_anim; break;
-			case POINTS_2000: active_power_ups[i]->anim = &points_2000_anim; break;
 			case POINTS_5000: active_power_ups[i]->anim = &points_5000_anim; break;
 			case POINTS_7000: active_power_ups[i]->anim = &points_7000_anim; break;
 			case POINTS_10000: active_power_ups[i]->anim = &points_10000_anim; break;
@@ -132,7 +156,6 @@ void ModulePowerUps::OnCollision(Collider* c1, Collider* c2){
 			switch (active_power_ups[i]->type){
 
 			case POINTS_1000: App->UI->player_score += 1000; break;
-			case POINTS_2000: App->UI->player_score += 2000; break;
 			case POINTS_5000: App->UI->player_score += 5000; break;
 			case POINTS_7000: App->UI->player_score += 7000; break;
 			case POINTS_10000: App->UI->player_score += 10000; break;
