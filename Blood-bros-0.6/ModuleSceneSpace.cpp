@@ -8,6 +8,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 #include "ModuleReticle.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePowerUps.h"
@@ -31,6 +32,7 @@ bool ModuleSceneSpace::Start()
 	App->reticle->Enable();
 	App->scenario->Enable();
 	App->power_ups->Enable();
+	App->UI->reset();
 
 	App->audio->PlayMusic("Music/Main_Song.wav", 1.0f);
 	

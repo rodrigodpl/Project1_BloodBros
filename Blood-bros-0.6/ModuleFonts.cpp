@@ -80,7 +80,7 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 		{
 			if (text[i] == font->table[j]){
 				rect = { font->char_w * j, (font->char_h * (j / font->row_chars)), font->char_w, font->char_h };
-				App->render->Blit(font->graphic, x, y, &rect, 0);
+				App->render->Blit(font->graphic, x, y, &rect);
 				x += font->char_w;
 			}
 		}

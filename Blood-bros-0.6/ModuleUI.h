@@ -15,6 +15,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void update_FOE();
+	void reset();
 
 public:
 
