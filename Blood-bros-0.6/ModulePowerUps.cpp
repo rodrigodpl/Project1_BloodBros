@@ -161,7 +161,7 @@ void ModulePowerUps::OnCollision(Collider* c1, Collider* c2){
 			case POINTS_10000: App->UI->player_score += 10000; break;
 			case POINTS_20000: App->UI->player_score += 20000; break;
 			case DYNAMITE_PU: App->UI->dynamite_num++; break;
-			case EXTRA_LIVE: App->UI->p1_lives++; break;
+			case EXTRA_LIVE: App->UI->p1_lifes++; break;
 			case SHOTGUN_PU: App->reticle->ChangeMode(SHOTGUN); break;
 			case MACHINEGUN_PU: App->reticle->ChangeMode(MACHINEGUN); break;
 			}

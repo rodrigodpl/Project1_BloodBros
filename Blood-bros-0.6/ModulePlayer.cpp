@@ -429,10 +429,10 @@ update_status ModulePlayer::Update()
 	else{
 
 		if (current_animation == &killed){
-			if (current_animation->Finished() && App->UI->p1_lives == 0)
+			if (current_animation->Finished() && App->UI->p1_lifes == 0)
 				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 1);
-			else if (current_animation->Finished() && App->UI->p1_lives > 0){
-				App->UI->p1_lives--;
+			else if (current_animation->Finished() && App->UI->p1_lifes > 0){
+				App->UI->p1_lifes--;
 				current_animation->Reset();
 				current_animation = &respawning;
 			}
