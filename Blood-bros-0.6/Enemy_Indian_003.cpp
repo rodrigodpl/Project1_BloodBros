@@ -24,6 +24,11 @@ Enemy_Indian_003::Enemy_Indian_003(int x, int y) : Enemy(x, y)
 	walking_right.PushBack({ 1571, 578, 46, 93 });
 	walking_right.speed = 0.1f;
 
+	falling.PushBack({ 1398, 578, 76, 92 });
+	falling.PushBack({ 1488, 578, 65, 95 });
+	falling.PushBack({ 1571, 578, 46, 93 });
+	falling.speed = 0.1f;
+
 
 	shooting.PushBack({ 1024, 576, 80, 93 });
 	shooting.PushBack({ 1113, 554, 66, 115 });
@@ -42,13 +47,33 @@ Enemy_Indian_003::Enemy_Indian_003(int x, int y) : Enemy(x, y)
 	Indian_003_path.PushBack({ 0, 0 }, 100, &shooting);
 	Indian_003_path.PushBack({ -2, 0 }, 700, &walking_left);
 
+	Indian_003_Falling_path.PushBack({ 0, 2 }, 200, &falling);
+
 }
 
 void Enemy_Indian_003::Update()
 {
 
-	if (state != EN_ST_DYING)
-		position = orig_pos + Indian_003_path.GetCurrentSpeed(&animation);
+	if (App->scene_space->is_backgr_destroyed && position.y < SCREEN_HEIGHT - 270 && state != EN_ST_FALLING){
+		state = EN_ST_FALLING;
+		orig_pos = position;
+		Indian_003_path.Reset();
+	}
+	else if (position.y >= SCREEN_HEIGHT - 250 && state == EN_ST_FALLING){
+		position.y = SCREEN_HEIGHT - 250;
+		orig_pos = position;
+		state = EN_ST_WALKING;
+	}
+
+
+	if (state != EN_ST_DYING){
+		if (state == EN_ST_FALLING){
+			position = orig_pos + Indian_003_Falling_path.GetCurrentSpeed(&animation);
+			return;
+		}
+		else
+			position = orig_pos + Indian_003_path.GetCurrentSpeed(&animation);
+	}
 	else if (state == EN_ST_DYING && animation != &dying)
 		animation = &dying;
 
@@ -59,7 +84,7 @@ void Enemy_Indian_003::Update()
 			state = EN_ST_WALKING;
 		else if (animation == &dying)
 			state = EN_ST_DYING;
-		else
+		else if (animation == &shooting)
 			state = EN_ST_SHOOTING;
 
 

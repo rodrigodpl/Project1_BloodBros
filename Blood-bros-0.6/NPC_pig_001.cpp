@@ -60,6 +60,7 @@ void NPC_Pig_001::Update()
 		animation->Reset();
 		animation = &walking_right; 
 		state = EN_ST_WALKING;
+		orig_pos = position;
 	}
 
 

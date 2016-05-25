@@ -83,7 +83,7 @@ void Enemy_Barrel_Guy::Update()
 			state = EN_ST_SHOOTING;
 		else if (animation == &dying)
 			state = EN_ST_DYING;
-		else
+		else if (animation == &walking)
 			state = EN_ST_WALKING;
 
 		last_anim = animation;

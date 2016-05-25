@@ -12,6 +12,7 @@ enum enemy_states{
 	EN_ST_WALKING,
 	EN_ST_SHOOTING,
 	EN_ST_PROTECTING,
+	EN_ST_FALLING,
 	EN_ST_DYING
 
 };

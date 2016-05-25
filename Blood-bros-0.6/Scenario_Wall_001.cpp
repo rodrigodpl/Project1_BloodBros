@@ -30,6 +30,7 @@ Scenario_Wall_001::Scenario_Wall_001(int x, int y) : Scenario_elem(x, y)
 void Scenario_Wall_001::Update()
 {
 	if(animation == &dying){
+		App->scene_space->is_backgr_destroyed = true;
 
 		if (collapse_counter < (310 / 2)){
 
@@ -38,9 +39,7 @@ void Scenario_Wall_001::Update()
 			dying = destroyed_frame;
 			collapse_counter++;
 		}
-		else{
-			App->scene_space->is_backgr_destroyed = true;
-		}
+
 
 	}
 	else{

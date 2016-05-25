@@ -60,6 +60,7 @@ public:
 	void Reset()
 	{
 		current_frame = 0;
+		accumulated_speed = { 0.0f, 0.0f };
 	}
 };
 

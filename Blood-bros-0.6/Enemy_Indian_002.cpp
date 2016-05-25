@@ -65,7 +65,7 @@ void Enemy_Indian_002::Update()
 			state = EN_ST_WALKING;
 		else if (animation == &dying)
 			state = EN_ST_DYING;
-		else
+		else if (animation == &shooting)
 			state = EN_ST_SHOOTING;
 
 		last_anim = animation;

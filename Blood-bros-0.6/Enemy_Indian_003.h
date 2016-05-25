@@ -11,9 +11,11 @@ private:
 
 	Animation walking_left;
 	Animation walking_right;
+	Animation falling;
 	Animation shooting;
 	p2Point<int> orig_pos;
 	Path Indian_003_path;
+	Path Indian_003_Falling_path;
 
 
 public:
