@@ -19,6 +19,7 @@
 #include "ModuleParticles.h"
 #include "ModuleReticle.h"
 #include "ModuleScenario.h"
+#include "ModuleTincan.h"
 #include "ModuleEnemies.h"
 
 Application::Application()
@@ -37,6 +38,7 @@ Application::Application()
 	modules[i++] = scene_stage_pres = new ModuleSceneStage_Pres();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = scenario = new ModuleScenario();
+	modules[i++] = tincan = new ModuleTincan();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = power_ups = new ModulePowerUps();
 	modules[i++] = particles = new ModuleParticles();
@@ -68,6 +70,7 @@ bool Application::Init()
 	scenario->Disable();
 	debug->Disable();
 	power_ups->Disable();
+	tincan->Disable();
 
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

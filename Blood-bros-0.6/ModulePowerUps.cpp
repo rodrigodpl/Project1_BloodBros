@@ -92,11 +92,11 @@ update_status ModulePowerUps::Update(){
 				if (active_power_ups[i]->position.y < SCREEN_HEIGHT - 100){
 					active_power_ups[i]->y_speed -= CONST_GRAVITY;
 					active_power_ups[i]->position.y += active_power_ups[i]->y_speed;
-					active_power_ups[i]->PU_collider->SetPos(active_power_ups[i]->position.x, active_power_ups[i]->position.y);
 				}
 				else if (active_power_ups[i]->position.y < SCREEN_HEIGHT - 100)
 					active_power_ups[i]->position.y = SCREEN_HEIGHT - 100;
 
+				active_power_ups[i]->PU_collider->SetPos(active_power_ups[i]->position.x, active_power_ups[i]->position.y);
 
 				SDL_Rect r = active_power_ups[i]->anim->GetCurrentFrame();
 
@@ -131,7 +131,7 @@ bool ModulePowerUps::AddPU(uint type, int x, int y){
 			case POINTS_10000: active_power_ups[i]->anim = &points_10000_anim; break;
 			case POINTS_20000: active_power_ups[i]->anim = &points_20000_anim; break;
 			case DYNAMITE_PU: active_power_ups[i]->anim = &dynamite_anim; break;
-			case EXTRA_LIVE: active_power_ups[i]->anim = &extralive_anim; break;
+			case EXTRA_LIFE: active_power_ups[i]->anim = &extralive_anim; break;
 			case SHOTGUN_PU: active_power_ups[i]->anim = &shotgun_anim; break;
 			case MACHINEGUN_PU: active_power_ups[i]->anim = &machinegun_anim; break;
 			}
@@ -161,7 +161,7 @@ void ModulePowerUps::OnCollision(Collider* c1, Collider* c2){
 			case POINTS_10000: App->UI->player_score += 10000; break;
 			case POINTS_20000: App->UI->player_score += 20000; break;
 			case DYNAMITE_PU: App->UI->dynamite_num++; break;
-			case EXTRA_LIVE: App->UI->p1_lifes++; break;
+			case EXTRA_LIFE: App->UI->p1_lifes++; break;
 			case SHOTGUN_PU: App->reticle->ChangeMode(SHOTGUN); break;
 			case MACHINEGUN_PU: App->reticle->ChangeMode(MACHINEGUN); break;
 			}

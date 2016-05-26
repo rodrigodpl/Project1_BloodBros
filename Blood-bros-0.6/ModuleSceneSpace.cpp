@@ -15,6 +15,7 @@
 #include "ModuleScenario.h"
 #include "Scenario_Bottle.h"
 #include "ModuleSceneSpace.h"
+#include "ModuleTincan.h"
 #include "SDL/include/SDL.h"
 
 
@@ -33,6 +34,7 @@ bool ModuleSceneSpace::Start()
 	App->scenario->Enable();
 	App->power_ups->Enable();
 	App->UI->reset();
+	App->tincan->Enable();
 
 	App->audio->PlayMusic("Music/Main_Song.wav", 1.0f);
 	

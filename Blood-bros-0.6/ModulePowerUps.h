@@ -7,7 +7,7 @@
 
 
 #define MAX_POWER_UPS 20
-#define POWER_UP_LIFE 7000
+#define POWER_UP_LIFE 5000
 
 
 enum PU_LIST
@@ -24,7 +24,7 @@ enum PU_LIST
 	SHOTGUN_PU,
 
 	DYNAMITE_PU,
-	EXTRA_LIVE
+	EXTRA_LIFE
 
 };
 
