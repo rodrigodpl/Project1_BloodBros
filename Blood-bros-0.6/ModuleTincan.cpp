@@ -33,6 +33,8 @@ bool ModuleTincan::Start(){
 
 	position = { 420, INITIAL_Y }, speed = { 0, 0 };
 
+	speed.x = -5;
+
 	hit_counter = NO_HIT; release_timer = 0;
 
 	tincan_sprites = App->textures->Load("tincan_spritesheet.png");
@@ -60,8 +62,19 @@ update_status ModuleTincan::Update(){
 
 	if (hit_counter != NO_HIT){
 		if (position.y <= INITIAL_Y){
+
 			speed.y -= ((float) 0.3 * CONST_GRAVITY);
 			position += speed;
+
+			if (position.x >= SCREEN_WIDTH - 50){
+				position.x = SCREEN_WIDTH - 50;
+				speed.x = 0;
+			}
+			else if (position.x <= 50){
+				position.x = 50;
+				speed.x = 0;
+			}
+
 			r = rolling_anim.GetCurrentFrame();
 		}
 		else{
@@ -106,9 +119,9 @@ void ModuleTincan::OnCollision(Collider* c1, Collider* c2){
 
 		speed.y = -10;
 
-		if (speed.x == 0 || speed.x == 5)
+		if (speed.x == 5 || position.x == SCREEN_WIDTH - 50)
 			speed.x = -5;
-		else
+		else if (speed.x == -5 || position.x == 50)
 			speed.x = 5;
 
 		release_timer = SDL_GetTicks();

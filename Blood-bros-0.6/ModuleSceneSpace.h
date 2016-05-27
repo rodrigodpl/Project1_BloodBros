@@ -7,7 +7,7 @@
 struct SDL_Texture;
 
 #define WAVE_NUM_OF_ENEMIES 10
-#define ENEMY_NUM_STG1 6
+#define ENEMY_NUM_STG1 10
 
 class ModuleSceneSpace : public Module
 {

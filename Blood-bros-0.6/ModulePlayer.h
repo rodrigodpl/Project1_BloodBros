@@ -81,6 +81,7 @@ public:
 	Animation crouched_roll_right;
 	Animation killed;
 	Animation respawning;
+	Animation victory_dance;
 
 	fPoint position;
 	Uint32 invincibility_timer;

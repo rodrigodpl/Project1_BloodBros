@@ -159,6 +159,10 @@ update_status ModuleReticle::Update()
 		break;
 	}
 
+	if (App->player->current_animation == &App->player->victory_dance){
+		current_animation->Reset();
+		current_animation = &basic_idle;
+	}
 
 	ret_col->SetPos(position.x, position.y);
 

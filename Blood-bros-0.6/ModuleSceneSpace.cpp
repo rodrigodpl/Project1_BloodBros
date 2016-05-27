@@ -87,6 +87,7 @@ bool ModuleSceneSpace::CleanUp()
 	App->scenario->Disable();
 	App->debug->Disable();
 	App->power_ups->Disable();
+	App->tincan->Disable();
 
 
 	return true;
@@ -96,8 +97,16 @@ bool ModuleSceneSpace::CleanUp()
 update_status ModuleSceneSpace::Update()
 {
 	if (defeated_enemies >= ENEMY_NUM_STG1 && is_backgr_destroyed){
-		Mix_FadeOutMusic(1000);
-		App->fade->FadeToBlack(this, (Module*)App->scene_score);
+		if (App->player->current_animation != &App->player->victory_dance){
+			App->player->current_animation->Reset();
+			App->player->current_animation = &App->player->victory_dance;
+		}
+		
+
+		if (App->player->current_animation->Finished()){
+			Mix_FadeOutMusic(1000);
+			App->fade->FadeToBlack(this, (Module*)App->scene_score);
+		}
 	}  // Win condition
 
 	current_level_time = SDL_GetTicks() - init_level_time;

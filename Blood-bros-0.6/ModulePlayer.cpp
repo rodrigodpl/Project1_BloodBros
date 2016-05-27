@@ -20,29 +20,28 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 359, 20, 70, 184 });
 
 
-	idle_shooting_0.PushBack({ 24, 221, 111, 180 });
-	idle_shooting_0.PushBack({ 12, 419, 123, 177 });
+	idle_shooting_0.PushBack({ 24, 1300, 111, 180 });
+	idle_shooting_0.PushBack({ 21, 1514, 114, 176 });
 	idle_shooting_0.speed = 0.15f;
-	idle_shooting_30.PushBack({ 159, 220, 93, 180 });
-	idle_shooting_30.PushBack({ 141, 418, 111, 177 });
+	idle_shooting_30.PushBack({ 186, 1300, 93, 180 });
+	idle_shooting_30.PushBack({ 168, 1514, 111, 177 });
 	idle_shooting_30.speed = 0.15f;
-	idle_shooting_60.PushBack({ 279, 208, 87, 192 });
-	idle_shooting_60.PushBack({ 258, 409, 108, 186 });
+	idle_shooting_60.PushBack({ 322, 1289, 87, 191 });
+	idle_shooting_60.PushBack({ 301, 1505, 108, 186 });
 	idle_shooting_60.speed = 0.15f;
-	idle_shooting_90.PushBack({ 390, 208, 69, 195 });
-	idle_shooting_90.PushBack({ 376, 406, 83, 192 });
+	idle_shooting_90.PushBack({ 449, 1287, 69, 193 });
+	idle_shooting_90.PushBack({ 435, 1499, 83, 192 });
 	idle_shooting_90.speed = 0.15f;
-	idle_shooting_120.PushBack({ 486, 208, 84, 195 });
-	idle_shooting_120.PushBack({ 486, 406, 66, 192 });
+	idle_shooting_120.PushBack({ 581, 1288, 84, 192 });
+	idle_shooting_120.PushBack({ 581, 1499, 66, 192 });
 	idle_shooting_120.speed = 0.15f;
-	idle_shooting_150.PushBack({ 573, 220, 102, 183 });
-	idle_shooting_150.PushBack({ 573, 418, 90, 180 });
+	idle_shooting_150.PushBack({ 696, 1297, 102, 183 });
+	idle_shooting_150.PushBack({ 696, 1511, 90, 180 });
 	idle_shooting_150.speed = 0.15f;
-	idle_shooting_180.PushBack({ 684, 220, 135, 183 });
-	idle_shooting_180.PushBack({ 684, 418, 123, 180 });
+	idle_shooting_180.PushBack({ 807, 1297, 129, 183 });
+	idle_shooting_180.PushBack({ 807, 1511, 120, 180 });
 	idle_shooting_180.speed = 0.15f;
-
-
+	
 
 	left.PushBack({ 248, 20, 88, 181 });
 	left.PushBack({ 612, 602, 103, 181 });
@@ -65,27 +64,37 @@ ModulePlayer::ModulePlayer()
 
 	crouched_idle.PushBack({ 1228, 20, 83, 136 });
 
-	crouched_shooting_0.PushBack({ 884, 168, 120, 135 });
-	crouched_shooting_0.PushBack({ 891, 316, 114, 135 });
+	crouched_shooting_0.PushBack({ 43, 1726, 120, 135 });
+	crouched_shooting_0.PushBack({ 31, 1957, 132, 132 });
 	crouched_shooting_0.speed = 0.15f;
-	crouched_shooting_30.PushBack({ 1025, 168, 99, 135 });
-	crouched_shooting_30.PushBack({ 1031, 316, 93, 135 });
+	crouched_shooting_30.PushBack({ 206, 1762, 99, 135 });
+	crouched_shooting_30.PushBack({ 188, 1957, 117, 132 });
 	crouched_shooting_30.speed = 0.15f;
-	crouched_shooting_60.PushBack({ 1136, 156, 84, 147 });
-	crouched_shooting_60.PushBack({ 1136, 304, 84, 147 });
+	crouched_shooting_60.PushBack({ 350, 1750, 84, 147 });
+	crouched_shooting_60.PushBack({ 332, 1933, 102, 156 });
 	crouched_shooting_60.speed = 0.15f;
-	crouched_shooting_90.PushBack({ 1229, 156, 81, 147 });
-	crouched_shooting_90.PushBack({ 1229, 304, 81, 147 });
+	crouched_shooting_90.PushBack({ 502, 1750, 81, 147 });
+	crouched_shooting_90.PushBack({ 493, 1933, 90, 156 });
 	crouched_shooting_90.speed = 0.15f;
-	crouched_shooting_120.PushBack({ 1331, 157, 87, 146 });
-	crouched_shooting_120.PushBack({ 1331, 304, 84, 147 });
+	crouched_shooting_120.PushBack({ 637, 1751, 87, 146 });
+	crouched_shooting_120.PushBack({ 637, 1945, 81, 144 });
 	crouched_shooting_120.speed = 0.15f;
-	crouched_shooting_150.PushBack({ 1421, 168, 108, 135 });
-	crouched_shooting_150.PushBack({ 1421, 316, 108, 135 });
+	crouched_shooting_150.PushBack({ 772, 1762, 108, 135 });
+	crouched_shooting_150.PushBack({ 772, 1951, 90, 138 });
 	crouched_shooting_150.speed = 0.15f;
-	crouched_shooting_180.PushBack({ 1538, 168, 141, 135 });
-	crouched_shooting_180.PushBack({ 1547, 316, 129, 135 });
+	crouched_shooting_180.PushBack({ 893, 1762, 139, 35 });
+	crouched_shooting_180.PushBack({ 893, 1957, 123, 132 });
 	crouched_shooting_180.speed = 0.15f;
+
+	victory_dance.PushBack({ 1025, 1315, 90, 180 });
+	victory_dance.PushBack({ 1125, 1321, 84, 174 });
+	victory_dance.PushBack({ 1221, 1384, 48, 111 });
+	victory_dance.PushBack({ 1283, 1378, 48, 117 });
+	victory_dance.PushBack({ 1338, 1420, 33, 75 });
+	victory_dance.PushBack({ 1385, 1420, 36, 75 });
+	victory_dance.PushBack({ 1444, 1457, 15, 30 });
+	victory_dance.speed = 0.10f;
+	victory_dance.loop = false;
 
 
 	crouched_roll_left.PushBack({ 1328, 1126, 130, 82 });
@@ -161,7 +170,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	graphics = App->textures->Load("cowboy.png");
+	graphics = App->textures->Load("player_spritesheet.png");
 	current_animation = &idle;
 
 	shooting = false;
@@ -174,6 +183,17 @@ bool ModulePlayer::Start()
 	position.y = 610;
 
 	col = App->collision->AddCollider({ position.x, position.y, 70, 90 }, COLLIDER_PLAYER, this);
+
+
+	left.Reset();
+	right.Reset();
+	jump_roll_left.Reset();
+	jump_roll_right.Reset();
+	crouched_roll_left.Reset();
+	crouched_roll_right.Reset();
+	killed.Reset();
+	respawning.Reset();
+	victory_dance.Reset();
 
 	return true;
 }
@@ -194,234 +214,247 @@ update_status ModulePlayer::Update()
 
 	if (alive){
 
-		uint input = App->input->player_input();
+		if (current_animation == &victory_dance){
+			if (App->player->current_animation->current_frame > 2)
+				App->player->position = { 150, SCREEN_HEIGHT - 220 };
 
-		if (input != IN_NULL){
-			switch (state){
+			if (App->player->current_animation->current_frame > 4)
+				App->player->position = { 150, SCREEN_HEIGHT - 320 };
 
-			case ST_IDLE:
+			if (App->player->current_animation->current_frame > 6)
+				App->player->position = { 150, SCREEN_HEIGHT - 380 };
+		}
+		else{
 
-				switch (input){
+			uint input = App->input->player_input();
 
-				case IN_CROUCH_DOWN:
-					state = ST_CROUCHED_IDLE;
-					current_animation = &crouched_idle; break;
-				case IN_LEFT_DOWN:
-					state = ST_WALK_LEFT;
-					speed = -3;
-					current_animation = &left; break;
-				case IN_RIGHT_DOWN:
-					state = ST_WALK_RIGHT;
-					speed = 3;
-					current_animation = &right; break;
-				case IN_SHOT:
-					state = ST_IDLE_SHOOTING;
-					shooting = true;
-					GetShootingAngle(state); break;
+			if (input != IN_NULL){
+				switch (state){
 
-				}
+				case ST_IDLE:
 
-				break;
+					switch (input){
 
-			case ST_IDLE_SHOOTING:
+					case IN_CROUCH_DOWN:
+						state = ST_CROUCHED_IDLE;
+						current_animation = &crouched_idle; break;
+					case IN_LEFT_DOWN:
+						state = ST_WALK_LEFT;
+						speed = -3;
+						current_animation = &left; break;
+					case IN_RIGHT_DOWN:
+						state = ST_WALK_RIGHT;
+						speed = 3;
+						current_animation = &right; break;
+					case IN_SHOT:
+						state = ST_IDLE_SHOOTING;
+						shooting = true;
+						GetShootingAngle(state); break;
 
-				shooting = false;
+					}
 
-				switch (input){
+					break;
 
-				case IN_SHOT_FINISH:
-					state = ST_IDLE;
-					current_animation->Reset();
-					current_animation = &idle; break;
-				case IN_SHOT:
-					GetShootingAngle(state);
-					shooting = true; break;
-				case IN_CROUCH_DOWN:
-					state = ST_CROUCHED_SHOOTING;
-					uint curr_frame = current_animation->current_frame;
-					current_animation->Reset();
-					current_animation = &crouched_shooting;
-					current_animation->current_frame = curr_frame; break;
+				case ST_IDLE_SHOOTING:
 
-				}
+					shooting = false;
 
-				break;
+					switch (input){
+
+					case IN_SHOT_FINISH:
+						state = ST_IDLE;
+						current_animation->Reset();
+						current_animation = &idle; break;
+					case IN_SHOT:
+						GetShootingAngle(state);
+						shooting = true; break;
+					case IN_CROUCH_DOWN:
+						state = ST_CROUCHED_SHOOTING;
+						float curr_frame = current_animation->current_frame;
+						current_animation->Reset();
+						current_animation = &crouched_shooting;
+						current_animation->current_frame = curr_frame; break;
+
+					}
+
+					break;
 
 
-			case ST_CROUCHED_IDLE:
+				case ST_CROUCHED_IDLE:
 
-				switch (input){
+					switch (input){
 
-				case IN_SHOT:
-					state = ST_CROUCHED_SHOOTING;
-					shooting = true;
-					GetShootingAngle(state); break;
-				case IN_CROUCH_UP:
-					state = ST_IDLE;
-					current_animation = &idle; break;
-				case IN_JUMP_LEFT:
-					state = ST_ROLL_LEFT;
-					immune = true;
-					current_animation = &crouched_roll_left;
-					speed = -5; break;
-				case IN_JUMP_RIGHT:
-					state = ST_ROLL_RIGHT;
-					immune = true;
-					current_animation = &crouched_roll_right;
-					speed = 5; break;
+					case IN_SHOT:
+						state = ST_CROUCHED_SHOOTING;
+						shooting = true;
+						GetShootingAngle(state); break;
+					case IN_CROUCH_UP:
+						state = ST_IDLE;
+						current_animation = &idle; break;
+					case IN_JUMP_LEFT:
+						state = ST_ROLL_LEFT;
+						immune = true;
+						current_animation = &crouched_roll_left;
+						speed = -5; break;
+					case IN_JUMP_RIGHT:
+						state = ST_ROLL_RIGHT;
+						immune = true;
+						current_animation = &crouched_roll_right;
+						speed = 5; break;
 
-				}
+					}
 
-				break;
+					break;
 
-			case ST_CROUCHED_SHOOTING:
+				case ST_CROUCHED_SHOOTING:
 
-				shooting = false;
+					shooting = false;
 
-				switch (input){
+					switch (input){
 
-				case IN_SHOT_FINISH:
-					state = ST_CROUCHED_IDLE;
-					current_animation->Reset();
-					current_animation = &crouched_idle; break;
-				case IN_SHOT:
-					GetShootingAngle(state);
-					shooting = true; break;
-				case IN_CROUCH_UP:
-					state = ST_IDLE;
-					uint curr_frame = current_animation->current_frame;
-					current_animation->Reset();
-					current_animation = &idle_shooting;
-					current_animation->current_frame = curr_frame; break;
+					case IN_SHOT_FINISH:
+						state = ST_CROUCHED_IDLE;
+						current_animation->Reset();
+						current_animation = &crouched_idle; break;
+					case IN_SHOT:
+						GetShootingAngle(state);
+						shooting = true; break;
+					case IN_CROUCH_UP:
+						state = ST_IDLE;
+						float curr_frame = current_animation->current_frame;
+						current_animation->Reset();
+						current_animation = &idle_shooting;
+						current_animation->current_frame = curr_frame; break;
 
-				}
+					}
 
-				break;
+					break;
 
-			case ST_WALK_LEFT:
+				case ST_WALK_LEFT:
 
-				switch (input){
+					switch (input){
 
-				case IN_SHOT:
-					state = ST_IDLE_SHOOTING;
-					current_animation->Reset();
-					current_animation = &idle_shooting;
-					speed = 0;
-					shooting = true; break;
-				case IN_JUMP_LEFT:
-					state = ST_JUMP_LEFT;
-					current_animation->Reset();
-					immune = true;
-					current_animation = &jump_roll_left;
-					speed = -5; break;
-				case IN_IDLE:
-					state = ST_IDLE;
-					current_animation->Reset();
-					speed = 0;
-					current_animation = &idle; break;
-				case IN_CROUCH_DOWN:
-					state = ST_CROUCHED_IDLE;
-					current_animation->Reset();
-					speed = 0;
-					current_animation = &crouched_idle; break;
+					case IN_SHOT:
+						state = ST_IDLE_SHOOTING;
+						current_animation->Reset();
+						current_animation = &idle_shooting;
+						speed = 0;
+						shooting = true; break;
+					case IN_JUMP_LEFT:
+						state = ST_JUMP_LEFT;
+						current_animation->Reset();
+						immune = true;
+						current_animation = &jump_roll_left;
+						speed = -5; break;
+					case IN_IDLE:
+						state = ST_IDLE;
+						current_animation->Reset();
+						speed = 0;
+						current_animation = &idle; break;
+					case IN_CROUCH_DOWN:
+						state = ST_CROUCHED_IDLE;
+						current_animation->Reset();
+						speed = 0;
+						current_animation = &crouched_idle; break;
 
-				}
+					}
 
-				break;
+					break;
 
-			case ST_WALK_RIGHT:
+				case ST_WALK_RIGHT:
 
-				switch (input){
+					switch (input){
 
-				case IN_SHOT:
-					state = ST_IDLE_SHOOTING;
-					current_animation->Reset();
-					current_animation = &idle_shooting;
-					speed = 0;
-					shooting = true; break;
-				case IN_JUMP_RIGHT:
-					state = ST_JUMP_RIGHT;
-					current_animation->Reset();
-					immune = true;
-					current_animation = &jump_roll_right;
-					speed = 5; break;
-				case IN_IDLE:
-					state = ST_IDLE;
-					current_animation->Reset();
-					speed = 0;
-					current_animation = &idle; break;
-				case IN_CROUCH_DOWN:
-					state = ST_CROUCHED_IDLE;
-					current_animation->Reset();
-					speed = 0;
-					current_animation = &crouched_idle; break;
+					case IN_SHOT:
+						state = ST_IDLE_SHOOTING;
+						current_animation->Reset();
+						current_animation = &idle_shooting;
+						speed = 0;
+						shooting = true; break;
+					case IN_JUMP_RIGHT:
+						state = ST_JUMP_RIGHT;
+						current_animation->Reset();
+						immune = true;
+						current_animation = &jump_roll_right;
+						speed = 5; break;
+					case IN_IDLE:
+						state = ST_IDLE;
+						current_animation->Reset();
+						speed = 0;
+						current_animation = &idle; break;
+					case IN_CROUCH_DOWN:
+						state = ST_CROUCHED_IDLE;
+						current_animation->Reset();
+						speed = 0;
+						current_animation = &crouched_idle; break;
 
-				}
+					}
 
-				break;
+					break;
 
-			case ST_JUMP_LEFT:
+				case ST_JUMP_LEFT:
 
-				state = ST_IDLE;
-				current_animation->Reset();
-				immune = false;
-				speed = 0;
-				current_animation = &idle; break;
-
-			case ST_JUMP_RIGHT:
-
-				state = ST_IDLE;
-				current_animation->Reset();
-				immune = false;
-				speed = 0;
-				current_animation = &idle; break;
-
-			case ST_ROLL_LEFT:
-
-				switch (input){
-
-				case IN_CROUCH_DOWN:
-					state = ST_CROUCHED_IDLE;
-					current_animation->Reset();
-					immune = false;
-					speed = 0;
-					current_animation = &crouched_idle; break;
-				case IN_IDLE:
 					state = ST_IDLE;
 					current_animation->Reset();
 					immune = false;
 					speed = 0;
 					current_animation = &idle; break;
 
-				}
+				case ST_JUMP_RIGHT:
 
-				break;
-
-			case ST_ROLL_RIGHT:
-
-				switch (input){
-
-				case IN_CROUCH_DOWN:
-					state = ST_CROUCHED_IDLE;
-					current_animation->Reset();
-					immune = false;
-					speed = 0;
-					current_animation = &crouched_idle; break;
-				case IN_IDLE:
 					state = ST_IDLE;
 					current_animation->Reset();
 					immune = false;
 					speed = 0;
 					current_animation = &idle; break;
 
-				}
+				case ST_ROLL_LEFT:
 
-				break;
+					switch (input){
+
+					case IN_CROUCH_DOWN:
+						state = ST_CROUCHED_IDLE;
+						current_animation->Reset();
+						immune = false;
+						speed = 0;
+						current_animation = &crouched_idle; break;
+					case IN_IDLE:
+						state = ST_IDLE;
+						current_animation->Reset();
+						immune = false;
+						speed = 0;
+						current_animation = &idle; break;
+
+					}
+
+					break;
+
+				case ST_ROLL_RIGHT:
+
+					switch (input){
+
+					case IN_CROUCH_DOWN:
+						state = ST_CROUCHED_IDLE;
+						current_animation->Reset();
+						immune = false;
+						speed = 0;
+						current_animation = &crouched_idle; break;
+					case IN_IDLE:
+						state = ST_IDLE;
+						current_animation->Reset();
+						immune = false;
+						speed = 0;
+						current_animation = &idle; break;
+
+					}
+
+					break;
+				}
 			}
 		}
 		
 		if (position.x + speed < SCREEN_WIDTH - 150 && position.x + speed > 20)
-		position.x += speed;
+			position.x += speed;
 
 		col->SetPos(position.x, position.y - 100);
 
@@ -448,6 +481,7 @@ update_status ModulePlayer::Update()
 		}
 
 	}
+
 	
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
