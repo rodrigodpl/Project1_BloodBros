@@ -50,7 +50,7 @@ ModuleParticles::ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Particles_SpriteSheet.png");
+	graphics = App->textures->Load("sprites/Particles_SpriteSheet.png");
 
 	//Load fx
 

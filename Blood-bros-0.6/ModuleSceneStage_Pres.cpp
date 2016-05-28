@@ -15,7 +15,7 @@ bool ModuleSceneStage_Pres::Start()
 {
 	LOG("Loading space intro");
 
-	background = App->textures->Load("stage_pres_background.png");
+	background = App->textures->Load("sprites/stage_pres_background.png");
 
 	App->audio->PlayMusic("Music/startscreen.wav");
 

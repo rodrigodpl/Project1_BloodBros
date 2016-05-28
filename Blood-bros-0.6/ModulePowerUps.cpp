@@ -14,13 +14,8 @@ ModulePowerUps::ModulePowerUps()
 {
 	for (uint i = 0; i < MAX_POWER_UPS; ++i)
 		active_power_ups[i] = nullptr;
-}
-
-
-bool ModulePowerUps::Start()
-{
-	power_up_sprites = App->textures->Load("power_ups_spritesheet.png");
-
+	
+	
 	points_1000_anim.PushBack({ 0, 123, 80, 48 });
 	points_1000_anim.PushBack({ 154, 123, 80, 48 });
 	points_1000_anim.speed = 0.2f;
@@ -56,6 +51,14 @@ bool ModulePowerUps::Start()
 	extralive_anim.PushBack({ 835, 0, 64, 64 });
 	extralive_anim.PushBack({ 903, 0, 64, 64 });
 	extralive_anim.speed = 0.2f;
+}
+
+
+bool ModulePowerUps::Start()
+{
+	power_up_sprites = App->textures->Load("sprites/power_ups_spritesheet.png");
+
+	
 									
 	return true;
 }

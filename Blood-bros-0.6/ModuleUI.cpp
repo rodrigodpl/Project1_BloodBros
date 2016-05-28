@@ -12,7 +12,7 @@ bool ModuleUI::Start(){
 
 	text_manager = new ModuleFonts();
 
-	UI_sprites = App->textures->Load("UI_spritesheet.png");
+	UI_sprites = App->textures->Load("sprites/UI_spritesheet.png");
 
 	FOE_letters.PushBack({ 118, 67, 150, 40 });
 
@@ -30,7 +30,7 @@ bool ModuleUI::Start(){
 	top_score_logo.PushBack({ 22, 191, 80, 40 });
 
 	//white font:
-	text_manager->Load("font.png", "!@#$%&º()*+,-./0123456789$:;<=>?ªABCDEFGHIJKLMNOPQRSTUVWXYZ[/]^_'abcdefghijklmnopqrstuvwxyz·?& ¬", 1);
+	text_manager->Load("sprites/font.png", "!@#$%&º()*+,-./0123456789$:;<=>?ªABCDEFGHIJKLMNOPQRSTUVWXYZ[/]^_'abcdefghijklmnopqrstuvwxyz·?& ¬", 1);
 	// ª == (C); ¬ == · (big);
 	return true;
 

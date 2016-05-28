@@ -65,7 +65,7 @@ bool ModuleReticle::Start()
 {
 	LOG("Loading reticle");
 
-	graphics = App->textures->Load("crossdot.png");
+	graphics = App->textures->Load("sprites/crossdot.png");
 
 	basic_player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");
 	shotgun_player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");

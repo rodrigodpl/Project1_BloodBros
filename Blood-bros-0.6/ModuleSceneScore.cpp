@@ -15,7 +15,7 @@ bool ModuleSceneScore::Start()
 {
 	LOG("Loading space intro");
 
-	background = App->textures->Load("scorescreen.png");
+	background = App->textures->Load("sprites/scorescreen.png");
 
 	App->render->camera.x = App->render->camera.y = 0;
 

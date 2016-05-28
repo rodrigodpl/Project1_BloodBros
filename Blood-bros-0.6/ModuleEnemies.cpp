@@ -16,6 +16,9 @@
 #include "Enemy_Indian_003.h"
 #include "Enemy_Indian_002.h"
 #include "NPC_pig_001.h"
+#include "Enemy_Zeppelin.h"
+#include "Enemy_Horse_001.h"
+#include "Enemy_Mounted_Indian_001.h"
 #include "ModuleReticle.h"
 #include "p2Point.h"
 
@@ -30,7 +33,7 @@ ModuleEnemies::ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	sprites = App->textures->Load("complete_enemy_spritesheet.png");
+	sprites = App->textures->Load("sprites/complete_enemy_spritesheet.png");
 
 	return true;
 }
@@ -84,7 +87,7 @@ update_status ModuleEnemies::PostUpdate()
 		{
 			if ((enemies[i]->position.x < (0 - SPAWN_MARGIN) || enemies[i]->position.x >(SCREEN_WIDTH + SPAWN_MARGIN)
 				|| enemies[i]->position.y < (0 - SPAWN_MARGIN) || enemies[i]->position.y >(SCREEN_HEIGHT + SPAWN_MARGIN))
-				|| (enemies[i]->state == EN_ST_DYING && enemies[i]->animation->Finished() && enemies[i]->is_killable)){
+				|| (enemies[i]->animation == &enemies[i]->dying && enemies[i]->animation->Finished() && enemies[i]->is_killable)){
 
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 				delete enemies[i];
@@ -154,6 +157,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_Indian_003(info.x, info.y); break;
 			case ENEMY_TYPES::PIG_001:
 				enemies[i] = new NPC_Pig_001(info.x, info.y); break;
+			case ENEMY_TYPES::ZEPPELIN:
+				enemies[i] = new Enemy_Zeppelin(info.x, info.y); break;
+			case ENEMY_TYPES::MOUNTED_INDIAN_001:
+				enemies[i] = new Enemy_Mounted_Indian_001(info.x, info.y); break;
+			case ENEMY_TYPES::HORSE_001:
+				enemies[i] = new Enemy_Horse_001(info.x, info.y); break;
 		}
 	}
 }

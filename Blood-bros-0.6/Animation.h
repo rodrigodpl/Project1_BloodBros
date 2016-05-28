@@ -13,6 +13,9 @@ class Animation
 	friend class Enemy_Indian_001;
 	friend class Enemy_Indian_002;
 	friend class Enemy_Indian_003;
+	friend class Enemy_Horse_001;
+	friend class Enemy_Mounted_Indian_001;
+	friend class Enemy_Zeppelin;
 
 public:
 	

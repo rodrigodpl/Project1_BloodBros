@@ -170,7 +170,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	graphics = App->textures->Load("player_spritesheet.png");
+	graphics = App->textures->Load("sprites/player_spritesheet.png");
 	current_animation = &idle;
 
 	shooting = false;

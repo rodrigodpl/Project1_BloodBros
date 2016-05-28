@@ -22,7 +22,7 @@ bool ModuleScenario::Start()
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 		elements[i] = nullptr;
 
-	scene_sprites = App->textures->Load("stage3_1_scenario.png");
+	scene_sprites = App->textures->Load("sprites/stage3_1_scenario.png");
 
 	bottle_index = 0;
 

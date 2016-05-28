@@ -23,7 +23,7 @@ bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("background.png");
+	background = App->textures->Load("sprites/background.png");
 
 	App->player->Enable();
 	App->particles->Enable();
@@ -100,6 +100,8 @@ update_status ModuleSceneSpace::Update()
 		if (App->player->current_animation != &App->player->victory_dance){
 			App->player->current_animation->Reset();
 			App->player->current_animation = &App->player->victory_dance;
+			App->enemies->Disable();
+			App->debug->activated_functions[NO_ENEMIES_F3] = true;
 		}
 		
 
@@ -121,34 +123,46 @@ update_status ModuleSceneSpace::Update()
 		released_enemies[1] = true;
 	}
 
-	if (current_level_time > 10000 && released_enemies[2] == false){
-		App->enemies->AddEnemy(BARREL_GUY, SCREEN_WIDTH + 20, 420);
+	if (current_level_time > 9000 && released_enemies[2] == false){
+		App->enemies->AddEnemy(HORSE_001, SCREEN_WIDTH + 20, 400);
+		App->enemies->AddEnemy(MOUNTED_INDIAN_001, SCREEN_WIDTH + 30, 380);
 		released_enemies[2] = true;
 	}
 
 	if (current_level_time > 12000 && released_enemies[3] == false){
-		App->enemies->AddEnemy(PIG_001, SCREEN_WIDTH + 20, 380);
+		App->enemies->AddEnemy(BARREL_GUY, -20, 420);
 		released_enemies[3] = true;
 	}
 
-	if (current_level_time > 15000 && released_enemies[4] == false){
-		if (!is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 222);
-		else if (is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 362);
-
+	if (current_level_time > 13000 && released_enemies[4] == false){
+		App->enemies->AddEnemy(PIG_001, SCREEN_WIDTH + 20, 380);
 		released_enemies[4] = true;
 	}
-	if (current_level_time > 18000 && released_enemies[5] == false){
-		if (!is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 222);
-		else if (is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 362);
 
+	if (current_level_time > 18000 && released_enemies[5] == false && is_backgr_destroyed){
+		App->enemies->AddEnemy(ZEPPELIN, SCREEN_WIDTH - 95, 200);
 		released_enemies[5] = true;
 	}
 
-	if (current_level_time > 22000)
+	if (current_level_time > 21000 && released_enemies[6] == false){
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
+		released_enemies[6] = true;
+	}
+
+	if (current_level_time > 24000 && released_enemies[7] == false){
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
+		released_enemies[7] = true;
+	}
+
+	if (current_level_time > 26000)
 		loop_enemies();
 
 

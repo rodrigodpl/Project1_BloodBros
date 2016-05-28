@@ -37,7 +37,7 @@ bool ModuleTincan::Start(){
 
 	hit_counter = NO_HIT; release_timer = 0;
 
-	tincan_sprites = App->textures->Load("tincan_spritesheet.png");
+	tincan_sprites = App->textures->Load("sprites/tincan_spritesheet.png");
 
 	tincan_col = App->collision->AddCollider({ position.x, position.y, 40, 40 }, COLLIDER_TINCAN, this);
 

@@ -15,7 +15,7 @@ bool ModuleSceneTad::Start()
 {
 	LOG("Loading space intro");
 
-	background = App->textures->Load("TadCorporation_background.png");
+	background = App->textures->Load("sprites/TadCorporation_background.png");
 
 	App->render->camera.x = App->render->camera.y = 0;
 

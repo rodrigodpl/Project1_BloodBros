@@ -15,7 +15,7 @@ bool ModuleSceneWelcome::Start()
 {
 	LOG("Loading space intro");
 
-	background = App->textures->Load("welcome_screen.png");
+	background = App->textures->Load("sprites/welcome_screen.png");
 
 	App->render->camera.x = App->render->camera.y = 0;
 

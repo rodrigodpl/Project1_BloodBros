@@ -9,36 +9,41 @@
 Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 {
 	
-	walking.PushBack({ 92, 554, 76, 138 });
-	walking.PushBack({ 218, 552, 56, 141 });
-	walking.PushBack({ 330, 555, 61, 141 });
-	walking.PushBack({ 456, 552, 55, 144 });
+	walking.PushBack({ 697, 527, 54, 143 });
+	walking.PushBack({ 817, 530, 60, 140 });
+	walking.PushBack({ 934, 527, 55, 140 });
+	walking.PushBack({ 1040, 529, 75, 138 });
 	walking.speed = 0.1f;
 
-	to_protect.PushBack({ 456, 723, 55, 133 });
-	to_protect.PushBack({ 101, 875, 57, 98 });
-	to_protect.PushBack({ 215, 904, 55, 70 });
+
+	to_protect.PushBack({ 697, 698, 54, 132 });
+	to_protect.PushBack({ 1051, 851, 55, 96 });
+	to_protect.PushBack({ 938, 879, 54, 69 });
 	to_protect.speed = 0.1f;
 	to_protect.loop = false;
 
-	protect.PushBack({ 215, 904, 55, 70 });
+	protect.PushBack({ 938, 879, 54, 69 });
 
-	from_protect.PushBack({ 215, 904, 55, 70 });
-	from_protect.PushBack({ 101, 875, 57, 98 });
-	from_protect.PushBack({ 456, 723, 55, 133 });
+	from_protect.PushBack({ 938, 879, 54, 69 });
+	from_protect.PushBack({ 1051, 851, 55, 96 });
+	from_protect.PushBack({ 697, 698, 54, 132 });
 	from_protect.speed = 0.1f;
 	from_protect.loop = false;
 
-	shooting.PushBack({ 90, 712, 77, 142 });
-	shooting.PushBack({ 206, 715, 76, 139 });
-	shooting.PushBack({ 312, 715, 88, 139 });
-	shooting.PushBack({ 206, 715, 76, 139 });
-	shooting.PushBack({ 90, 712, 77, 142 });
+
+	shooting.PushBack({ 1041, 687, 76, 141 });
+	shooting.PushBack({ 925, 690, 76, 138 });
+	shooting.PushBack({ 808, 690, 76, 138 });
+	shooting.PushBack({ 925, 690, 76, 138 });
+	shooting.PushBack({ 1041, 687, 76, 141 });
 	shooting.speed = 0.1f;
 	shooting.loop = false;
 
-	dying.PushBack({ 0, 0, 0, 0});
-	dying.PushBack({ 0, 0, 0, 0});
+
+	dying.PushBack({ 413, 856, 66, 132 });
+	dying.PushBack({ 502, 856, 93, 132 });
+	dying.PushBack({ 612, 868, 87, 123 });
+	dying.PushBack({ 713, 895, 84, 93 });
 	dying.speed = 0.15f;
 	dying.loop = false;
 
@@ -47,18 +52,18 @@ Enemy_Barrel_Guy::Enemy_Barrel_Guy(int x, int y) : Enemy(x, y)
 	orig_pos.x = x;
 	orig_pos.y = y;
 
-	Barrel_Guy_path.PushBack({ -2, 0 }, 100, &walking);
-	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &shooting);
-	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
-	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
-	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);
-	Barrel_Guy_path.PushBack({ -2, 0 }, 100, &walking);
-	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &shooting);
+	Barrel_Guy_path.PushBack({ 2, 0 }, 100, &walking);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 70, &shooting);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);
 	Barrel_Guy_path.PushBack({ 2, 0 }, 100, &walking);
-	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &shooting);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 70, &shooting);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);
+	Barrel_Guy_path.PushBack({ 2, 0 }, 100, &walking);
+	Barrel_Guy_path.PushBack({ 0, 0 }, 70, &shooting);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &to_protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 100, &protect);
 	Barrel_Guy_path.PushBack({ 0, 0 }, 30, &from_protect);

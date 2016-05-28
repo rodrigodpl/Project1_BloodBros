@@ -9,8 +9,8 @@
 
 NPC_Pig_001::NPC_Pig_001(int x, int y) : Enemy(x, y)
 {
-	walking_right.PushBack({ 96, 429, 108, 75 });
-	walking_right.PushBack({ 218, 429, 108, 75 });
+	walking_right.PushBack({ 74, 416, 102, 67 });
+	walking_right.PushBack({ 197, 418, 102, 64 });
 	walking_right.speed = 0.1f;
 
 	collider = App->collision->AddCollider({ position.x, position.y - 116, 108, 75 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -18,13 +18,13 @@ NPC_Pig_001::NPC_Pig_001(int x, int y) : Enemy(x, y)
 	orig_pos.x = x;
 	orig_pos.y = y;
 
-	dying.PushBack({ 96, 429, 108, 75 });
+	dying.PushBack({ 74, 416, 102, 67 });
 	dying.PushBack({ 0, 0, 0, 0 });
-	dying.PushBack({ 96, 429, 108, 75 });
+	dying.PushBack({ 74, 416, 102, 67 });
 	dying.PushBack({ 0, 0, 0, 0 });
-	dying.PushBack({ 218, 429, 108, 75 });
+	dying.PushBack({ 197, 418, 102, 64 });
 	dying.PushBack({ 0, 0, 0, 0 });
-	dying.PushBack({ 218, 429, 108, 75 });
+	dying.PushBack({ 197, 418, 102, 64 });
 	dying.PushBack({ 0, 0, 0, 0 });
 	dying.speed = 0.2f;
 	dying.loop = false;
@@ -49,8 +49,8 @@ void NPC_Pig_001::Update()
 		
 	if (state == EN_ST_DYING && animation != &dying){
 		
-		if (drops_power_up != PU_LIST::NO_POWER_UP)
-			App->power_ups->AddPU(drops_power_up, position.x, position.y);
+
+		App->power_ups->AddPU(drops_power_up, position.x, position.y);
 
 		animation->Reset();
 		animation = &dying;

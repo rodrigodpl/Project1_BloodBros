@@ -8,32 +8,32 @@
 
 Enemy_Indian_002::Enemy_Indian_002(int x, int y) : Enemy(x, y)
 {
-	walking_left.PushBack({ 762, 49, 96, 114 });
-	walking_left.PushBack({ 868, 49, 78, 115 });
-	walking_left.PushBack({ 959, 48, 52, 116 });
-	walking_left.PushBack({ 1021, 49, 97, 112 });
-	walking_left.PushBack({ 1136, 46, 80, 116 });
-	walking_left.PushBack({ 1240, 47, 55, 116 });
-	walking_left.speed = 0.1f;
-
-	walking_right.PushBack({ 27, 46, 80, 116 });
-	walking_right.PushBack({ 94, 49, 97, 112 });
-	walking_right.PushBack({ 187, 48, 52, 116 });
-	walking_right.PushBack({ 294, 49, 78, 115 });
-	walking_right.PushBack({ 358, 49, 96, 114 });
-	walking_right.PushBack({ 446, 47, 55, 116 });
+	walking_right.PushBack({ 0, 32, 54, 115 });
+	walking_right.PushBack({ 68, 31, 79, 115 });
+	walking_right.PushBack({ 163, 33, 96, 112 });
+	walking_right.PushBack({ 270, 31, 51, 115 });
+	walking_right.PushBack({ 335, 32, 77, 115 });
+	walking_right.PushBack({ 422, 34, 96, 112 });
 	walking_right.speed = 0.1f;
 
-	shooting.PushBack({ 554, 50, 100, 113 });
-	shooting.PushBack({ 666, 19, 82, 145 });
-	shooting.PushBack({ 554, 50, 100, 113 });
+	walking_left.PushBack({ 1215, 28, 54, 115 });
+	walking_left.PushBack({ 1110, 27, 79, 115 });
+	walking_left.PushBack({ 996, 30, 96, 112 });
+	walking_left.PushBack({ 934, 29, 51, 115 });
+	walking_left.PushBack({ 843, 30, 77, 115 });
+	walking_left.PushBack({ 737, 31, 96, 112 });
+	walking_left.speed = 0.1f;
+
+	shooting.PushBack({ 529, 31, 99, 112 });
+	shooting.PushBack({ 641, 0, 82, 144 });
+	shooting.PushBack({ 529, 31, 99, 112 });
 	shooting.speed = 0.05f;
 	shooting.loop = false;
 
-	dying.PushBack({ 45, 208, 93, 134 });
-	dying.PushBack({ 164, 204, 85, 106 });
-	dying.PushBack({ 273, 250, 102, 83 });
-	dying.PushBack({ 164, 204, 85, 106 });
+	dying.PushBack({ 24, 190, 84, 130 });
+	dying.PushBack({ 139, 224, 83, 115 });
+	dying.PushBack({ 247, 233, 102, 80 });
+	dying.PushBack({ 391, 288, 102, 22 });
 	dying.speed = 0.15f;
 	dying.loop = false;
 

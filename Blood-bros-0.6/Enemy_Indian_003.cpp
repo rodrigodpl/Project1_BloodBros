@@ -8,21 +8,22 @@
 
 Enemy_Indian_003::Enemy_Indian_003(int x, int y) : Enemy(x, y)
 {
-	walking_left.PushBack({ 601, 578, 44, 93 });
-	walking_left.PushBack({ 653, 578, 67, 92 });
-	walking_left.PushBack({ 731, 578, 78, 90 });
-	walking_left.PushBack({ 815, 578, 44, 93 });
-	walking_left.PushBack({ 868, 578, 78, 115 });
-	walking_left.PushBack({ 939, 578, 76, 89 });
+	walking_left.PushBack({ 1494, 89, 34, 74 });
+	walking_left.PushBack({ 1537, 89, 51, 73 });
+	walking_left.PushBack({ 1598, 90, 61, 71 });
+	walking_left.PushBack({ 1666, 89, 33, 73 });
+	walking_left.PushBack({ 1708, 89, 49, 74 });
+	walking_left.PushBack({ 1764, 91, 61, 71 });
 	walking_left.speed = 0.1f;
 
-	walking_right.PushBack({ 1187, 578, 80, 92 });
-	walking_right.PushBack({ 1273, 578, 65, 91 });
-	walking_right.PushBack({ 1348, 578, 42, 94 });
-	walking_right.PushBack({ 1398, 578, 76, 92 });
-	walking_right.PushBack({ 1488, 578, 65, 95 });
-	walking_right.PushBack({ 1571, 578, 46, 93 });
+	walking_right.PushBack({ 2271, 87, 34, 74 });
+	walking_right.PushBack({ 2204, 86, 50, 74 });
+	walking_right.PushBack({ 2131, 89, 61, 71 });
+	walking_right.PushBack({ 2091, 88, 33, 73 });
+	walking_right.PushBack({ 2033, 89, 49, 72 });
+	walking_right.PushBack({ 1965, 89, 61, 72 });
 	walking_right.speed = 0.1f;
+
 
 	falling.PushBack({ 1398, 578, 76, 92 });
 	falling.PushBack({ 1488, 578, 65, 95 });
@@ -30,12 +31,17 @@ Enemy_Indian_003::Enemy_Indian_003(int x, int y) : Enemy(x, y)
 	falling.speed = 0.1f;
 
 
-	shooting.PushBack({ 1024, 576, 80, 93 });
-	shooting.PushBack({ 1113, 554, 66, 115 });
+	shooting.PushBack({ 1832, 89, 63, 72 });
+	shooting.PushBack({ 1904, 75, 52, 86 });
+	shooting.PushBack({ 1832, 89, 63, 72 });
 	shooting.speed = 0.05f;
 	shooting.loop = false;
 
-
+	dying.PushBack({ 1582, 213, 54, 60 });
+	dying.PushBack({ 1652, 218, 65, 51 });
+	dying.PushBack({ 1744, 253, 65, 14 });
+	dying.speed = 0.15f;
+	dying.loop = false;
 
 	collider = App->collision->AddCollider({ position.x, position.y - 116, 55, 116 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -45,7 +51,7 @@ Enemy_Indian_003::Enemy_Indian_003(int x, int y) : Enemy(x, y)
 
 	Indian_003_path.PushBack({ 2, 0 }, 150, &walking_right);
 	Indian_003_path.PushBack({ 0, 0 }, 100, &shooting);
-	Indian_003_path.PushBack({ -2, 0 }, 700, &walking_left);
+	Indian_003_path.PushBack({ -2, 0 }, 900, &walking_left);
 
 	Indian_003_Falling_path.PushBack({ 0, 2 }, 200, &falling);
 
