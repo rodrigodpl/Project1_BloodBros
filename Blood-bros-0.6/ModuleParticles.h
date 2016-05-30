@@ -24,6 +24,7 @@ struct Particle
 	Uint32 life = 0;
 	bool fx_played = false;
 	fPoint dst;
+	uint slow_down_counter = 0;
 
 	Particle();
 	Particle(const Particle& p);
@@ -54,6 +55,7 @@ public:
 	Particle destroying_wall;
 	Particle dynamite;
 	Particle dynamite_explosion;
+	Particle enemy_bomb;
 
 };
 

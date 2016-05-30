@@ -124,10 +124,11 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 
 			if (collider_type == COLLIDER_ENEMY_SHOT)
 				p->speed = p->position.GetDirection(BASE_ENEMY_SHOT_SPEED, App->player->position);
-			else if (collider_type == COLLIDER_DYNAMITE){
+			else if (collider_type == COLLIDER_DYNAMITE)
 				p->speed = App->player->position.GetSpeed(App->reticle->position);
-
-			}
+			else if (collider_type == COLLIDER_ENEMY_BOMB)
+				p->speed = p->position.GetSpeed(App->player->position);
+			
 
 
 			active[i] = p;
@@ -186,7 +187,7 @@ bool Particle::Update()
 	else
 		if (anim.Finished()){
 			ret = false;
-			if (collider != nullptr && collider->type == COLLIDER_DYNAMITE){
+			if (collider != nullptr && (collider->type == COLLIDER_DYNAMITE || collider->type == COLLIDER_ENEMY_BOMB)){
 				App->particles->AddParticle(App->particles->dynamite_explosion, position.x, position.y);
 				App->enemies->check_explosion(position);
 				App->scenario->check_explosion(position);
@@ -194,16 +195,26 @@ bool Particle::Update()
 			
 		}
 
-
-
-	position.x += speed.x;
-	position.y += speed.y;
-
-
 	if (collider != nullptr){
-		collider->SetPos(position.x, position.y);
-		if (collider->type == COLLIDER_DYNAMITE)
-			speed.y -= CONST_GRAVITY;
+
+		if (collider->type == COLLIDER_ENEMY_BOMB && slow_down_counter < 1){
+			anim.current_frame -= anim.speed;
+			slow_down_counter++;
+			return ret;
+		}
+		else{
+
+			if (collider->type == COLLIDER_ENEMY_BOMB)
+				slow_down_counter = 0;
+
+			position.x += speed.x;
+			position.y += speed.y;
+
+			collider->SetPos(position.x, position.y);
+
+			if (collider->type == COLLIDER_DYNAMITE || collider->type == COLLIDER_ENEMY_BOMB)
+				speed.y -= CONST_GRAVITY;
+		}
 	}
 
 	return ret;

@@ -9,6 +9,7 @@ class Animation
 	friend class ModuleInput;
 	friend class ModulePlayer;
 	friend class ModuleSceneSpace;
+	friend class Particle;
 	friend class Enemy_Barrel_Guy;
 	friend class Enemy_Indian_001;
 	friend class Enemy_Indian_002;
@@ -16,6 +17,7 @@ class Animation
 	friend class Enemy_Horse_001;
 	friend class Enemy_Mounted_Indian_001;
 	friend class Enemy_Zeppelin;
+	friend class Enemy_Cart_001;
 
 public:
 	

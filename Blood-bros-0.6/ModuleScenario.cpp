@@ -106,8 +106,8 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 	{
-		if (elements[i] != nullptr && elements[i]->GetCollider() == c1 && (App->player->shooting || c2->type == COLLIDER_ENEMY_SHOT) 
-			&& elements[i]->animation != &(elements[i]->dying))
+		if (elements[i] != nullptr && elements[i]->GetCollider() == c1 && (App->player->shooting || c2->type == COLLIDER_ENEMY_SHOT
+			|| c2->type == COLLIDER_ENEMY_BOMB) && elements[i]->animation != &(elements[i]->dying))
 		{
 			elements[i]->health -= 1;
 

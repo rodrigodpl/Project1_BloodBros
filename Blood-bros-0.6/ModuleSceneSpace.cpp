@@ -139,21 +139,17 @@ update_status ModuleSceneSpace::Update()
 		released_enemies[4] = true;
 	}
 
-	if (current_level_time > 18000 && released_enemies[5] == false && is_backgr_destroyed){
-		App->enemies->AddEnemy(ZEPPELIN, SCREEN_WIDTH - 95, 200);
+	if (current_level_time > 15000 && released_enemies[5] == false){
+		App->enemies->AddEnemy(CART_001, SCREEN_WIDTH + 20, 330);
 		released_enemies[5] = true;
 	}
 
-	if (current_level_time > 21000 && released_enemies[6] == false){
-		if (!is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 222);
-		else if (is_backgr_destroyed)
-			App->enemies->AddEnemy(INDIAN_003, -20, 362);
-
+	if (current_level_time > 18000 && released_enemies[6] == false && is_backgr_destroyed){
+		App->enemies->AddEnemy(ZEPPELIN, SCREEN_WIDTH - 95, 200);
 		released_enemies[6] = true;
 	}
 
-	if (current_level_time > 24000 && released_enemies[7] == false){
+	if (current_level_time > 21000 && released_enemies[7] == false){
 		if (!is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 222);
 		else if (is_backgr_destroyed)
@@ -162,7 +158,16 @@ update_status ModuleSceneSpace::Update()
 		released_enemies[7] = true;
 	}
 
-	if (current_level_time > 26000)
+	if (current_level_time > 24000 && released_enemies[8] == false){
+		if (!is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 222);
+		else if (is_backgr_destroyed)
+			App->enemies->AddEnemy(INDIAN_003, -20, 362);
+
+		released_enemies[8] = true;
+	}
+
+	if (current_level_time > 28000)
 		loop_enemies();
 
 

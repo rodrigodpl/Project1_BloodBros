@@ -12,9 +12,10 @@
 #include "ModulePowerUps.h"
 #include "Enemy.h"
 #include "Enemy_Barrel_Guy.h"
+#include "Enemy_Indian_002.h"
+#include "Enemy_Cart_001.h"
 #include "Enemy_indian_001.h"
 #include "Enemy_Indian_003.h"
-#include "Enemy_Indian_002.h"
 #include "NPC_pig_001.h"
 #include "Enemy_Zeppelin.h"
 #include "Enemy_Horse_001.h"
@@ -163,6 +164,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_Mounted_Indian_001(info.x, info.y); break;
 			case ENEMY_TYPES::HORSE_001:
 				enemies[i] = new Enemy_Horse_001(info.x, info.y); break;
+			case ENEMY_TYPES::CART_001:
+				enemies[i] = new Enemy_Cart_001(info.x, info.y); break;
 		}
 	}
 }

@@ -504,6 +504,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		current_animation = &killed;
 
 		alive = false;
+		shooting = false;
 	}
 }
 
