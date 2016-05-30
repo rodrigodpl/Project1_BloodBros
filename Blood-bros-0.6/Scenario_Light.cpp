@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Scenario_Light.h"
 #include "Path.h"
+#include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
@@ -32,6 +33,8 @@ Scenario_Light::Scenario_Light(int x, int y) : Scenario_elem(x, y)
 	health = 100;
 
 	animation = &idle;
+
+	destroyed_fx = App->audio->LoadFx("FX/bottle-chash.wav");
 	
 }
 

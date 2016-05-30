@@ -31,6 +31,8 @@ public:
 	int anim_displacement_y = 0;
 	int anim_displacement_x = 0;
 	Animation dying;
+
+	int destroyed_fx = -1;
 };
 
 #endif

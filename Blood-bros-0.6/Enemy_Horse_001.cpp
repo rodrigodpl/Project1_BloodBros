@@ -2,10 +2,12 @@
 #include "Enemy_Horse_001.h"
 #include "Path.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 #include "ModuleSceneSpace.h"
 #include "ModulePowerUps.h"
 #include "ModuleParticles.h"
 #include "p2Point.h"
+#include "SDL_mixer\include\SDL_mixer.h"
 
 Enemy_Horse_001::Enemy_Horse_001(int x, int y) : Enemy(x, y)
 {
@@ -38,6 +40,9 @@ Enemy_Horse_001::Enemy_Horse_001(int x, int y) : Enemy(x, y)
 
 	mounted = true;
 
+	horse_hit_fx = App->audio->LoadFx("FX/horse-hitted.wav");
+	horse_run_fx = App->audio->LoadFx("FX/riding-horse.wav");
+
 	Horse_001_walking_path.PushBack({ -2, 0 }, 1500, &walking);
 	Horse_001_running_path.PushBack({ -4, 0 }, 1500, &running);
 
@@ -47,8 +52,21 @@ Enemy_Horse_001::Enemy_Horse_001(int x, int y) : Enemy(x, y)
 
 }
 
+Enemy_Horse_001::~Enemy_Horse_001()
+{
+	if (collider != nullptr)
+		App->collision->EraseCollider(collider);
+
+	App->audio->UnLoadFx(horse_hit_fx);
+	App->audio->UnLoadFx(horse_run_fx);
+}
+
 void Enemy_Horse_001::Update()
 {
+
+	if (riding_channel == -1)
+		riding_channel = App->audio->Channel_PlayFx(horse_run_fx, 10);
+
 	if (state == EN_ST_DYING && SDL_GetTicks() - 500 < timer)
 		state = EN_ST_WALKING;
 
@@ -60,17 +78,20 @@ void Enemy_Horse_001::Update()
 	}
 
 
-
 	if (state == EN_ST_DYING && animation == &walking){
 
 		mounted = false;
 		animation = &dying;
+		Mix_HaltChannel(riding_channel);
+		App->audio->PlayFx(horse_hit_fx);
 	}
 	else if (state == EN_ST_DYING && animation == &running){
 
 		animation->Reset();
 		App->power_ups->AddPU(drops_power_up, position.x, position.y);
 		animation = &dying;
+		Mix_HaltChannel(riding_channel);
+		App->audio->PlayFx(horse_hit_fx);
 	}
 
 
@@ -80,6 +101,7 @@ void Enemy_Horse_001::Update()
 		timer = SDL_GetTicks();
 		orig_pos = position;
 		Horse_001_running_path.Reset();
+		riding_channel = App->audio->Channel_PlayFx(horse_run_fx, 10);
 	}
 
 	

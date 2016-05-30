@@ -13,6 +13,7 @@ private:
 	Animation running;
 	p2Point<int> orig_pos;
 	Uint32 timer;
+	uint horse_hit_fx, horse_run_fx, riding_channel = -1;
 
 	Path Horse_001_walking_path;
 	Path Horse_001_running_path;
@@ -22,6 +23,7 @@ private:
 public:
 
 	Enemy_Horse_001(int x, int y);
+	~Enemy_Horse_001();
 
 	void Update();
 };

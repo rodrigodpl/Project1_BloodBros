@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Scenario_Bottle.h"
 #include "Path.h"
+#include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleScenario.h"
 #include "p2Point.h"
@@ -52,6 +53,7 @@ Scenario_Bottle::Scenario_Bottle(int x, int y) : Scenario_elem(x, y)
 
 	}
 
+	destroyed_fx = App->audio->LoadFx("FX/bottle-chash.wav");
 
 	App->scenario->bottle_index++;
 

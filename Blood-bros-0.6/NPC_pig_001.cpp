@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "NPC_Pig_001.h"
 #include "Path.h"
+#include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneSpace.h"
 #include "ModulePowerUps.h"
@@ -29,6 +30,7 @@ NPC_Pig_001::NPC_Pig_001(int x, int y) : Enemy(x, y)
 	dying.speed = 0.2f;
 	dying.loop = false;
 
+	pig_hit_fx = App->audio->LoadFx("FX/pig-hitted.wav");
 
 	Pig_001_path.PushBack({ -7, 0 }, 400, &walking_right);
 
@@ -37,6 +39,16 @@ NPC_Pig_001::NPC_Pig_001(int x, int y) : Enemy(x, y)
 	drops_power_up = PU_LIST::MACHINEGUN_PU;
 
 }
+
+NPC_Pig_001::~NPC_Pig_001(){
+
+	if (collider != nullptr)
+		App->collision->EraseCollider(collider);
+
+	App->audio->UnLoadFx(pig_hit_fx);
+
+}
+
 
 void NPC_Pig_001::Update()
 {
@@ -49,7 +61,7 @@ void NPC_Pig_001::Update()
 		
 	if (state == EN_ST_DYING && animation != &dying){
 		
-
+		App->audio->PlayFx(pig_hit_fx);
 		App->power_ups->AddPU(drops_power_up, position.x, position.y);
 
 		animation->Reset();

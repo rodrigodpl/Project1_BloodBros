@@ -55,6 +55,8 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 
+	uint player_dying_fx;
+
 	Animation idle;
 	Animation idle_shooting;
 	Animation idle_shooting_0;

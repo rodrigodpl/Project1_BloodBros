@@ -12,10 +12,12 @@ private:
 	p2Point<int> orig_pos;
 	Path Pig_001_path;
 
+	uint pig_hit_fx;
 
 public:
 
 	NPC_Pig_001(int x, int y);
+	~NPC_Pig_001();
 
 	void Update();
 };

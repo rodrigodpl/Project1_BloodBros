@@ -68,8 +68,8 @@ bool ModuleReticle::Start()
 	graphics = App->textures->Load("sprites/crossdot.png");
 
 	basic_player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");
-	shotgun_player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");
-	machinegun_player_shot_fx = App->audio->LoadFx("FX/Player_Basic_Shot.wav");
+	shotgun_player_shot_fx = App->audio->LoadFx("FX/shotgun-shoot.wav");
+	machinegun_player_shot_fx = App->audio->LoadFx("FX/machinegun-shoot.wav");
 
 	ret_col = App->collision->AddCollider({ position.x, position.y, 65, 60 }, COLLIDER_PLAYER_SHOT);
 

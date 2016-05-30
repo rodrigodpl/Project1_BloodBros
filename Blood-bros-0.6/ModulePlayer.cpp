@@ -173,6 +173,9 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("sprites/player_spritesheet.png");
 	current_animation = &idle;
 
+	player_dying_fx = App->audio->LoadFx("FX/mainchar_hit.wav");
+
+
 	shooting = false;
 	alive = true;
 	immune = false;
@@ -204,6 +207,7 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
+	App->audio->UnLoadFx(player_dying_fx);
 	App->collision->EraseCollider(col);
 
 	return true;
@@ -462,8 +466,10 @@ update_status ModulePlayer::Update()
 	else{
 
 		if (current_animation == &killed){
-			if (current_animation->Finished() && App->UI->p1_lifes == 0)
+			if (current_animation->Finished() && App->UI->p1_lifes == 0){
+				Mix_FadeOutMusic(1000);
 				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_score, 1);
+			}
 			else if (current_animation->Finished() && App->UI->p1_lifes > 0){
 				App->UI->p1_lifes--;
 				current_animation->Reset();
@@ -498,7 +504,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if(c1 == col && alive && App->fade->IsFading() == false && immune == false && App->debug->activated_functions[GOD_MODE_F2] == false
 		 && (SDL_GetTicks() - 1000) > invincibility_timer)
 	{
-		Mix_FadeOutMusic(1000);
+		App->audio->PlayFx(player_dying_fx);
 
 		speed = 0;
 		current_animation = &killed;

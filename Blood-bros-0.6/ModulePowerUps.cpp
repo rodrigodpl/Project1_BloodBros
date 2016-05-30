@@ -1,6 +1,7 @@
 #include "ModulePowerUps.h"
 #include "Application.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
 #include "Animation.h"
 #include "ModuleUI.h"
 #include "ModuleReticle.h"
@@ -58,7 +59,9 @@ bool ModulePowerUps::Start()
 {
 	power_up_sprites = App->textures->Load("sprites/power_ups_spritesheet.png");
 
-	
+	object_drop_fx = App->audio->LoadFx("FX/object-drop.wav");
+	picked_gun_fx = App->audio->LoadFx("FX/took-weapon.wav");
+	picked_points_fx = App->audio->LoadFx("FX/points-catched.wav");
 									
 	return true;
 }
@@ -75,6 +78,10 @@ bool ModulePowerUps::CleanUp()
 			active_power_ups[i] = nullptr;
 		}
 	}
+
+	App->audio->UnLoadFx(object_drop_fx);
+	App->audio->UnLoadFx(picked_points_fx);
+	App->audio->UnLoadFx(picked_gun_fx);
 
 	return true;
 }
@@ -139,6 +146,7 @@ bool ModulePowerUps::AddPU(uint type, int x, int y){
 			case MACHINEGUN_PU: active_power_ups[i]->anim = &machinegun_anim; break;
 			}
 			
+			App->audio->PlayFx(object_drop_fx);
 
 			break;
 		}
@@ -168,6 +176,11 @@ void ModulePowerUps::OnCollision(Collider* c1, Collider* c2){
 			case SHOTGUN_PU: App->reticle->ChangeMode(SHOTGUN); break;
 			case MACHINEGUN_PU: App->reticle->ChangeMode(MACHINEGUN); break;
 			}
+
+			if (active_power_ups[i]->type < POINTS_LIMIT)
+				App->audio->PlayFx(picked_points_fx);
+			else
+				App->audio->PlayFx(picked_gun_fx);
 
 			App->collision->EraseCollider(active_power_ups[i]->PU_collider);
 			delete active_power_ups[i];

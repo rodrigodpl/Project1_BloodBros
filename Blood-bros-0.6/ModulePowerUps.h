@@ -20,6 +20,8 @@ enum PU_LIST
 	POINTS_10000,
 	POINTS_20000,
 
+	POINTS_LIMIT,
+
 	MACHINEGUN_PU,
 	SHOTGUN_PU,
 
@@ -52,6 +54,8 @@ public:
 
 	bool AddPU(uint type, int x, int y);
 	Power_up* active_power_ups[MAX_POWER_UPS];
+
+	uint object_drop_fx, picked_points_fx, picked_gun_fx;
 
 	Animation points_1000_anim;
 	Animation points_5000_anim;

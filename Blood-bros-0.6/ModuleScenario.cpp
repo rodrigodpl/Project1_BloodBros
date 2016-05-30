@@ -2,6 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleScenario.h"
+#include "ModuleAudio.h"
 #include "p2Point.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
@@ -42,6 +43,10 @@ update_status ModuleScenario::Update()
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 		if (elements[i] != nullptr && elements[i]->health <= 0 && elements[i]->dying.Finished()){
+
+			if (elements[i]->destroyed_fx != -1)
+				App->audio->UnLoadFx(elements[i]->destroyed_fx);
+
 			delete elements[i];
 			elements[i] = nullptr;
 		}
@@ -111,8 +116,11 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 		{
 			elements[i]->health -= 1;
 
-			if (elements[i]->health <= 0)
-				elements[i]->animation = &(elements[i]->dying);break;
+			if (elements[i]->health <= 0){
+				elements[i]->animation = &(elements[i]->dying);
+				App->audio->PlayFx(elements[i]->destroyed_fx);
+				break;
+			}
 		}
 	}
 }

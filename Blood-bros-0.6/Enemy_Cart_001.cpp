@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_Cart_001.h"
 #include "Path.h"
+#include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneSpace.h"
 #include "p2Point.h"
@@ -53,6 +54,7 @@ Enemy_Cart_001::Enemy_Cart_001(int x, int y) : Enemy(x, y)
 	Cart_001_path.PushBack({ -2, 0 }, 500, &walking_left);
 
 }
+
 
 void Enemy_Cart_001::Update()
 {

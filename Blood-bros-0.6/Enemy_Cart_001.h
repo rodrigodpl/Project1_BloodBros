@@ -15,6 +15,7 @@ private:
 	Path Cart_001_path;
 
 
+
 public:
 
 	Enemy_Cart_001(int x, int y);

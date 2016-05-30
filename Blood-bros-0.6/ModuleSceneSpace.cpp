@@ -113,58 +113,58 @@ update_status ModuleSceneSpace::Update()
 
 	current_level_time = SDL_GetTicks() - init_level_time;
 
-	if (current_level_time > 4000 && released_enemies[0] == false){
+	if (current_level_time > 4000 && released_enemies <= 0){
 		App->enemies->AddEnemy(INDIAN_001, -20, 400);
-		released_enemies[0] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 6000 && released_enemies[1] == false){
+	if (current_level_time > 6000 && released_enemies <= 1){
 		App->enemies->AddEnemy(INDIAN_002, SCREEN_WIDTH + 20, 400);
-		released_enemies[1] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 9000 && released_enemies[2] == false){
+	if (current_level_time > 9000 && released_enemies <= 2){
 		App->enemies->AddEnemy(HORSE_001, SCREEN_WIDTH + 20, 400);
 		App->enemies->AddEnemy(MOUNTED_INDIAN_001, SCREEN_WIDTH + 30, 380);
-		released_enemies[2] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 12000 && released_enemies[3] == false){
+	if (current_level_time > 12000 && released_enemies <= 3){
 		App->enemies->AddEnemy(BARREL_GUY, -20, 420);
-		released_enemies[3] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 13000 && released_enemies[4] == false){
+	if (current_level_time > 13000 && released_enemies <= 4){
 		App->enemies->AddEnemy(PIG_001, SCREEN_WIDTH + 20, 380);
-		released_enemies[4] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 15000 && released_enemies[5] == false){
+	if (current_level_time > 15000 && released_enemies <= 5){
 		App->enemies->AddEnemy(CART_001, SCREEN_WIDTH + 20, 330);
-		released_enemies[5] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 18000 && released_enemies[6] == false && is_backgr_destroyed){
+	if (current_level_time > 18000 && released_enemies <= 6 && is_backgr_destroyed){
 		App->enemies->AddEnemy(ZEPPELIN, SCREEN_WIDTH - 95, 200);
-		released_enemies[6] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 21000 && released_enemies[7] == false){
+	if (current_level_time > 21000 && released_enemies <= 7){
 		if (!is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 222);
 		else if (is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 362);
 
-		released_enemies[7] = true;
+		released_enemies++;
 	}
 
-	if (current_level_time > 24000 && released_enemies[8] == false){
+	if (current_level_time > 24000 && released_enemies <= 8){
 		if (!is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 222);
 		else if (is_backgr_destroyed)
 			App->enemies->AddEnemy(INDIAN_003, -20, 362);
 
-		released_enemies[8] = true;
+		released_enemies++;
 	}
 
 	if (current_level_time > 28000)
@@ -179,8 +179,7 @@ update_status ModuleSceneSpace::Update()
 
 void ModuleSceneSpace::loop_enemies(){
 
-	for (uint i = 0; i < WAVE_NUM_OF_ENEMIES; i++)
-		released_enemies[i] = false;
+	released_enemies = 0;
 
 	init_level_time = SDL_GetTicks();
 

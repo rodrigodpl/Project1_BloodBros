@@ -6,7 +6,6 @@
 
 struct SDL_Texture;
 
-#define WAVE_NUM_OF_ENEMIES 10
 #define ENEMY_NUM_STG1 10
 
 class ModuleSceneSpace : public Module
@@ -22,7 +21,7 @@ public:
 	SDL_Texture* background = nullptr;
 	Uint32 init_level_time;
 	Uint32 current_level_time;
-	bool released_enemies[WAVE_NUM_OF_ENEMIES];
+	uint released_enemies = 0;
 	void loop_enemies();
 	int defeated_enemies;
 	bool is_backgr_destroyed;

@@ -25,6 +25,7 @@ public:
 	bool UnLoadFx(uint id);
 
 	bool PlayFx(unsigned int fx, int repeat = 0);
+	uint Channel_PlayFx(unsigned int fx, int repeat = 0);
 
 private:
 
