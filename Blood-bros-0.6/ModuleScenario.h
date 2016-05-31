@@ -34,7 +34,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-	void check_explosion(fPoint location);
+	void check_explosion(int x, int y);
 
 	bool AddElement(SCENARIO_ELEMENTS type, int x, int y);
 	uint bottle_index;

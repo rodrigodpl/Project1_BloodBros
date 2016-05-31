@@ -30,7 +30,13 @@ Scenario_Wall_001::Scenario_Wall_001(int x, int y) : Scenario_elem(x, y)
 void Scenario_Wall_001::Update()
 {
 	if(animation == &dying){
-		App->scene_space->is_backgr_destroyed = true;
+
+		if (App->scene_space->is_backgr_destroyed == false){
+			App->scene_space->is_backgr_destroyed = true;
+			App->particles->AddParticle(App->particles->destroying_wall, 20, 290);
+			App->particles->AddParticle(App->particles->destroying_wall, 250, 290);
+			App->particles->AddParticle(App->particles->destroying_wall, 500, 290);
+		}
 
 		if (collapse_counter < (310 / 2)){
 

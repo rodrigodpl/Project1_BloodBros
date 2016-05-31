@@ -49,6 +49,7 @@ public:
 	bool CleanUp();
 	void GetShootingAngle(uint state);
 	void OnCollision(Collider* c1, Collider* c2);
+	void check_explosion(int x, int y);
 
 public:
 

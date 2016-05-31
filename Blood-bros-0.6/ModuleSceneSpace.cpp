@@ -98,6 +98,7 @@ update_status ModuleSceneSpace::Update()
 {
 	if (defeated_enemies >= ENEMY_NUM_STG1 && is_backgr_destroyed){
 		if (App->player->current_animation != &App->player->victory_dance){
+			App->audio->PlayMusic("Music/victorydance.wav");
 			App->player->current_animation->Reset();
 			App->player->current_animation = &App->player->victory_dance;
 			App->enemies->Disable();

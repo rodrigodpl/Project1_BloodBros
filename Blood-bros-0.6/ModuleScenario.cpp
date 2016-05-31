@@ -126,14 +126,14 @@ void ModuleScenario::OnCollision(Collider* c1, Collider* c2)
 }
 
 
-void ModuleScenario::check_explosion(fPoint location){
+void ModuleScenario::check_explosion(int x, int y){
 
 	for (uint i = 0; i < MAX_ELEMENTS; ++i)
 	{
 		if (elements[i] != nullptr)
 		{
-			if ((elements[i]->position.x >(location.x - 100) && elements[i]->position.x < (location.x + 60)) &&
-				(elements[i]->position.y - 30 >(location.y - 100) && elements[i]->position.y - 30 < (location.y + 60)))
+			if ((elements[i]->position.x + 40 > x && elements[i]->position.x + 40 < (x + 175)) &&
+				(elements[i]->position.y + 40 > y && elements[i]->position.y + 40 < (y + 175)))
 			{
 				if (elements[i]->animation != &(elements[i]->dying)){
 					elements[i]->health -= 1;

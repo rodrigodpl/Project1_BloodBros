@@ -60,6 +60,7 @@ void Enemy_Mounted_Indian_001::Update()
 
 	if (state == EN_ST_SHOOTING && ((animation->current_frame) > (animation->last_frame / 2))){
 		App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y - 30, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->shot_flare, position.x + 15, position.y - 50);
 		state = EN_ST_WALKING;
 	}
 }

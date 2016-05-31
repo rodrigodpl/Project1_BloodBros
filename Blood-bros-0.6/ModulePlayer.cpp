@@ -553,3 +553,21 @@ void ModulePlayer::GetShootingAngle(uint state){
 		current_animation = &idle_shooting;
 
 }
+
+void ModulePlayer::check_explosion(int x, int y){
+	
+	if (position.x + 40 > x && position.x + 40 < (x + 83) && position.y - 40 > y && position.y - 40 < (y + 168)){
+
+		if (alive && App->fade->IsFading() == false && immune == false && App->debug->activated_functions[GOD_MODE_F2] == false
+			&& (SDL_GetTicks() - 1000) > invincibility_timer){
+
+			App->audio->PlayFx(player_dying_fx);
+
+			speed = 0;
+			current_animation = &killed;
+
+			alive = false;
+			shooting = false;
+		}
+	}
+}

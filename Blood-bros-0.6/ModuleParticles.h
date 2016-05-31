@@ -52,9 +52,14 @@ private:
 public:
 
 	Particle enemy_shot;
+	Particle enemy_shot_2;
 	Particle destroying_wall;
 	Particle dynamite;
-	Particle dynamite_explosion;
+	Particle shot_flare;
+	Particle big_shot_flare;
+	Particle fire;
+	Particle explosion;
+	Particle enemy_explosion;
 	Particle enemy_bomb;
 
 };

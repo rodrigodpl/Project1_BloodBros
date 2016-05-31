@@ -68,19 +68,21 @@ update_status ModuleDebug::Update(){
 
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN){
 		activated_functions[INSTA_WIN_F6] = true;
 
 	if (activated_functions[INSTA_WIN_F6] == true){
 		if (App->player->current_animation != &App->player->victory_dance){
 			App->player->current_animation->Reset();
 			App->player->current_animation = &App->player->victory_dance;
+			App->audio->PlayMusic("Music/victorydance.wav");
 		}
 
 		if (App->player->current_animation->Finished()){
 			Mix_FadeOutMusic(1000);
 			App->fade->FadeToBlack((Module*) App->scene_space, (Module*)App->scene_score);
 		}
+	}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN){

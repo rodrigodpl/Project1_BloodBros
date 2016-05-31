@@ -189,14 +189,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	}
 }
 
-void ModuleEnemies::check_explosion(fPoint location){
+void ModuleEnemies::check_explosion(int x, int y){
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
 		{
-			if ((enemies[i]->position.x > (location.x - 100) && enemies[i]->position.x < (location.x + 60)) &&
-				(enemies[i]->position.y - 30 > (location.y - 100) && enemies[i]->position.y - 30 < (location.y + 60)))
+			if ((enemies[i]->position.x + 40 > x && enemies[i]->position.x + 40 < (x + 175)) &&
+				(enemies[i]->position.y - 40 > y && enemies[i]->position.y - 40 < (y + 175)))
 			{
 				if (enemies[i]->state != EN_ST_PROTECTING && enemies[i]->state != EN_ST_DYING ){
 					enemies[i]->state = EN_ST_DYING;

@@ -113,7 +113,7 @@ public:
 	}
 
 
-	p2Point<float> GetDirection(float base_speed, p2Point dst){
+	p2Point<float> GetDirection(p2Point dst){
 
 		p2Point<float> direction;
 

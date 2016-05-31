@@ -81,7 +81,7 @@ void Enemy_Cart_001::Update()
 
 
 	if (state == EN_ST_SHOOTING && ((animation->current_frame) > (animation->last_frame / 2))){
-		App->particles->AddParticle(App->particles->dynamite, position.x + 50, position.y - 80, COLLIDER_ENEMY_BOMB);
+		App->particles->AddParticle(App->particles->enemy_bomb, position.x + 50, position.y - 80, COLLIDER_ENEMY_BOMB);
 		state = EN_ST_WALKING;
 	}
 }

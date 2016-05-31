@@ -97,7 +97,8 @@ void Enemy_Barrel_Guy::Update()
 	}
 
 	if (state == EN_ST_SHOOTING && ((animation->current_frame) > (animation->last_frame / 2))){
-		App->particles->AddParticle(App->particles->enemy_shot, position.x + 40, position.y - 100, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_shot_2, position.x + 40, position.y - 100, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->big_shot_flare, position.x, position.y - 120);
 		state = EN_ST_WALKING;
 	}
 }

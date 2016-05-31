@@ -43,7 +43,7 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-	void check_explosion(fPoint location);
+	void check_explosion(int x, int y);
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
