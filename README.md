@@ -7,7 +7,7 @@ Repository: https://github.com/rogerta97/Project1_BloodBros
 ## Usage
 Aim and player are engaged, they can not move independently, so when moving the player the aim will move too and at higher speed. 
   - 'A' to move left. 
-  - 'B' to move right. 
+  - 'D' to move right. 
   - 'S' to crouch (while crouching you can't move).
   - 'K' to jump, this will help you to dodge the enemy bullets.
   - 'J' to shoot. 
