@@ -14,13 +14,13 @@ Aim and player are engaged, they can not move independently, so when moving the 
   - 'SPACE' to start.
 
 ## Credits
-Programmer: Rodrigo de Pedro.
+Programmer: Rodrigo de Pedro
 
-Manager: Roger Tello.
+Manager: Roger Tello
 
-QA: Andrey Ivanov. 
+QA: Andrey Ivanov
 
-Art: Oliver Cabezas. 
+Art: Oliver Cabezas
 
 ##Changelist
 ### v0.1
