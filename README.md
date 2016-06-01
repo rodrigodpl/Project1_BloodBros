@@ -1,4 +1,5 @@
 
+
 # UPC DDV Project 1: BloodBros
 We are a group of studients from UPC studying a Design and Development of Videogames degree and this is a repository where we will be making a tribute to Blood Bros, an arcade game originaly made by TAD Corporation. The main characters are a cowboy and a Native American, which are two brothers with the goal to capture the most dangerous bandit of the West, Big Bad John.
 
@@ -26,34 +27,39 @@ Art: Oliver Cabezas
   - Background of the level and some sprites put.
 
 ### v0.2
-  - Welcome screen, score screen and the background of the level well adjusted. You can return to welcome screen using fade to black. 
+  - Welcome screen, score screen and the background of the level put and well adjusted.
+  - You can return to welcome screen using fade to black. 
 
 ### v0.3
-  - Player is able to move and animated while moving. Furthermore, music has been loaded and FX of the player when shooting. 
+  - Player is able to move and animated while moving. 
+  - Music has been loaded and FX of the player when shooting. 
   
 ### v0.4
   - Coliders have been put and well adjusted.
 
 ### v0.5
-  - Different type of enemies have been added.
+  - Two types of enemies have been added: Green Cowboy and Cowboy in barrel.
 
 ### v0.6
-  - Correct sprites, improve code and some bugs fixes.
+  - Some sprites are corrected and few more enemies have been added.
+  - Improved code and some bugs fixes.
+  - Implemented God Mode.
 
 ### v0.7
-  - Inserted more enemies and improves his functionallity. 
-  - Correct the crossdot bug. 
-  - Now the wall can fall down.
+  - Improved enemies´ functionalities.
+  - Crossdot bug fixed. 
+  - Wall falls down smoothly now.
 
 ### v1.0
-  - We finished to implement all the aspects which had an implemented code but not working because little things lefting. 
-  - Now enemies die and not disapear. 
-  - Escenario elements explode and the wall throws smoke when falling. 
+  - Aspects of the game, which had code but no sprites have been fully implemented. 
+  - Enemies now die, since they have the proper sprites and not simply disappear. 
+  - Scenario elements explode and when wall is detroyed, smoke appears.
 
 ## Other 
 Website: http://rogerta97.github.io/Project1_BloodBros
 
 Repository: https://github.com/rogerta97/Project1_BloodBros
+
 
 Youtube channel: https://www.youtube.com/channel/UCyFtdGA2VYy_-S0mHTZv1hQ
 
