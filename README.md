@@ -44,4 +44,3 @@ Website: http://rogerta97.github.io/Project1_BloodBros
 
 Repository: https://github.com/rogerta97/Project1_BloodBros
 
-Our repository: https://github.com/rogerta97/Project1_BloodBros
