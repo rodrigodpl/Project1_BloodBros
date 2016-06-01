@@ -55,3 +55,5 @@ Website: http://rogerta97.github.io/Project1_BloodBros
 
 Repository: https://github.com/rogerta97/Project1_BloodBros
 
+Youtube channel: https://www.youtube.com/channel/UCyFtdGA2VYy_-S0mHTZv1hQ
+
