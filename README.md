@@ -38,4 +38,6 @@ Art: Oliver Cabezas.
 ### v0.5
   - Different type of enemies have been added.
 
+### v0.6
+  - Correct sprites, improve code and some bugs fixes.
 
