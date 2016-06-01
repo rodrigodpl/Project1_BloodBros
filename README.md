@@ -2,8 +2,6 @@
 # UPC DDV Project 1: BloodBros
 We are a group of studients from UPC studying a Design and Development of Videogames degree and this is a repository where we will be making a tribute to Blood Bros, an arcade game originaly made by TAD Corporation. The main characters are a cowboy and a Native American, which are two brothers with the goal to capture the most dangerous bandit of the West, Big Bad John.
 
-Repository: https://github.com/rogerta97/Project1_BloodBros
-
 ## Usage
 Aim and player are engaged, they can not move independently, so when moving the player the aim will move too and at higher speed. 
   - 'A' to move left. 
@@ -41,3 +39,7 @@ Art: Oliver Cabezas
 ### v0.6
   - Correct sprites, improve code and some bugs fixes.
 
+## Other 
+Website: http://rogerta97.github.io/Project1_BloodBros
+Repository: https://github.com/rogerta97/Project1_BloodBros
+Our repository: https://github.com/rogerta97/Project1_BloodBros
