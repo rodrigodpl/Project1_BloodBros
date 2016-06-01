@@ -9,6 +9,7 @@ Aim and player are engaged, they can not move independently, so when moving the 
   - 'S' to crouch (while crouching you can't move).
   - 'K' to jump, this will help you to dodge the enemy bullets.
   - 'J' to shoot. 
+  - 'L' to throw a dinamite. 
   - 'SPACE' to start.
 
 ## Credits
@@ -38,6 +39,16 @@ Art: Oliver Cabezas
 
 ### v0.6
   - Correct sprites, improve code and some bugs fixes.
+
+### v0.7
+  - Inserted more enemies and improves his functionallity. 
+  - Correct the crossdot bug. 
+  - Now the wall can fall down.
+
+### v1.0
+  - We finished to implement all the aspects which had an implemented code but not working because little things lefting. 
+  - Now enemies die and not disapear. 
+  - Escenario elements explode and the wall throws smoke when falling. 
 
 ## Other 
 Website: http://rogerta97.github.io/Project1_BloodBros
