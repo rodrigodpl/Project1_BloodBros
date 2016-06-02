@@ -11,6 +11,7 @@ Aim and player are engaged, they can not move independently, so when moving the 
   - 'K' to jump, this will help you to dodge the enemy bullets.
   - 'J' to shoot. 
   - 'L' to throw a dinamite. 
+  - 'Z' to enter a coin.
   - 'SPACE' to start.
 
 ## Credits
